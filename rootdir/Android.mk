@@ -1,0 +1,50 @@
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := fstab.me176c
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := etc/fstab.me176c
+LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := init.me176c.rc
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := etc/init.me176c.rc
+LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := init.kernel.rc
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := etc/init.kernel.rc
+LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := init.debugfs.rc
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := etc/init.debugfs.rc
+LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := init.graphics.rc
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := etc/init.graphics.rc
+LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := init.media.rc
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := etc/init.media.rc
+LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := ueventd.me176c.rc
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := etc/ueventd.me176c.rc
+LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT)
+include $(BUILD_PREBUILT)

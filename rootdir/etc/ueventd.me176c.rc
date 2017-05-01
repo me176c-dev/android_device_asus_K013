@@ -1,0 +1,27 @@
+/sys/devices/system/cpu/cpu*     online     0664   system     system
+
+# modem tty node change to radio user can read and write
+/dev/gsmtty*              0660   system     radio
+/dev/ttyMFD*              0660   system     radio
+/dev/ttyACM*              0660   system     radio
+/dev/ttyPTI1              0660   root       radio
+/dev/ttyGS0               0660   root       radio
+/dev/mdmTrace             0660   root       radio
+/dev/mdm_ctrl*            0660   root       radio
+/dev/ttyIFX0              0660   root       radio
+/dev/ttyIFX1              0660   root       radio
+/dev/ttyUSB*              0660   radio      radio
+/dev/iio:device*          0660   system     system
+/dev/radio0               0660   bluetooth  audio
+
+# Graphics
+/dev/sw_sync                  0666   system     mediadrm
+/dev/dri                      0666   root       graphics
+/dev/dri/card0                0666   root       graphics
+/dev/graphics                 0660   root       graphics
+/dev/graphics/fb0             0660   root       graphics
+/dev/dri/controlD64           0660   root       graphics
+
+# Media
+/dev/media*       0660  media  system
+/dev/video*       0660  media  system

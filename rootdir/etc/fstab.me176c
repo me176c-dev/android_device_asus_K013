@@ -1,0 +1,15 @@
+/dev/block/mmcblk2p15  /system   ext4  ro                                                         wait
+/dev/block/mmcblk2p11  /config   ext4  ro                                                         wait
+/dev/block/mmcblk2p9   /factory  ext4  ro,nosuid,nodev,noatime,data=ordered                       wait,check
+/dev/block/mmcblk2p12  /cache    ext4  nosuid,nodev,noatime,data=ordered                          wait,check
+/dev/block/mmcblk2p16  /data     ext4  nosuid,nodev,noatime,discard,noauto_da_alloc,data=ordered  wait,check,encryptable=/factory/userdata_footer
+
+# TODO: Check why the following doesn't work.
+#/dev/block/by-name/system   /system   ext4  ro                                         wait
+#/dev/block/by-name/config   /config   ext4  ro                                         wait
+#/dev/block/by-name/factory  /factory  ext4  ro,nosuid,nodev,noatime,data=ordered       wait,check
+#/dev/block/by-name/cache    /cache    ext4  nosuid,nodev,noatime,data=ordered          wait,check
+#/dev/block/by-name/data     /data     ext4  nosuid,nodev,noatime,discard,noauto_da_alloc,data=ordered  wait,check,encryptable=/factory/userdata_footer
+
+#/dev/block/by-name/cache    /cache    f2fs  nosuid,nodev,noatime,inline_xattr          wait,check
+#/dev/block/by-name/data     /data     f2fs  nosuid,nodev,noatime,discard,inline_xattr  wait,check,encryptable=/factory/userdata_footer

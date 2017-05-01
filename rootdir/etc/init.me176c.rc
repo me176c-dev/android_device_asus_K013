@@ -1,0 +1,29 @@
+import /init.kernel.rc
+import /init.debugfs.rc
+import /init.graphics.rc
+import /init.media.rc
+
+on early-init
+    mount_all /fstab.${ro.hardware}
+
+on fs
+    mkdir /dev/pstore 0755 root system
+    mount pstore pstore /dev/pstore
+
+# Enable SELinux labeling
+on post-fs
+    restorecon_recursive /config
+    restorecon_recursive /factory
+
+on post-fs-data
+    # Set indication (checked by vold) that we have finished this action
+    setprop vold.post_fs_data_done 1
+
+service watchdogd /sbin/watchdogd 10 30
+    user root
+    class core
+    oneshot
+    seclabel u:r:watchdogd:s0
+
+on charger
+    start watchdogd

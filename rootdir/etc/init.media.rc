@@ -1,0 +1,8 @@
+on post-fs-data
+    mkdir /data/hdcp 0770 media media
+    mkdir /data/coreu 0770 media root
+    mkdir /data/media 0770 media_rw media_rw
+    chown media_rw media_rw /data/media
+
+on boot
+    setprop persist.media.pfw.verbose true
