@@ -11,3 +11,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.mode=DISABLED
 
 include $(LOCAL_PATH)/product/*.mk
+
+PRODUCT_PACKAGES += \
+	Terminal
