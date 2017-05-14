@@ -1,4 +1,3 @@
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, device/asus/K013/device.mk)
 
 # Overrides
