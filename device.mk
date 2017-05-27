@@ -14,3 +14,5 @@ include $(LOCAL_PATH)/product/*.mk
 
 PRODUCT_PACKAGES += \
 	Terminal
+
+$(call inherit-product, vendor/asus/me176c/vendor-me176c.mk)

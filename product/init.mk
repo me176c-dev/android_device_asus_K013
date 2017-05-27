@@ -5,4 +5,7 @@ PRODUCT_PACKAGES += \
     init.debugfs.rc \
     init.graphics.rc \
     init.media.rc \
-    ueventd.me176c.rc
+    ueventd.me176c.rc \
+    twrp.fstab \
+    init.recovery.me176c.rc \
+    init.recovery.usb.rc

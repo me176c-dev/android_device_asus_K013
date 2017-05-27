@@ -25,3 +25,6 @@
 # Media
 /dev/media*       0660  media  system
 /dev/video*       0660  media  system
+
+# UPI gauge
+/dev/ug31xx       0660  system  system
