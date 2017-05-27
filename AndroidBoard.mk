@@ -1,7 +1,7 @@
 TARGET_KERNEL_SRC := kernel/asus/me176c
 
 TARGET_KERNEL_ARCH := x86_64
-TARGET_KERNEL_CONFIG := me176c_64_defconfig
+TARGET_KERNEL_CONFIG := me176c_defconfig
 
 KERNEL_NAME := bzImage
 
