@@ -1,23 +1,45 @@
 import /init.kernel.rc
 import /init.debugfs.rc
-import /init.graphics.rc
-import /init.media.rc
+import /init.${ro.hardware}.usb.rc
 
-on early-init
-    mount_all /fstab.${ro.hardware}
+on init
+    # Android creates by-name disk links with the disk controller
+    # in the generated path, so that the names pulled out of the GPT
+    # can be associated with the correct disk. Create a shortcut to
+    # /dev/block/by-name so that we can use the same fstabs everywhere.
+    symlink /dev/block/platform/80860F14:00/by-name /dev/block/by-name
 
 on fs
-    mkdir /dev/pstore 0755 root system
-    mount pstore pstore /dev/pstore
+    mount_all /fstab.${ro.hardware}
 
-# Enable SELinux labeling
+    # UPI gauge
+    chown system system /oemcfg/upi_gg
+    chmod 0660 /oemcfg/upi_gg
+    chown system system /oemcfg/upi_bo
+    chmod 0664 /oemcfg/upi_bo
+    chown system system /sys/module/ug31xx_battery/parameters/op_options
+
 on post-fs
-    restorecon_recursive /config
+    # Enable SELinux labeling
+    restorecon_recursive /oemcfg
     restorecon_recursive /factory
 
 on post-fs-data
     # Set indication (checked by vold) that we have finished this action
     setprop vold.post_fs_data_done 1
+
+on charger
+    start watchdogd
+
+    # UPI gauge
+    mkdir /oemcfg 0775 system system
+    mount ext4 /dev/block/by-name/config /oemcfg rw nosuid nodev noatime data=ordered
+    chown system system /oemcfg/upi_gg
+    chmod 0660 /oemcfg/upi_gg
+    chown system system /oemcfg/upi_bo
+    chmod 0664 /oemcfg/upi_bo
+    chown system system /sys/module/ug31xx_battery/parameters/op_options
+    start upi_ug31xx
 
 service watchdogd /sbin/watchdogd 10 30
     user root
@@ -25,5 +47,6 @@ service watchdogd /sbin/watchdogd 10 30
     oneshot
     seclabel u:r:watchdogd:s0
 
-on charger
-    start watchdogd
+service upi_ug31xx /sbin/upi_ug31xx
+    user system
+    class core

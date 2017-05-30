@@ -9,7 +9,3 @@ PRODUCT_COPY_FILES += \
 # Touch
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
-
-PRODUCT_PACKAGES += \
-    lights.android_ia \
-    power.android_ia

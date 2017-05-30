@@ -1,4 +1,4 @@
-TARGET_BOARD_PLATFORM := android_ia
+TARGET_BOARD_PLATFORM := baytrail
 
 TARGET_ARCH := x86
 TARGET_ARCH_VARIANT := silvermont
@@ -11,4 +11,6 @@ MALLOC_SVELTE := true
 WITH_DEXPREOPT := true
 WITH_DEXPREOPT_PIC := true
 
-include device/asus/K013/board/*.mk
+WPA_SUPPLICANT_VERSION := VER_0_8_X
+
+include device/asus/me176c/board/*.mk
