@@ -4,8 +4,7 @@ $(call inherit-product, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap
 PRODUCT_CHARACTERISTICS := tablet
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.setupwizard.mode=DISABLED
+PRODUCT_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 include $(LOCAL_PATH)/product/*.mk
 
