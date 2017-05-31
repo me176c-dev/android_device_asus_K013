@@ -11,8 +11,6 @@ MALLOC_SVELTE := true
 WITH_DEXPREOPT := true
 WITH_DEXPREOPT_PIC := true
 
-WPA_SUPPLICANT_VERSION := VER_0_8_X
-
 ifeq ($(TARGET_DEVICE), K013)
 include device/asus/K013/board/*.mk
 else

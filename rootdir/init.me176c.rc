@@ -1,5 +1,6 @@
 import /init.kernel.rc
 import /init.debugfs.rc
+import /init.wifi.rc
 import /init.${ro.hardware}.usb.rc
 
 on init

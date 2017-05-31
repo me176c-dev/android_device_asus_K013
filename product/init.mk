@@ -4,6 +4,7 @@ PRODUCT_PACKAGES += \
     init.me176c.usb.rc \
     init.kernel.rc \
     init.debugfs.rc \
+    init.wifi.rc \
     ueventd.me176c.rc \
     twrp.fstab \
     init.recovery.me176c.rc \
