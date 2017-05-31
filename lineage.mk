@@ -1,7 +1,6 @@
 $(call inherit-product, device/asus/me176c/device.mk)
 $(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
 
-# Overrides
 PRODUCT_NAME := lineage_me176c
 PRODUCT_DEVICE := me176c
 PRODUCT_MODEL := ASUS MeMO Pad 7 (ME176C)

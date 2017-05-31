@@ -3,6 +3,8 @@ on early-fs
     mkdir /config/usb_gadget/g1/functions/mass_storage.0
     mkdir /config/usb_gadget/g1/functions/mtp.gs0
 
+    setprop sys.usb.config adb
+
 on property:sys.usb.config=none
     write /config/usb_gadget/g1/UDC "none"
     write /config/usb_gadget/g1/bDeviceClass 0
