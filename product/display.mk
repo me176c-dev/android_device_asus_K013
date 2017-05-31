@@ -9,3 +9,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Property to choose between virtual/external wfd display
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.wfd.virtual=0
+
+# Light HAL
+PRODUCT_PACKAGES += \
+    lights.android_ia
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.lights=android_ia
