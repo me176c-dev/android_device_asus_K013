@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <remote name="me176c" fetch="https://github.com/me176c-dev/" />
+    <project name="device_asus_me176c" path="device/asus/K013" remote="me176c" revision="cm-14.1" />
+    <project name="kernel_asus_me176c" path="kernel/asus/me176c" remote="me176c" revision="cm-14.1" />
+</manifest>
