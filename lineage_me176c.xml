@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <remote name="me176c" fetch="https://github.com/me176c-dev/" />
+    <remote name="01org" fetch="https://github.com/01org/" />
+    <remote name="android-ia" fetch="https://github.com/android-ia/" />
+    <remote name="android-x86" fetch="http://scm.osdn.net/gitroot/android-x86/" />
+    <remote name="chromium" fetch="https://chromium.googlesource.com/" />
+    <remote name="kernel" fetch="https://git.kernel.org/pub/scm/linux/" />
+
+    <!-- Device repositories -->
+    <project name="device_asus_me176c" path="device/asus/me176c" remote="me176c" />
+    <project name="kernel_asus_me176c" path="kernel/asus/me176c" remote="me176c" />
+
+    <!-- Graphics -->
+    <remove-project name="platform/external/libdrm" />
+    <project name="external_libdrm" path="external/libdrm" remote="me176c" />
+
+    <remove-project name="platform/external/drm_gralloc" />
+    <project name="external_drm_gralloc" path="external/drm_gralloc" remote="me176c" />
+
+    <remove-project name="platform/external/mesa3d" />
+    <project name="external_mesa" path="external/mesa" remote="me176c" />
+
+    <!-- Light HAL -->
+    <project name="lighthal" path="vendor/intel/external/android_ia/lights" remote="android-ia" revision="master" />
+
+    <!-- Linux firmware files -->
+    <project name="kernel/git/firmware/linux-firmware.git" path="vendor/linux/firmware" remote="kernel" revision="master" />
+
+    <!-- Patched AOSP/LineageOS projects -->
+    <remove-project name="LineageOS/android_frameworks_base" />
+    <project name="frameworks_base" path="frameworks/base" remote="me176c" />
+
+    <remove-project name="LineageOS/android_frameworks_native" />
+    <project name="frameworks_native" path="frameworks/native" remote="me176c" />
+
+</manifest>
