@@ -16,8 +16,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml
 
 PRODUCT_PACKAGES += \
-    hostapd \
     wpa_supplicant \
-    wpa_supplicant.conf
-
-$(call inherit-product, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
+    wpa_supplicant.conf \
+    hostapd
