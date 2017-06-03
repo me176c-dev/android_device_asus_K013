@@ -34,4 +34,7 @@
     <remove-project name="LineageOS/android_frameworks_native" />
     <project name="frameworks_native" path="frameworks/native" remote="me176c" />
 
+    <remove-project name="LineageOS/android_hardware_libhardware_legacy" />
+    <project name="hardware_libhardware_legacy" path="hardware/libhardware_legacy" remote="me176c" />
+
 </manifest>
