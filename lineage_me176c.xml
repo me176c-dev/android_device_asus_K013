@@ -37,4 +37,7 @@
     <remove-project name="LineageOS/android_hardware_libhardware_legacy" />
     <project name="hardware_libhardware_legacy" path="hardware/libhardware_legacy" remote="me176c" />
 
+    <remove-project name="LineageOS/android_packages_apps_Gallery2" />
+    <project name="packages_apps_Gallery2" path="packages/apps/Gallery2" remote="me176c" />
+
 </manifest>
