@@ -9,16 +9,3 @@ PRODUCT_COPY_FILES += \
 # Touch
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
-
-# WiFi-only device
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.radio.noril=true
-
-# WiFi
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml
-
-PRODUCT_PACKAGES += \
-    wpa_supplicant \
-    wpa_supplicant.conf \
-    hostapd
