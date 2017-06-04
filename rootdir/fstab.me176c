@@ -1,5 +1,5 @@
 /dev/block/by-name/system   /system   ext4  ro                                                         wait,check
-/dev/block/by-name/config   /oemcfg   ext4  ro,nosuid,nodev,noatime,data=ordered                       wait,check
+/dev/block/by-name/config   /oemcfg   ext4  nosuid,nodev,noatime,data=ordered                          wait,check
 /dev/block/by-name/factory  /factory  ext4  ro,nosuid,nodev,noatime,data=ordered                       wait,check
 /dev/block/by-name/cache    /cache    ext4  nosuid,nodev,noatime,data=ordered                          wait,check
 /dev/block/by-name/data     /data     ext4  nosuid,nodev,noatime,discard,noauto_da_alloc,data=ordered  wait,check,encryptable=/factory/userdata_footer
