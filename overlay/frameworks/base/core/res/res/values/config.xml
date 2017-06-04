@@ -34,4 +34,7 @@
          on the headphone/microphone jack. When false use the older uevent framework. -->
     <!-- TODO <bool name="config_useDevInputEventForAudioJack">false</bool> -->
 
+    <!-- We don't support camera so the gesture doesn't make any sense -->
+    <bool name="config_cameraDoubleTapPowerGestureEnabled">false</bool>
+
 </resources>
