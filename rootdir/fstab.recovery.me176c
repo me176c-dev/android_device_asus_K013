@@ -1,0 +1,2 @@
+/dev/block/by-name/config   /oemcfg   ext4  nosuid,nodev,noatime,data=ordered     wait,check
+/dev/block/by-name/factory  /factory  ext4  ro,nosuid,nodev,noatime,data=ordered  wait,check

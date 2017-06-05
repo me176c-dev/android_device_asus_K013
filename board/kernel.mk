@@ -9,7 +9,7 @@ BOARD_KERNEL_CMDLINE += androidboot.hardware=me176c
 TARGET_USES_64_BIT_BINDER := true
 
 # Reduce kernel messages when building TWRP
-ifeq ($(TARGET_DEVICE), K013)
+ifneq ($(TWRP_BUILD),)
 BOARD_KERNEL_CMDLINE += quiet
 endif
 

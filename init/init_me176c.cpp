@@ -2,7 +2,16 @@
 #include <errno.h>
 #include <string.h>
 
+#ifdef REPLACE_PROPERTIES
+#define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
+#include <sys/_system_properties.h>
+#define property_replace(name, value) \
+    __system_property_update((prop_info*) __system_property_find(name), value, strlen(value))
+#else
 #include "property_service.h"
+#define property_replace property_set
+#endif
+
 #include "log.h"
 
 #define PHONE_INFO "/factory/PhoneInfodisk/PhoneInfo_inf"
@@ -29,7 +38,7 @@ static void load_serialno() {
     }
 
     // Set serial property
-    ret = property_set(SERIALNO_PROP, serial);
+    ret = property_replace(SERIALNO_PROP, serial);
     if (ret) {
         ERROR("Failed to set %s property: %d\n", SERIALNO_PROP, ret);
     }

@@ -13,6 +13,7 @@ WITH_DEXPREOPT := true
 WITH_DEXPREOPT_PIC := true
 
 ifeq ($(TARGET_DEVICE), K013)
+TWRP_BUILD := true
 include device/asus/K013/board/*.mk
 else
 include device/asus/me176c/board/*.mk
