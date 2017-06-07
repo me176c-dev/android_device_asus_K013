@@ -30,6 +30,11 @@
     <!-- Linux firmware files -->
     <project name="kernel/git/firmware/linux-firmware.git" path="vendor/linux/firmware" remote="kernel" revision="master" />
 
+    <!-- Powertop -->
+    <project name="pciutils" path="external/pciutils" remote="android-ia" revision="master"/>
+    <remove-project name="LineageOS/android_external_powertop" />
+    <project name="powertop" path="external/powertop" remote="android-ia" revision="master"/>
+
     <!-- Patched AOSP/LineageOS projects -->
     <remove-project name="LineageOS/android_frameworks_base" />
     <project name="frameworks_base" path="frameworks/base" remote="me176c" />
