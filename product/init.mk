@@ -2,8 +2,8 @@ PRODUCT_PACKAGES += \
     fstab.me176c \
     init.me176c.rc \
     init.me176c.usb.rc \
-    init.kernel.rc \
-    init.debugfs.rc \
+    init.battery.rc \
+    init.thermal.rc \
     init.wifi.rc \
     ueventd.me176c.rc \
     fstab.recovery.me176c \

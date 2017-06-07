@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ThermalConfiguration>
+<Platform>
+    <Name>ME176C</Name>
+    <ProductName>*</ProductName>
+
+    <ThermalZones>
+        <ThermalZone>
+            <Type>SoC0</Type>
+            <TripPoints>
+                <TripPoint>
+                    <SensorType>soc_dts0</SensorType>
+                    <Temperature>90000</Temperature>
+                    <type>passive</type>
+                    <ControlType>SEQUENTIAL</ControlType>
+
+                    <CoolingDevice>
+                        <index>1</index>
+                        <type>rapl_controller</type>
+                    </CoolingDevice>
+                    <CoolingDevice>
+                        <index>2</index>
+                        <type>intel_pstate</type>
+                    </CoolingDevice>
+                    <CoolingDevice>
+                        <index>3</index>
+                        <type>intel_powerclamp</type>
+                    </CoolingDevice>
+                    <CoolingDevice>
+                        <index>4</index>
+                        <type>Processor</type>
+                    </CoolingDevice>
+                </TripPoint>
+
+                <TripPoint>
+                    <SensorType>soc_dts0</SensorType>
+                    <Temperature>100000</Temperature>
+                    <type>critical</type>
+                </TripPoint>
+            </TripPoints>
+        </ThermalZone>
+
+        <ThermalZone>
+            <Type>SoC1</Type>
+            <TripPoints>
+                <TripPoint>
+                    <SensorType>soc_dts1</SensorType>
+                    <Temperature>90000</Temperature>
+                    <type>passive</type>
+                    <ControlType>SEQUENTIAL</ControlType>
+
+                    <CoolingDevice>
+                        <index>1</index>
+                        <type>rapl_controller</type>
+                    </CoolingDevice>
+                    <CoolingDevice>
+                        <index>2</index>
+                        <type>intel_pstate</type>
+                    </CoolingDevice>
+                    <CoolingDevice>
+                        <index>3</index>
+                        <type>intel_powerclamp</type>
+                    </CoolingDevice>
+                    <CoolingDevice>
+                        <index>4</index>
+                        <type>Processor</type>
+                    </CoolingDevice>
+                </TripPoint>
+
+                <TripPoint>
+                    <SensorType>soc_dts1</SensorType>
+                    <Temperature>100000</Temperature>
+                    <type>critical</type>
+                </TripPoint>
+            </TripPoints>
+        </ThermalZone>
+
+        <ThermalZone>
+            <Type>BackSkin</Type>
+            <TripPoints>
+                <TripPoint>
+                    <SensorType>SYSTHERM0</SensorType>
+                    <Temperature>55000</Temperature>
+                    <type>passive</type>
+                    <ControlType>SEQUENTIAL</ControlType>
+
+                    <CoolingDevice>
+                        <index>1</index>
+                        <type>rapl_controller</type>
+                    </CoolingDevice>
+                    <CoolingDevice>
+                        <index>2</index>
+                        <type>intel_pstate</type>
+                    </CoolingDevice>
+                    <CoolingDevice>
+                        <index>3</index>
+                        <type>intel_powerclamp</type>
+                    </CoolingDevice>
+                    <CoolingDevice>
+                        <index>4</index>
+                        <type>Processor</type>
+                    </CoolingDevice>
+                </TripPoint>
+
+                <TripPoint>
+                    <SensorType>SYSTHERM0</SensorType>
+                    <Temperature>60000</Temperature>
+                    <type>max</type>
+                    <ControlType>SEQUENTIAL</ControlType>
+
+                    <CoolingDevice>
+                        <index>1</index>
+                        <type>rapl_controller</type>
+                    </CoolingDevice>
+                    <CoolingDevice>
+                        <index>2</index>
+                        <type>intel_pstate</type>
+                    </CoolingDevice>
+                    <CoolingDevice>
+                        <index>3</index>
+                        <type>intel_powerclamp</type>
+                    </CoolingDevice>
+                    <CoolingDevice>
+                        <index>4</index>
+                        <type>Processor</type>
+                    </CoolingDevice>
+                </TripPoint>
+
+                <TripPoint>
+                    <SensorType>SYSTHERM0</SensorType>
+                    <Temperature>64000</Temperature>
+                    <type>critical</type>
+                </TripPoint>
+            </TripPoints>
+        </ThermalZone>
+
+        <ThermalZone>
+            <Type>FrontSkin</Type>
+            <TripPoints>
+                <TripPoint>
+                    <SensorType>SYSTHERM2</SensorType>
+                    <Temperature>55000</Temperature>
+                    <type>passive</type>
+                    <ControlType>SEQUENTIAL</ControlType>
+
+                    <CoolingDevice>
+                        <index>1</index>
+                        <type>rapl_controller</type>
+                    </CoolingDevice>
+                    <CoolingDevice>
+                        <index>2</index>
+                        <type>intel_pstate</type>
+                    </CoolingDevice>
+                    <CoolingDevice>
+                        <index>3</index>
+                        <type>intel_powerclamp</type>
+                    </CoolingDevice>
+                    <CoolingDevice>
+                        <index>4</index>
+                        <type>Processor</type>
+                    </CoolingDevice>
+                </TripPoint>
+
+                <TripPoint>
+                    <SensorType>SYSTHERM2</SensorType>
+                    <Temperature>60000</Temperature>
+                    <type>max</type>
+                    <ControlType>SEQUENTIAL</ControlType>
+
+                    <CoolingDevice>
+                        <index>1</index>
+                        <type>rapl_controller</type>
+                    </CoolingDevice>
+                    <CoolingDevice>
+                        <index>2</index>
+                        <type>intel_pstate</type>
+                    </CoolingDevice>
+                    <CoolingDevice>
+                        <index>3</index>
+                        <type>intel_powerclamp</type>
+                    </CoolingDevice>
+                    <CoolingDevice>
+                        <index>4</index>
+                        <type>Processor</type>
+                    </CoolingDevice>
+                </TripPoint>
+
+                <TripPoint>
+                    <SensorType>SYSTHERM2</SensorType>
+                    <Temperature>64000</Temperature>
+                    <type>critical</type>
+                </TripPoint>
+            </TripPoints>
+        </ThermalZone>
+    </ThermalZones>
+
+</Platform>
+</ThermalConfiguration>

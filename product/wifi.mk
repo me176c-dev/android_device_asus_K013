@@ -14,4 +14,4 @@ PRODUCT_PACKAGES += \
 # Firmware and NVRAM config
 PRODUCT_COPY_FILES += \
     vendor/linux/firmware/brcm/brcmfmac43362-sdio.bin:system/vendor/firmware/brcm/brcmfmac43362-sdio.bin \
-    device/asus/me176c/configs/nvram.txt:system/vendor/firmware/brcm/brcmfmac43362-sdio.txt
+    $(LOCAL_PATH)/configs/nvram.txt:system/vendor/firmware/brcm/brcmfmac43362-sdio.txt

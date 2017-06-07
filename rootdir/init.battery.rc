@@ -1,0 +1,25 @@
+on early-init
+    chown system system /sys/module/ug31xx_battery/parameters/op_options
+
+on fs
+    # UPI gauge
+    chown system system /oemcfg/upi_gg
+    chmod 0660 /oemcfg/upi_gg
+    chown system system /oemcfg/upi_bo
+    chmod 0664 /oemcfg/upi_bo
+
+on charger
+    # UPI gauge
+    mkdir /oemcfg 0775 system system
+    mount ext4 /dev/block/by-name/config /oemcfg rw nosuid nodev noatime data=ordered
+    chown system system /oemcfg/upi_gg
+    chmod 0660 /oemcfg/upi_gg
+    chown system system /oemcfg/upi_bo
+    chmod 0664 /oemcfg/upi_bo
+
+    start upi_ug31xx
+
+service upi_ug31xx /sbin/upi_ug31xx
+    class core
+    critical
+    seclabel u:r:watchdogd:s0

@@ -1,7 +1,11 @@
-import /init.kernel.rc
-import /init.debugfs.rc
+import /init.battery.rc
+import /init.thermal.rc
 import /init.wifi.rc
 import /init.${ro.hardware}.usb.rc
+
+on early-init
+    # mount debugfs debugfs /sys/kernel/debug
+    # chmod 0755 /sys/kernel/debug
 
 on init
     # Android creates by-name disk links with the disk controller
@@ -10,15 +14,15 @@ on init
     # /dev/block/by-name so that we can use the same fstabs everywhere.
     symlink /dev/block/platform/80860F14:00/by-name /dev/block/by-name
 
+on late-init
+    write /dev/cpuset/foreground/cpus 0-2
+    write /dev/cpuset/foreground/boost/cpus 0-3
+    write /dev/cpuset/background/cpus 0
+    write /dev/cpuset/system-background/cpus 0-1
+    write /dev/cpuset/top-app/cpus 0-3
+
 on fs
     mount_all /fstab.${ro.hardware}
-
-    # UPI gauge
-    chown system system /oemcfg/upi_gg
-    chmod 0660 /oemcfg/upi_gg
-    chown system system /oemcfg/upi_bo
-    chmod 0664 /oemcfg/upi_bo
-    chown system system /sys/module/ug31xx_battery/parameters/op_options
 
 on post-fs
     # Enable SELinux labeling
@@ -32,22 +36,8 @@ on post-fs-data
 on charger
     start watchdogd
 
-    # UPI gauge
-    mkdir /oemcfg 0775 system system
-    mount ext4 /dev/block/by-name/config /oemcfg rw nosuid nodev noatime data=ordered
-    chown system system /oemcfg/upi_gg
-    chmod 0660 /oemcfg/upi_gg
-    chown system system /oemcfg/upi_bo
-    chmod 0664 /oemcfg/upi_bo
-    chown system system /sys/module/ug31xx_battery/parameters/op_options
-    start upi_ug31xx
-
 service watchdogd /sbin/watchdogd 10 30
     user root
     class core
     oneshot
     seclabel u:r:watchdogd:s0
-
-service upi_ug31xx /sbin/upi_ug31xx
-    user system
-    class core

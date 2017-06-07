@@ -21,6 +21,9 @@
     <remove-project name="platform/external/mesa3d" />
     <project name="external_mesa" path="external/mesa" remote="me176c" />
 
+    <!-- Thermal -->
+    <project name="external_thermal_daemon" path="external/thermal_daemon" remote="me176c" />
+
     <!-- Light HAL -->
     <project name="lighthal" path="vendor/intel/external/android_ia/lights" remote="android-ia" revision="master" />
 
