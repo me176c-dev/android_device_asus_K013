@@ -1,11 +1,8 @@
 import /init.battery.rc
 import /init.thermal.rc
+import /init.power.rc
 import /init.wifi.rc
 import /init.${ro.hardware}.usb.rc
-
-on early-init
-    # mount debugfs debugfs /sys/kernel/debug
-    # chmod 0755 /sys/kernel/debug
 
 on init
     # Android creates by-name disk links with the disk controller
