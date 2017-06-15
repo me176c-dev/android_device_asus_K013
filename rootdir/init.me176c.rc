@@ -4,6 +4,10 @@ import /init.power.rc
 import /init.wifi.rc
 import /init.${ro.hardware}.usb.rc
 
+on early-init
+    mount debugfs none /sys/kernel/debug
+    chmod 0755 /sys/kernel/debug
+
 on init
     # Android creates by-name disk links with the disk controller
     # in the generated path, so that the names pulled out of the GPT
