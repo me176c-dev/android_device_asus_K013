@@ -1,0 +1,9 @@
+LOCAL_PATH:= $(call my-dir)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := lights.me176c
+LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_SRC_FILES := lights.c
+LOCAL_SHARED_LIBRARIES := liblog
+LOCAL_CFLAGS := -Werror
+include $(BUILD_SHARED_LIBRARY)

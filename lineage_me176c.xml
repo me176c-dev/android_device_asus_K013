@@ -24,9 +24,6 @@
     <!-- Thermal -->
     <project name="external_thermal_daemon" path="external/thermal_daemon" remote="me176c" />
 
-    <!-- Light HAL -->
-    <project name="lighthal" path="vendor/intel/external/android_ia/lights" remote="android-ia" revision="master" />
-
     <!-- Linux firmware files -->
     <project name="kernel/git/firmware/linux-firmware.git" path="vendor/linux/firmware" remote="kernel" revision="master" />
 

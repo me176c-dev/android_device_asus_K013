@@ -14,7 +14,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Light HAL
 PRODUCT_PACKAGES += \
-    lights.android_ia
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hardware.lights=android_ia
+    lights.me176c
