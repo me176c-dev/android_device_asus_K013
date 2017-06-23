@@ -28,8 +28,6 @@ static int set_light(struct light_device_t *dev, const struct light_state_t *sta
     if (brightness) {
         // Input brightness is 0-255, however intel_backlight accepts 0-100
         brightness = brightness * MAX_BRIGHTNESS_OUTPUT / MAX_BRIGHTNESS_INPUT;
-    } else {
-        // TODO: Power down screen?
     }
 
     fd = open(BRIGHTNESS_PATH, O_WRONLY);
@@ -47,11 +45,8 @@ static int set_light(struct light_device_t *dev, const struct light_state_t *sta
     return count < 0 ? -errno : 0;
 }
 
-static int close_lights(struct light_device_t *dev) {
-    if (dev) {
-        free(dev);
-    }
-
+static int close_lights(struct hw_device_t *dev) {
+    free(dev);
     return 0;
 }
 
@@ -61,16 +56,14 @@ static int open_lights(const struct hw_module_t *module, char const *id, struct 
     if (strcmp(id, LIGHT_ID_BACKLIGHT))
         return -EINVAL;
 
-    dev = malloc(sizeof(struct light_device_t));
+    dev = calloc(1, sizeof(*dev));
     if (!dev)
         return -ENOMEM;
-
-    memset(dev, 0, sizeof(*dev));
 
     dev->common.tag = HARDWARE_DEVICE_TAG;
     dev->common.version = LIGHTS_DEVICE_API_VERSION_1_0;
     dev->common.module = (struct hw_module_t*) module;
-    dev->common.close = (int (*)(struct hw_device_t*)) close_lights;
+    dev->common.close = close_lights;
     dev->set_light = set_light;
 
     *device = (struct hw_device_t*) dev;
@@ -86,7 +79,7 @@ struct hw_module_t HAL_MODULE_INFO_SYM = {
     .module_api_version = HARDWARE_MODULE_API_VERSION(1, 0),
     .hal_api_version = HARDWARE_HAL_API_VERSION,
     .id = LIGHTS_HARDWARE_MODULE_ID,
-    .name = "ME176C Lights HAL",
+    .name = "ME176C Lights",
     .author = "lambdadroid",
     .methods = &lights_module_methods,
 };

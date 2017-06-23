@@ -24,6 +24,14 @@
     <!-- Whether a software navigation bar should be shown. -->
     <bool name="config_showNavigationBar">true</bool>
 
+    <!-- Power Management: Specifies whether to decouple the auto-suspend state of the
+         device from the display on/off state. -->
+    <bool name="config_powerDecoupleAutoSuspendModeFromDisplay">true</bool>
+
+    <!-- Power Management: Specifies whether to decouple the interactive state of the
+         device from the display on/off state. -->
+    <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
+
     <!--  Maximum number of supported users -->
     <integer name="config_multiuserMaximumUsers">4</integer>
 

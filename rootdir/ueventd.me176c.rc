@@ -7,6 +7,10 @@
 /dev/graphics/fb0    0660  root  graphics
 /dev/dri/controlD64  0660  root  graphics
 
+# Power
+/sys/devices/platform*  i2c-GDIX1001:00/power/control  0644  system  system
+/sys/devices/platform*  i2c-UPIG3105:00/power/control  0644  system  system
+
 # Backlight
 /sys/devices/pci*  intel_backlight/brightness  0664  system  system
 
