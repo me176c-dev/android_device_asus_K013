@@ -5,6 +5,7 @@ PRODUCT_PACKAGES += \
     init.battery.rc \
     init.thermal.rc \
     init.power.rc \
+    init.audio.rc \
     init.wifi.rc \
     ueventd.me176c.rc \
     fstab.recovery.me176c \

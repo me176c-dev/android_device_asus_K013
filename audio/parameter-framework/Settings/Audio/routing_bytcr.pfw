@@ -1,0 +1,40 @@
+domainGroup: Routing.BytCR
+
+	domainGroup: Flow
+		RoutageState Includes Flow
+
+		domain: Speaker
+			conf: UnMute
+				SelectedOutputDevices Includes Ihf
+
+				/Audio/bytcr/speaker/switch = 1
+				/Audio/bytcr/speaker/channel = 1 1
+				/Audio/bytcr/speaker/playback/left = 1
+				/Audio/bytcr/speaker/playback/right = 1
+				/Audio/bytcr/speaker/playback/volume = 29 29
+
+			conf: Mute
+				/Audio/bytcr/speaker/switch = 0
+				/Audio/bytcr/speaker/channel = 0 0
+				/Audio/bytcr/speaker/playback/left = 0
+				/Audio/bytcr/speaker/playback/right = 0
+				/Audio/bytcr/speaker/playback/volume = 0 0
+
+		domain: Headphone
+			conf: UnMute
+				ANY
+					SelectedOutputDevices Includes Headset
+					SelectedOutputDevices Includes Headphones
+
+				/Audio/bytcr/headphone/switch = 1
+				/Audio/bytcr/headphone/channel = 1 1
+				/Audio/bytcr/headphone/playback/left = 1
+				/Audio/bytcr/headphone/playback/right = 1
+				/Audio/bytcr/headphone/playback/volume = 29 29
+
+			conf: Mute
+				/Audio/bytcr/headphone/switch = 0
+				/Audio/bytcr/headphone/channel = 0 0
+				/Audio/bytcr/headphone/playback/left = 0
+				/Audio/bytcr/headphone/playback/right = 0
+				/Audio/bytcr/headphone/playback/volume = 0 0

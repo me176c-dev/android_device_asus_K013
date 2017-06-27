@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Subsystem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xsi:noNamespaceSchemaLocation="../../Schemas/Subsystem.xsd"
+    Name="bytcr" Type="ALSA"
+    Mapping="Card:bytcrrt5640,Debug">
+
+    <ComponentLibrary>
+        <ComponentType Name="Device">
+            <BooleanParameter Name="switch" Mapping="Control:'%1 Switch'"/>
+            <BooleanParameter Name="channel" ArrayLength="2" Mapping="Control:'%2 Channel Switch'"/>
+            <ParameterBlock Name="playback">
+                <BooleanParameter Name="left" Mapping="Control:'%2 L Playback Switch'"/>
+                <BooleanParameter Name="right" Mapping="Control:'%2 R Playback Switch'"/>
+                <IntegerParameter Name="volume"
+                    Size="8" Signed="false" Min="0" Max="29"
+                    ArrayLength="2" Mapping="Control:'%2 Playback Volume'"/>
+            </ParameterBlock>
+        </ComponentType>
+    </ComponentLibrary>
+
+    <InstanceDefinition>
+        <Component Name="speaker" Type="Device" Mapping="Amend1:Speaker,Amend2:Speaker"/>
+        <Component Name="headphone" Type="Device" Mapping="Amend1:Headphone,Amend2:HP"/>
+    </InstanceDefinition>
+
+</Subsystem>

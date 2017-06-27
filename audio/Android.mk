@@ -1,0 +1,65 @@
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := audio_policy_configuration.xml
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+LOCAL_REQUIRED_MODULES := \
+    audio_policy_volumes.xml \
+    default_volume_tables.xml \
+    audio_criteria.xml \
+    audio_criterion_types.xml
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := media_codecs.xml
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+LOCAL_REQUIRED_MODULES := \
+    media_codecs_google_audio.xml \
+    media_codecs_google_video.xml
+include $(BUILD_PREBUILT)
+
+include $(call all-makefiles-under, $(LOCAL_PATH))
+
+LOCAL_PATH := frameworks/av/services/audiopolicy/config
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := audio_policy_volumes.xml
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := default_volume_tables.xml
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+include $(BUILD_PREBUILT)
+
+LOCAL_PATH := hardware/intel/audio/audio_route_manager/config
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := audio_criteria.xml
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := audio_criterion_types.xml
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+include $(BUILD_PREBUILT)
+
+LOCAL_PATH := frameworks/av/media/libstagefright/data
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := media_codecs_google_audio.xml
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := media_codecs_google_video.xml
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+include $(BUILD_PREBUILT)

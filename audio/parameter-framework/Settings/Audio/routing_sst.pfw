@@ -1,0 +1,41 @@
+domainGroup: Routing.Sst
+
+	domain: Media
+		conf: Main
+			/Audio/sst/media/compressed/switch = 1
+			/Audio/sst/media/compressed/volume = 0 0
+			/Audio/sst/media/normal/switch = 1
+			/Audio/sst/media/normal/volume = 0 0
+			/Audio/sst/media/deep/switch = 1
+			/Audio/sst/media/deep/volume = 0 0
+
+			/Audio/sst/media/compressed/mix/compressed = 1
+			/Audio/sst/media/compressed/mix/normal = 1
+			/Audio/sst/media/compressed/mix/media2 = 0
+			/Audio/sst/media/compressed/mix/deep = 1
+
+	domain: Codec
+		conf: Main
+			# Modem (SSP0)
+			/Audio/sst/modem/out/switch = 1
+			/Audio/sst/modem/out/volume = 0 0
+			/Audio/sst/modem/out/mix/pcm0 = 1
+			/Audio/sst/modem/in/switch = 1
+			/Audio/sst/modem/in/volume = 0 0
+
+			# Codec0 (SSP2)
+			/Audio/sst/codec0/out/switch = 1
+			/Audio/sst/codec0/out/volume = 0 0
+			/Audio/sst/codec0/out/mix/pcm0 = 1
+			/Audio/sst/codec0/in/switch = 1
+			/Audio/sst/codec0/in/volume = 0 0
+
+			# PCM0
+			/Audio/sst/pcm0/in/switch = 1
+			/Audio/sst/pcm0/in/volume = 0 0
+
+			# PCM1
+			/Audio/sst/pcm1/out/switch = 1
+			/Audio/sst/pcm1/out/volume = 0 0
+			/Audio/sst/pcm1/out/mix/modem = 1
+			/Audio/sst/pcm1/out/mix/codec0 = 1

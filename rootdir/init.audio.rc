@@ -1,0 +1,14 @@
+on boot
+    insmod /system/lib/modules/snd-soc-rl6231.ko
+    insmod /system/lib/modules/snd-soc-rt5640.ko
+
+    insmod /system/lib/modules/snd-soc-sst-match.ko
+    insmod /system/lib/modules/snd-soc-sst-acpi.ko
+    insmod /system/lib/modules/snd-soc-sst-dsp.ko
+    insmod /system/lib/modules/snd-soc-sst-ipc.ko
+
+    insmod /system/lib/modules/snd-soc-sst-mfld-platform.ko
+    insmod /system/lib/modules/snd-intel-sst-core.ko
+    insmod /system/lib/modules/snd-intel-sst-acpi.ko
+
+    insmod /system/lib/modules/snd-soc-sst-bytcr-rt5640.ko

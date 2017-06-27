@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Subsystem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xsi:noNamespaceSchemaLocation="../../Schemas/Subsystem.xsd"
+    Name="rt5640" Type="ALSA"
+    Mapping="Card:bytcrrt5640,Debug">
+
+    <ComponentLibrary>
+        <ComponentType Name="Switch">
+            <BooleanParameter Name="switch" Mapping="Control:'%1 Switch'"/>
+        </ComponentType>
+    </ComponentLibrary>
+
+    <InstanceDefinition>
+        <ParameterBlock Name="dac">
+            <ParameterBlock Name="out">
+                <Component Name="left" Type="Switch" Mapping="Amend1:OUT MIXL DAC L1"/>
+                <Component Name="right" Type="Switch" Mapping="Amend1:OUT MIXR DAC R1"/>
+            </ParameterBlock>
+            <ParameterBlock Name="stereo">
+                <Component Name="left1" Type="Switch" Mapping="Amend1:Stereo DAC MIXL DAC L1"/>
+                <Component Name="right1" Type="Switch" Mapping="Amend1:Stereo DAC MIXR DAC R1"/>
+                <Component Name="left2" Type="Switch" Mapping="Amend1:Stereo DAC MIXL DAC L2"/>
+                <Component Name="right2" Type="Switch" Mapping="Amend1:Stereo DAC MIXR DAC R2"/>
+            </ParameterBlock>
+            <ParameterBlock Name="speaker">
+                <Component Name="left" Type="Switch" Mapping="Amend1:SPK MIXL DAC L1"/>
+                <Component Name="right" Type="Switch" Mapping="Amend1:SPK MIXR DAC R1"/>
+            </ParameterBlock>
+        </ParameterBlock>
+
+        <ParameterBlock Name="volume">
+            <ParameterBlock Name="speaker">
+                <Component Name="left" Type="Switch" Mapping="Amend1:SPOL MIX SPKVOL L"/>
+                <Component Name="right" Type="Switch" Mapping="Amend1:SPOR MIX SPKVOL R"/>
+            </ParameterBlock>
+            <Component Name="headphone" Type="Switch" Mapping="Amend1:HPO MIX HPVOL"/>
+        </ParameterBlock>
+    </InstanceDefinition>
+
+</Subsystem>

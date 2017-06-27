@@ -1,0 +1,2 @@
+InclusiveCriterion  RoutageState           :  Flow
+InclusiveCriterion  SelectedOutputDevices  :  Ihf   Headset  Headphones

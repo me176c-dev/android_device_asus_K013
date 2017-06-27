@@ -1,0 +1,20 @@
+domainGroup: Routing.RT5640
+
+	domain: DAC
+		conf: Main
+			/Audio/rt5640/dac/out/left/switch = 1
+			/Audio/rt5640/dac/out/right/switch = 1
+
+			/Audio/rt5640/dac/stereo/left1/switch = 1
+			/Audio/rt5640/dac/stereo/right1/switch = 1
+			/Audio/rt5640/dac/stereo/left2/switch = 1
+			/Audio/rt5640/dac/stereo/right2/switch = 1
+
+			/Audio/rt5640/dac/speaker/left/switch = 1
+			/Audio/rt5640/dac/speaker/right/switch = 1
+
+	domain: Volume
+		conf: Main
+			/Audio/rt5640/volume/speaker/left/switch = 1
+			/Audio/rt5640/volume/speaker/right/switch = 1
+			/Audio/rt5640/volume/headphone/switch = 1

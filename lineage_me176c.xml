@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
     <remote name="me176c" fetch="https://github.com/me176c-dev/" />
-    <remote name="01org" fetch="https://github.com/01org/" />
-    <remote name="android-ia" fetch="https://github.com/android-ia/" />
-    <remote name="android-x86" fetch="http://scm.osdn.net/gitroot/android-x86/" />
-    <remote name="chromium" fetch="https://chromium.googlesource.com/" />
     <remote name="kernel" fetch="https://git.kernel.org/pub/scm/linux/" />
+    <remote name="android-ia" fetch="https://github.com/android-ia/" />
 
     <!-- Device repositories -->
     <project name="device_asus_me176c" path="device/asus/me176c" remote="me176c" />
@@ -21,16 +18,21 @@
     <remove-project name="platform/external/mesa3d" />
     <project name="external_mesa" path="external/mesa" remote="me176c" />
 
+    <!-- Audio -->
+    <project name="hardware_intel_audio" path="hardware/intel/audio" remote="me176c" />
+    <project name="hardware_intel_audiocomms_utilities" path="hardware/intel/audio_utilities" remote="android-ia" revision="b3dc89483e0a8adfb810c0913825d8a04b93b167" />
+    <project name="vendor_intel_hardware_audiocomms_parameter-framework_plugins_alsa" path="external/parameter-framework-plugins-alsa" remote="android-ia" revision="f1070d87a16f7de550995f30dd973193ffb13b89" />
+
     <!-- Thermal -->
     <project name="external_thermal_daemon" path="external/thermal_daemon" remote="me176c" />
 
     <!-- Linux firmware files -->
-    <project name="kernel/git/firmware/linux-firmware.git" path="vendor/linux/firmware" remote="kernel" revision="master" />
+    <project name="kernel/git/firmware/linux-firmware.git" path="vendor/linux/firmware" remote="kernel" revision="7d2c913dcd1be083350d97a8cb1eba24cfacbc8a" />
 
     <!-- Powertop -->
-    <project name="pciutils" path="external/pciutils" remote="android-ia" revision="master"/>
+    <project name="pciutils" path="external/pciutils" remote="android-ia" revision="fc0b12034b0b2e5f5adef5bdc93e5cad5c6b8c3f"/>
     <remove-project name="LineageOS/android_external_powertop" />
-    <project name="powertop" path="external/powertop" remote="android-ia" revision="master"/>
+    <project name="powertop" path="external/powertop" remote="android-ia" revision="720278844fa1dfca37953a1d83654a36c5d2f54c"/>
 
     <!-- Patched AOSP/LineageOS projects -->
     <remove-project name="LineageOS/android_frameworks_base" />
