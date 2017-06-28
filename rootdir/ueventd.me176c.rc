@@ -14,6 +14,20 @@
 # Backlight
 /sys/devices/pci*  intel_backlight/brightness  0664  system  system
 
+# Sensors
+/dev/iio:device0  0644  system  system
+/dev/iio:device1  0644  system  system
+
+/sys/devices/platform*  iio:device0/in_accel_sampling_frequency    0644  system  system
+/sys/devices/platform*  iio:device0/in_accel_scale                 0644  system  system
+/sys/devices/platform*  iio:device0/buffer/enable                  0644  system  system
+/sys/devices/platform*  iio:device0/buffer/length                  0644  system  system
+/sys/devices/platform*  iio:device0/scan_elements/in_accel_x_en    0644  system  system
+/sys/devices/platform*  iio:device0/scan_elements/in_accel_y_en    0644  system  system
+/sys/devices/platform*  iio:device0/scan_elements/in_accel_z_en    0644  system  system
+/sys/devices/platform*  iio:device0/scan_elements/in_timestamp_en  0644  system  system
+/sys/devices/platform*  iio:device0/trigger/current_trigger        0644  system  system
+
 # Thermal daemon
 /sys/devices/virtual/thermal/thermal_zone*    trip_point_0_temp  0644  system  system
 /sys/devices/virtual/thermal/thermal_zone*    trip_point_1_temp  0644  system  system
