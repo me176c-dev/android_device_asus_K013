@@ -40,6 +40,9 @@
     <project name="powertop" path="external/powertop" remote="android-ia" revision="720278844fa1dfca37953a1d83654a36c5d2f54c"/>
 
     <!-- Patched AOSP/LineageOS projects -->
+    <remove-project name="LineageOS/android_art" />
+    <project name="art" path="art" remote="me176c" />
+
     <remove-project name="LineageOS/android_frameworks_base" />
     <project name="frameworks_base" path="frameworks/base" remote="me176c" />
 
