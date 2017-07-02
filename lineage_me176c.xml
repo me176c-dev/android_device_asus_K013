@@ -12,8 +12,7 @@
     <remove-project name="platform/external/libdrm" />
     <project name="external_libdrm" path="external/libdrm" remote="me176c" />
 
-    <remove-project name="platform/external/drm_gralloc" />
-    <project name="external_drm_gralloc" path="external/drm_gralloc" remote="me176c" />
+    <project name="external_minigbm" path="external/minigbm" remote="me176c" />
 
     <remove-project name="platform/external/mesa3d" />
     <project name="external_mesa" path="external/mesa" remote="me176c" />
@@ -22,6 +21,9 @@
     <project name="hardware_intel_audio" path="hardware/intel/audio" remote="me176c" />
     <project name="hardware_intel_audiocomms_utilities" path="hardware/intel/audio_utilities" remote="android-ia" revision="b3dc89483e0a8adfb810c0913825d8a04b93b167" />
     <project name="vendor_intel_hardware_audiocomms_parameter-framework_plugins_alsa" path="external/parameter-framework-plugins-alsa" remote="android-ia" revision="f1070d87a16f7de550995f30dd973193ffb13b89" />
+
+    <!-- Sensors -->
+    <project name="external_iio-sensors-hal" path="external/iio-sensors-hal" remote="me176c" />
 
     <!-- Thermal -->
     <project name="external_thermal_daemon" path="external/thermal_daemon" remote="me176c" />

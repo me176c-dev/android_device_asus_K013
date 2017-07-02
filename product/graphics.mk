@@ -9,10 +9,10 @@ PRODUCT_PACKAGES += \
 
 # Gralloc
 PRODUCT_PACKAGES += \
-    gralloc.drm
+    gralloc.android_ia
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hardware.gralloc=drm
+    ro.hardware.gralloc=android_ia
 
 # Mesa
 PRODUCT_PACKAGES += \
