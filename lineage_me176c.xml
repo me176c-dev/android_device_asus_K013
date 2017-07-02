@@ -34,6 +34,15 @@
     <!-- Linux firmware files -->
     <project name="kernel/git/firmware/linux-firmware.git" path="vendor/linux/firmware" remote="kernel" revision="7d2c913dcd1be083350d97a8cb1eba24cfacbc8a" />
 
+    <!-- Hardware video acceleration -->
+    <remove-project name="LineageOS/android_external_ffmpeg" />
+    <project name="external_ffmpeg" path="external/ffmpeg" remote="me176c" />
+    <remove-project name="LineageOS/android_external_stagefright-plugins" />
+    <project name="external_stagefright-plugins" path="external/stagefright-plugins" remote="me176c" />
+
+    <project name="libva" path="external/libva" remote="01org" revision="refs/tags/1.8.3" />
+    <project name="intel-vaapi-driver" path="external/intel-vaapi-driver" remote="01org" revision="refs/tags/1.8.3" />
+
     <!-- Powertop -->
     <project name="pciutils" path="external/pciutils" remote="android-ia" revision="fc0b12034b0b2e5f5adef5bdc93e5cad5c6b8c3f"/>
     <remove-project name="LineageOS/android_external_powertop" />
