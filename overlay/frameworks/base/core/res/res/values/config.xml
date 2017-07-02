@@ -15,6 +15,10 @@
          We have only volume control keys. -->
     <integer name="config_deviceHardwareKeys">64</integer>
 
+    <!-- Minimum screen brightness setting allowed by the power manager.
+         The user is forbidden from setting the brightness below this level. -->
+    <integer name="config_screenBrightnessSettingMinimum">1</integer>
+
     <!-- Flag indicating whether the current device is "voice capable". -->
     <bool name="config_voice_capable">false</bool>
 
@@ -40,7 +44,7 @@
 
     <!-- When true use the linux /dev/input/event subsystem to detect the switch changes
          on the headphone/microphone jack. When false use the older uevent framework. -->
-    <!-- TODO <bool name="config_useDevInputEventForAudioJack">false</bool> -->
+    <bool name="config_useDevInputEventForAudioJack">true</bool>
 
     <!-- We don't support camera so the gesture doesn't make any sense -->
     <bool name="config_cameraDoubleTapPowerGestureEnabled">false</bool>
