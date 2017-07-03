@@ -1,3 +1,4 @@
+import /init.memory.rc
 import /init.battery.rc
 import /init.thermal.rc
 import /init.power.rc

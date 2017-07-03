@@ -2,6 +2,7 @@ PRODUCT_PACKAGES += \
     fstab.me176c \
     init.me176c.rc \
     init.me176c.usb.rc \
+    init.memory.rc \
     init.battery.rc \
     init.thermal.rc \
     init.power.rc \
