@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <MediaCodecs>
+    <Decoders>
+        <MediaCodec name="OMX.Intel.hw_vd.h264" type="video/avc" >
+            <Limit name="size" min="64x64" max="3840x2160" />
+            <Limit name="alignment" value="2x2" />
+            <Limit name="block-size" value="16x16" />
+            <Limit name="blocks-per-second" range="1-972000" />
+            <Limit name="bitrate" range="1-40000000" />
+        </MediaCodec>
+    </Decoders>
+
+    <Encoders>
+        <MediaCodec name="OMX.Intel.hw_ve.h264" type="video/avc" >
+            <Limit name="size" min="176x144" max="3840x2160" />
+            <Limit name="alignment" value="2x2" />
+            <Limit name="block-size" value="16x16" />
+            <Limit name="blocks-per-second" range="1-243000" />
+            <Limit name="bitrate" range="1-15000000" />
+        </MediaCodec>
+    </Encoders>
+
     <Include href="media_codecs_ffmpeg.xml" />
     <Include href="media_codecs_google_audio.xml" />
     <Include href="media_codecs_google_video.xml" />
+
+    <Settings>
+        <Setting name="max-video-encoder-input-buffers" value="9" />
+    </Settings>
 </MediaCodecs>

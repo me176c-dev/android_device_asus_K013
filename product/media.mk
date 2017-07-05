@@ -8,4 +8,12 @@ PRODUCT_PROPERTY_OVERRIDES += media.stagefright.audio.deep=true
 PRODUCT_PACKAGES += \
     i965_drv_video
 
-PRODUCT_PROPERTY_OVERRIDES += media.sf.hwaccel=1
+# Hardware accelerated codecs (proprietary :/)
+PRODUCT_PACKAGES += \
+    libstagefrighthw \
+    libmfx_omx_core \
+    libmfx_omx_components_hw \
+    libmfxhw32
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/mfx_omxil_core.conf:system/etc/mfx_omxil_core.conf

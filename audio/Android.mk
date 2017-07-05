@@ -11,15 +11,6 @@ LOCAL_REQUIRED_MODULES := \
     audio_criterion_types.xml
 include $(BUILD_PREBUILT)
 
-include $(CLEAR_VARS)
-LOCAL_MODULE := media_codecs.xml
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES := $(LOCAL_MODULE)
-LOCAL_REQUIRED_MODULES := \
-    media_codecs_google_audio.xml \
-    media_codecs_google_video.xml
-include $(BUILD_PREBUILT)
-
 include $(call all-makefiles-under, $(LOCAL_PATH))
 
 LOCAL_PATH := frameworks/av/services/audiopolicy/config
@@ -46,20 +37,6 @@ include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := audio_criterion_types.xml
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES := $(LOCAL_MODULE)
-include $(BUILD_PREBUILT)
-
-LOCAL_PATH := frameworks/av/media/libstagefright/data
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := media_codecs_google_audio.xml
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES := $(LOCAL_MODULE)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := media_codecs_google_video.xml
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES := $(LOCAL_MODULE)
 include $(BUILD_PREBUILT)
