@@ -1,11 +1,11 @@
 # Audio HAL
 PRODUCT_PACKAGES += \
-    audio.primary.android_ia \
+    audio.primary.pfw \
     audio_policy_configuration.xml \
     AudioParameterFramework.xml
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hardware.audio.primary=android_ia \
+    ro.hardware.audio.primary=pfw \
     audio.device.name=bytcrrt5640
 
 # Firmware

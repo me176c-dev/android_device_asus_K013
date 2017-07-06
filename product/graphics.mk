@@ -27,11 +27,11 @@ PRODUCT_COPY_FILES += \
 
 # Vulkan
 PRODUCT_PACKAGES += \
-    vulkan.android_ia \
+    vulkan.mesa \
     libvulkan_intel
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hardware.vulkan=android_ia
+    ro.hardware.vulkan=mesa
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.level-1.xml:system/etc/permissions/android.hardware.vulkan.level.xml \
