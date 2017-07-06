@@ -19,6 +19,10 @@ on charger
 
     start upi_ug31xx
 
+service charger /charger
+    class charger
+    seclabel u:r:healthd:s0
+
 service upi_ug31xx /sbin/upi_ug31xx
     class core
     critical
