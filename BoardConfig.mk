@@ -12,6 +12,8 @@ TARGET_IGNORE_RO_BOOT_SERIALNO := true
 WITH_DEXPREOPT := true
 WITH_DEXPREOPT_PIC := true
 
+WITH_SU := true
+
 ifeq ($(TARGET_DEVICE), K013)
 TWRP_BUILD := true
 include device/asus/K013/board/*.mk
