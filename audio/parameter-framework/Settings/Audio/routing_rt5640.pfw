@@ -19,6 +19,8 @@ domainGroup: Routing.RT5640
 			/Audio/rt5640/volume/speaker/right = 1
 			/Audio/rt5640/volume/headphone = 1
 
+			/Audio/rt5640/volume/adc = 125 125
+
 	domain: ADC1
 		conf: Main
 			/Audio/rt5640/adc1/stereo/left = 1

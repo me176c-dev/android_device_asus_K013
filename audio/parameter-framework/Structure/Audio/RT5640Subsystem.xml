@@ -8,7 +8,7 @@
     <ComponentLibrary>
         <ComponentType Name="InputSwitch">
             <IntegerParameter Name="boost"
-                Size="8" Signed="false" Min="0" Max="8" Mapping="Control:'IN%1 Boost"/>
+                Size="8" Signed="false" Min="0" Max="8" Mapping="Control:'IN%1 Boost'"/>
             <BooleanParameter Name="left" Mapping="Control:'RECMIXL BST%1 Switch'"/>
             <BooleanParameter Name="right" Mapping="Control:'RECMIXR BST%1 Switch'"/>
         </ComponentType>
@@ -38,6 +38,10 @@
                 <BooleanParameter Name="right" Mapping="Control:SPOR MIX SPKVOL R Switch"/>
             </ParameterBlock>
             <BooleanParameter Name="headphone" Mapping="Control:HPO MIX HPVOL Switch"/>
+
+            <IntegerParameter Name="adc"
+                Size="8" Signed="false" Min="0" Max="127"
+                ArrayLength="2" Mapping="Control:ADC Capture Volume"/>
         </ParameterBlock>
 
         <ParameterBlock Name="adc1">
