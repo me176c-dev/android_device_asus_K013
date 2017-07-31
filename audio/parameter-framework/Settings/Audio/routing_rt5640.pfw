@@ -2,19 +2,37 @@ domainGroup: Routing.RT5640
 
 	domain: DAC
 		conf: Main
-			/Audio/rt5640/dac/out/left/switch = 1
-			/Audio/rt5640/dac/out/right/switch = 1
+			/Audio/rt5640/dac/out/left = 1
+			/Audio/rt5640/dac/out/right = 1
 
-			/Audio/rt5640/dac/stereo/left1/switch = 1
-			/Audio/rt5640/dac/stereo/right1/switch = 1
-			/Audio/rt5640/dac/stereo/left2/switch = 1
-			/Audio/rt5640/dac/stereo/right2/switch = 1
+			/Audio/rt5640/dac/stereo/left1 = 1
+			/Audio/rt5640/dac/stereo/right1 = 1
+			/Audio/rt5640/dac/stereo/left2 = 1
+			/Audio/rt5640/dac/stereo/right2 = 1
 
-			/Audio/rt5640/dac/speaker/left/switch = 1
-			/Audio/rt5640/dac/speaker/right/switch = 1
+			/Audio/rt5640/dac/speaker/left = 1
+			/Audio/rt5640/dac/speaker/right = 1
 
 	domain: Volume
 		conf: Main
-			/Audio/rt5640/volume/speaker/left/switch = 1
-			/Audio/rt5640/volume/speaker/right/switch = 1
-			/Audio/rt5640/volume/headphone/switch = 1
+			/Audio/rt5640/volume/speaker/left = 1
+			/Audio/rt5640/volume/speaker/right = 1
+			/Audio/rt5640/volume/headphone = 1
+
+	domain: ADC1
+		conf: Main
+			/Audio/rt5640/adc1/stereo/left = 1
+			/Audio/rt5640/adc1/stereo/right = 1
+			/Audio/rt5640/adc1/mono/switch = 1 1
+			/Audio/rt5640/adc1/mono/left = 1
+			/Audio/rt5640/adc1/mono/right = 1
+
+	domain: Input
+		conf: Main
+			/Audio/rt5640/input/internal-mic/boost = 1
+			/Audio/rt5640/input/internal-mic/left = 1
+			/Audio/rt5640/input/internal-mic/right = 1
+
+			/Audio/rt5640/input/headset/boost = 1
+			/Audio/rt5640/input/headset/left = 1
+			/Audio/rt5640/input/headset/right = 1

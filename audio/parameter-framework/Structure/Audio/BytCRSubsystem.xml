@@ -6,8 +6,11 @@
     Mapping="Card:bytcrrt5640,Debug">
 
     <ComponentLibrary>
-        <ComponentType Name="Device">
+        <ComponentType Name="AudioDevice">
             <BooleanParameter Name="switch" Mapping="Control:'%1 Switch'"/>
+        </ComponentType>
+
+        <ComponentType Name="OutputDevice" Extends="AudioDevice">
             <BooleanParameter Name="channel" ArrayLength="2" Mapping="Control:'%2 Channel Switch'"/>
             <ParameterBlock Name="playback">
                 <BooleanParameter Name="left" Mapping="Control:'%2 L Playback Switch'"/>
@@ -20,8 +23,14 @@
     </ComponentLibrary>
 
     <InstanceDefinition>
-        <Component Name="speaker" Type="Device" Mapping="Amend1:Speaker,Amend2:Speaker"/>
-        <Component Name="headphone" Type="Device" Mapping="Amend1:Headphone,Amend2:HP"/>
+        <ParameterBlock Name="output">
+            <Component Name="speaker" Type="OutputDevice" Mapping="Amend1:Speaker,Amend2:Speaker"/>
+            <Component Name="headphone" Type="OutputDevice" Mapping="Amend1:Headphone,Amend2:HP"/>
+        </ParameterBlock>
+        <ParameterBlock Name="input">
+            <Component Name="internal-mic" Type="AudioDevice" Mapping="Amend1:Internal Mic"/>
+            <Component Name="headset" Type="AudioDevice" Mapping="Amend1:Headset Mic"/>
+        </ParameterBlock>
     </InstanceDefinition>
 
 </Subsystem>

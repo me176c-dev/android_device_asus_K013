@@ -25,7 +25,8 @@ PFW_CRITERIA_FILE := $(LOCAL_PATH)/AudioCriteria.txt
 PFW_EDD_FILES := \
     $(LOCAL_PATH)/Settings/Audio/routing_sst.pfw \
     $(LOCAL_PATH)/Settings/Audio/routing_rt5640.pfw \
-    $(LOCAL_PATH)/Settings/Audio/routing_bytcr.pfw
+    $(LOCAL_PATH)/Settings/Audio/routing_bytcr_output.pfw \
+    $(LOCAL_PATH)/Settings/Audio/routing_bytcr_input.pfw
 LOCAL_ADDITIONAL_DEPENDENCIES := $(PFW_EDD_FILES)
 include $(BUILD_PFW_SETTINGS)
 
