@@ -5,6 +5,7 @@ import /init.power.rc
 import /init.audio.rc
 import /init.wifi.rc
 import /init.${ro.hardware}.usb.rc
+import /init.houdini.rc
 
 on early-init
     mount debugfs none /sys/kernel/debug
