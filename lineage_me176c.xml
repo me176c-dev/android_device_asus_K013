@@ -9,6 +9,7 @@
     <!-- Device repositories -->
     <project name="device_asus_me176c" path="device/asus/me176c" remote="me176c" />
     <project name="kernel_asus_me176c" path="kernel/asus/me176c" remote="me176c" />
+    <project name="proprietary_vendor_asus_me176c" path="vendor/asus/me176c" remote="me176c" />
 
     <!-- Graphics -->
     <remove-project name="platform/external/libdrm" />
