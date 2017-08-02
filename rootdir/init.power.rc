@@ -1,3 +1,9 @@
+on early-init
+    chown system system /sys/devices/system/cpu/intel_pstate/max_perf_pct
+    chmod 0644 /sys/devices/system/cpu/intel_pstate/max_perf_pct
+    chown system system /sys/devices/system/cpu/intel_pstate/no_turbo
+    chmod 0644 /sys/devices/system/cpu/intel_pstate/no_turbo
+
 on init
     # Block Bluetooth and GPS (unsupported)
     write /sys/class/rfkill/rfkill0/soft 1
