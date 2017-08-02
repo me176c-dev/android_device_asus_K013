@@ -12,11 +12,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     vendor/linux/firmware/intel/fw_sst_0f28.bin:system/vendor/firmware/intel/fw_sst_0f28.bin
 
-# Temporary manual toggle in quick settings to enable headphones
-# This will be removed once Audio jack detection is implemented
-PRODUCT_PACKAGES += \
-    HeadphoneToggle
-
 # Debug tools
 PRODUCT_PACKAGES_DEBUG += \
     tinymix
