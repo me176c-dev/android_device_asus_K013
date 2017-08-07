@@ -8,4 +8,4 @@ PRODUCT_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 include $(LOCAL_PATH)/product/*.mk
 
-$(call inherit-product-if-exists, vendor/asus/me176c/proprietary.mk)
+$(call inherit-product, vendor/asus/me176c/proprietary.mk)
