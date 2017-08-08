@@ -1,5 +1,14 @@
 on boot
     insmod /system/lib/modules/brcmutil.ko
+    insmod /system/lib/modules/brcmfmac.ko
+
+    # Wait for the WiFi driver to finish loading
+    wait /sys/class/rfkill/rfkill2/soft
+    chown system system /sys/class/rfkill/rfkill2/soft
+
+    # Disable WiFi by default (will by enabled by Android later)
+    write /sys/class/rfkill/rfkill2/soft 1
+
     setprop wifi.interface wlan0
     setprop ap.interface wlan0
 
