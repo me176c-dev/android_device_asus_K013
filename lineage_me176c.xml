@@ -48,6 +48,9 @@
     <project name="powertop" path="external/powertop" remote="android-ia" revision="720278844fa1dfca37953a1d83654a36c5d2f54c"/>
 
     <!-- Patched AOSP/LineageOS projects -->
+    <remove-project name="LineageOS/android_system_netd" />
+    <project name="system_netd" path="system/netd" remote="me176c" />
+
     <remove-project name="LineageOS/android_art" />
     <project name="art" path="art" remote="me176c" />
 
