@@ -104,9 +104,9 @@ static void power_set_profile(int profile) {
         sysfs_write(INTEL_PSTATE_TURBO_CONTROL, TURBO_OFF);
         break;
     case PROFILE_BIAS_PERFORMANCE:
-        intel_pstate_set_governor(INTEL_PSTATE_GOVERNOR_PERFORMANCE);
+        intel_pstate_set_governor(INTEL_PSTATE_GOVERNOR_POWER_SAVE);
         sysfs_write(INTEL_PSTATE_MAX_PERF_CONTROL, MAX_PERF_DEFAULT);
-        sysfs_write(INTEL_PSTATE_TURBO_CONTROL, TURBO_OFF);
+        sysfs_write(INTEL_PSTATE_TURBO_CONTROL, TURBO_ON);
         break;
     default:
         ALOGE("Invalid performance profile: %d\n", profile);
