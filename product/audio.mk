@@ -1,5 +1,6 @@
 # Audio HAL
 PRODUCT_PACKAGES += \
+    me176c-audio.rc \
     audio.primary.pfw \
     audio_policy_configuration.xml \
     AudioParameterFramework.xml

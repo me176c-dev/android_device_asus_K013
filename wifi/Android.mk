@@ -1,5 +1,12 @@
 LOCAL_PATH := $(call my-dir)
 
+include $(CLEAR_VARS)
+LOCAL_MODULE := me176c-wifi.rc
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_PATH := $(TARGET_OUT_ETC)/init
+include $(BUILD_PREBUILT)
+
 WPA_SUPPL_DIR = external/wpa_supplicant_8
 
 # Private driver command implementation

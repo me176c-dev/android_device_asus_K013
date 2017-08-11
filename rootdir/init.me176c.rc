@@ -1,9 +1,6 @@
 import /init.memory.rc
 import /init.battery.rc
-import /init.thermal.rc
 import /init.power.rc
-import /init.audio.rc
-import /init.wifi.rc
 import /init.${ro.hardware}.usb.rc
 import /init.houdini.rc
 

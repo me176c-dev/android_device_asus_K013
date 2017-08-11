@@ -7,6 +7,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml
 
 PRODUCT_PACKAGES += \
+    me176c-wifi.rc \
     wpa_supplicant \
     wpa_supplicant.conf \
     hostapd
