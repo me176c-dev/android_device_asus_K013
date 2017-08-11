@@ -7,9 +7,10 @@
 #include <xf86drm.h>
 #include <xf86drmMode.h>
 #include <hardware/hwcomposer.h>
+#include <hardware/gralloc.h>
+#include <hardware/fb.h>
 #include <cutils/log.h>
 
-#define DRM_DEVICE_PATH "/dev/dri/card0"
 #define DRM_ACTIVE_PROPERTY "ACTIVE"
 
 // Note: We don't actually implement a real HWComposer here
@@ -23,6 +24,11 @@ struct hwc_context_t {
     unsigned int active_property;
 
     bool current_state;
+};
+
+struct drm_framebuffer_device {
+    struct framebuffer_device_t device;
+    int fd;
 };
 
 static int hwc_find_crtc(struct hwc_context_t *context) {
@@ -102,14 +108,36 @@ static int hwc_find_active_property(struct hwc_context_t *context) {
     return 0;
 }
 
+static int hwc_get_fd_from_framebuffer(void) {
+    const struct hw_module_t *module;
+    struct drm_framebuffer_device *device;
+    int ret;
+
+    ret = hw_get_module(GRALLOC_HARDWARE_MODULE_ID, &module);
+    if (ret < 0) {
+        ALOGE("%s module not found: %d", GRALLOC_HARDWARE_MODULE_ID, ret);
+        return ret;
+    }
+
+    ret = framebuffer_open(module, (struct framebuffer_device_t **) &device);
+    if (ret < 0) {
+        ALOGE("Failed to open framebuffer device: %d", ret);
+        return ret;
+    }
+
+    return device->fd;
+}
+
 static int hwc_init(struct hwc_context_t *context) {
     int ret;
 
-    context->fd = open(DRM_DEVICE_PATH, O_RDWR);
+    context->fd = hwc_get_fd_from_framebuffer();
     if (context->fd < 0) {
-        ALOGE("Failed to open %s: %s", DRM_DEVICE_PATH, strerror(errno));
-        return -errno;
+        ALOGE("Failed to get DRM FD from framebuffer: %d", context->fd);
+        return context->fd;
     }
+
+    ALOGI("DRM FD: %d", context->fd);
 
     // We use the atomic DRM API to disable the display
     ret = drmSetClientCap(context->fd, DRM_CLIENT_CAP_ATOMIC, 1);
