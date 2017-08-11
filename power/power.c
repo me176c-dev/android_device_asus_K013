@@ -49,13 +49,13 @@ static void sysfs_write(const char *path, const char *text) {
 
     fd = open(path, O_WRONLY);
     if (fd < 0) {
-        ALOGE("Failed to open %s: %s\n", path, strerror(errno));
+        ALOGE("Failed to open %s: %s", path, strerror(errno));
         return;
     }
 
     count = write(fd, text, strlen(text));
     if (count < 0) {
-        ALOGE("Failed to write to %s: %s\n", path, strerror(errno));
+        ALOGE("Failed to write to %s: %s", path, strerror(errno));
     }
     close(fd);
 }
@@ -109,7 +109,7 @@ static void power_set_profile(int profile) {
         sysfs_write(INTEL_PSTATE_TURBO_CONTROL, TURBO_ON);
         break;
     default:
-        ALOGE("Invalid performance profile: %d\n", profile);
+        ALOGE("Invalid performance profile: %d", profile);
     }
 }
 

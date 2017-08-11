@@ -18,7 +18,7 @@
 struct hwc_context_t {
     hwc_composer_device_1_t device;
 
-    int gpu_fd;
+    int fd;
     unsigned int display_crtc;
     unsigned int active_property;
 
@@ -30,20 +30,20 @@ static int hwc_find_crtc(struct hwc_context_t *context) {
     drmModeResPtr res;
     drmModeCrtcPtr crtc;
 
-    res = drmModeGetResources(context->gpu_fd);
+    res = drmModeGetResources(context->fd);
     for (i = 0; i < res->count_crtcs; ++i) {
-        crtc = drmModeGetCrtc(context->gpu_fd, res->crtcs[i]);
+        crtc = drmModeGetCrtc(context->fd, res->crtcs[i]);
         if (!crtc) {
-            ALOGE("Failed to lookup CRTC %d: %s\n", res->crtcs[i], strerror(errno));
+            ALOGE("Failed to lookup CRTC %d: %s", res->crtcs[i], strerror(errno));
             continue;
         }
 
         if (crtc->mode_valid) {
             if (context->display_crtc) {
-                ALOGE("Multiple active CRTCs found: current: %d, new: %d (%dx%d)\n",
+                ALOGE("Multiple active CRTCs found: current: %d, new: %d (%dx%d)",
                     context->display_crtc, crtc->crtc_id, crtc->width, crtc->height);
             } else {
-                ALOGI("Found display CRTC %d with %dx%d\n", crtc->crtc_id,
+                ALOGI("Found display CRTC %d with %dx%d", crtc->crtc_id,
                     crtc->width, crtc->height);
                 context->display_crtc = crtc->crtc_id;
             }
@@ -55,7 +55,7 @@ static int hwc_find_crtc(struct hwc_context_t *context) {
     drmModeFreeResources(res);
 
     if (!context->display_crtc) {
-        ALOGE("Display CRTC not found\n");
+        ALOGE("Display CRTC not found");
         return -ENODEV;
     }
 
@@ -67,24 +67,24 @@ static int hwc_find_active_property(struct hwc_context_t *context) {
     drmModeObjectPropertiesPtr properties;
     drmModePropertyPtr property;
 
-    properties = drmModeObjectGetProperties(context->gpu_fd, context->display_crtc, DRM_MODE_OBJECT_CRTC);
+    properties = drmModeObjectGetProperties(context->fd, context->display_crtc, DRM_MODE_OBJECT_CRTC);
     if (!properties) {
-        ALOGE("Failed to get CRTC properties: %s\n", strerror(errno));
+        ALOGE("Failed to get CRTC properties: %s", strerror(errno));
         return -errno;
     }
 
     for (i = 0; i < properties->count_props; ++i) {
-        property = drmModeGetProperty(context->gpu_fd, properties->props[i]);
+        property = drmModeGetProperty(context->fd, properties->props[i]);
         if (!property) {
-            ALOGE("Failed to lookup property %d: %s\n", properties->props[i], strerror(errno));
+            ALOGE("Failed to lookup property %d: %s", properties->props[i], strerror(errno));
             continue;
         }
 
-        ALOGD("Found property %s (%d)\n", property->name, property->prop_id);
+        ALOGD("Found property %s (%d)", property->name, property->prop_id);
 
         if (strcmp(property->name, DRM_ACTIVE_PROPERTY) == 0) {
             context->active_property = property->prop_id;
-            ALOGI("Found ACTIVE property: %d\n", property->prop_id);
+            ALOGI("Found ACTIVE property: %d", property->prop_id);
             drmModeFreeProperty(property);
             break;
         }
@@ -95,7 +95,7 @@ static int hwc_find_active_property(struct hwc_context_t *context) {
     drmModeFreeObjectProperties(properties);
 
     if (!context->active_property) {
-        ALOGE("Failed to find active property of CRTC %d\n", context->display_crtc);
+        ALOGE("Failed to find active property of CRTC %d", context->display_crtc);
         return -1;
     }
 
@@ -105,16 +105,16 @@ static int hwc_find_active_property(struct hwc_context_t *context) {
 static int hwc_init(struct hwc_context_t *context) {
     int ret;
 
-    context->gpu_fd = open(DRM_DEVICE_PATH, O_RDWR);
-    if (context->gpu_fd < 0) {
-        ALOGE("Failed to open %s: %s\n", DRM_DEVICE_PATH, strerror(errno));
+    context->fd = open(DRM_DEVICE_PATH, O_RDWR);
+    if (context->fd < 0) {
+        ALOGE("Failed to open %s: %s", DRM_DEVICE_PATH, strerror(errno));
         return -errno;
     }
 
     // We use the atomic DRM API to disable the display
-    ret = drmSetClientCap(context->gpu_fd, DRM_CLIENT_CAP_ATOMIC, 1);
+    ret = drmSetClientCap(context->fd, DRM_CLIENT_CAP_ATOMIC, 1);
     if (ret) {
-        ALOGE("Failed to set atomic cap: %d\n", ret);
+        ALOGE("Failed to set atomic cap: %d", ret);
         goto end;
     }
 
@@ -126,7 +126,7 @@ static int hwc_init(struct hwc_context_t *context) {
 
 end:
     if (ret) {
-        close(context->gpu_fd);
+        close(context->fd);
     }
 
     return ret;
@@ -138,19 +138,19 @@ static int hwc_change_state(struct hwc_context_t *context, bool active) {
 
     pset = drmModeAtomicAlloc();
     if (!pset) {
-        ALOGE("Failed to allocate property set\n");
+        ALOGE("Failed to allocate property set");
         return -ENOMEM;
     }
 
     ret = drmModeAtomicAddProperty(pset, context->display_crtc, context->active_property, active);
     if (ret < 0) {
-        ALOGE("Failed to set ACTIVE property: %d\n", ret);
+        ALOGE("Failed to set ACTIVE property: %d", ret);
         goto err;
     }
 
-    ret = drmModeAtomicCommit(context->gpu_fd, pset, DRM_MODE_ATOMIC_ALLOW_MODESET, NULL);
+    ret = drmModeAtomicCommit(context->fd, pset, DRM_MODE_ATOMIC_ALLOW_MODESET, NULL);
     if (ret) {
-        ALOGE("Failed to commit display state update: %d\n", ret);
+        ALOGE("Failed to commit display state update: %d", ret);
     }
 
 err:
@@ -167,11 +167,11 @@ static int hwc_set_power_mode(struct hwc_context_t* context, int disp, int mode)
         return 0;
     }
 
-    ALOGI("Changing display state: %d\n", new_state);
+    ALOGI("Changing display state: %d", new_state);
 
     ret = hwc_change_state(context, new_state);
     if (ret) {
-        ALOGE("Failed to change display state: %d\n", ret);
+        ALOGE("Failed to change display state: %d", ret);
     } else {
         context->current_state = new_state;
     }
@@ -180,7 +180,7 @@ static int hwc_set_power_mode(struct hwc_context_t* context, int disp, int mode)
 }
 
 static int hwc_close(struct hwc_context_t *context) {
-    close(context->gpu_fd);
+    close(context->fd);
     free(context);
     return 0;
 }

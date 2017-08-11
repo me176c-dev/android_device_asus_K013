@@ -32,7 +32,7 @@ static int set_light(struct light_device_t *dev, const struct light_state_t *sta
 
     fd = open(BRIGHTNESS_PATH, O_WRONLY);
     if (fd < 0) {
-        ALOGE("Failed to open %s: %s\n", BRIGHTNESS_PATH, strerror(errno));
+        ALOGE("Failed to open %s: %s", BRIGHTNESS_PATH, strerror(errno));
         return -errno;
     }
 
