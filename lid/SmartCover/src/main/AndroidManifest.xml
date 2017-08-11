@@ -1,0 +1,21 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="io.github.me176c_dev.smartcover">
+
+    <application
+        android:label="@string/smart_cover"
+        android:icon="@drawable/ic_layers"
+        android:allowBackup="false"
+        android:supportsRtl="true">
+
+        <service
+            android:name="io.github.me176c_dev.smartcover.SmartCoverTileService"
+            android:label="@string/smart_cover"
+            android:icon="@drawable/ic_layers"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>

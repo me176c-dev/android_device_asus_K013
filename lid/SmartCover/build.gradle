@@ -1,0 +1,41 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+    }
+}
+
+apply plugin: 'com.android.application'
+
+repositories {
+    jcenter()
+}
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "26.0.0"
+
+    defaultConfig {
+        applicationId 'io.github.me176c_dev.smartcover'
+
+        versionCode 1
+        versionName '1.0'
+
+        minSdkVersion 25
+        targetSdkVersion 25
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+        }
+    }
+}
+
+dependencies {
+    provided files('../../../../../out/target/common/obj/JAVA_LIBRARIES/framework_intermediates/classes.jar')
+}
