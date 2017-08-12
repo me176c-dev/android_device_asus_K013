@@ -39,7 +39,7 @@
 
     <!-- Hardware video acceleration -->
     <project name="mediasdk_release" path="vendor/intel/mediasdk" remote="xuguangxin" revision="0d2d734505e5237b845a5cef7a817153377e3c6d" />
-    <project name="libva" path="external/libva" remote="01org" revision="refs/tags/1.8.3" groups="me176c" />
+    <project name="libva" path="external/libva" remote="01org" revision="refs/tags/1.8.3" />
     <project name="intel-vaapi-driver" path="external/intel-vaapi-driver" remote="01org" revision="refs/tags/1.8.3" />
 
     <!-- Powertop -->
