@@ -1,5 +1,6 @@
 PRODUCT_PACKAGES += \
-    sensors.iio
+    sensors.iio \
+    SmartCover
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hardware.sensors=iio \
