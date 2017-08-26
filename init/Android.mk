@@ -11,3 +11,5 @@ LOCAL_CFLAGS := -DREPLACE_PROPERTIES
 endif
 
 include $(BUILD_STATIC_LIBRARY)
+
+include $(LOCAL_PATH)/root/Android.mk
