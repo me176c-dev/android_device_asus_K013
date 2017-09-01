@@ -125,7 +125,7 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x00000004)
     Name (TMF1, Zero)
     Name (TMF2, Zero)
     Name (TMF3, Zero)
-    OperationRegion (GNVS, SystemMemory, 0x395F4A98, 0x0340)
+    OperationRegion (GNVS, SystemMemory, 0xDEADBEEF, 0x0340)
     Field (GNVS, AnyAcc, Lock, Preserve)
     {
         OSYS,   16,
