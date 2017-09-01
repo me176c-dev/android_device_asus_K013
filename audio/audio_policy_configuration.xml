@@ -32,22 +32,6 @@
                              samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </mixPort>
 
-                <!-- TODO: Not working yet
-                <mixPort name="compressed_offload" role="source"
-                         flags="AUDIO_OUTPUT_FLAG_DIRECT|AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD|AUDIO_OUTPUT_FLAG_NON_BLOCKING"
-                         card="bytcrrt5640" device="2">
-                    <profile name="" format="AUDIO_FORMAT_MP3"
-                             samplingRates="8000,16000,32000,44100,48000"
-                             channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
-                    <profile name="" format="AUDIO_FORMAT_AAC"
-                             samplingRates="8000,16000,32000,44100,48000"
-                             channelMasks="AUDIO_CHANNEL_OUT_STEREO,AUDIO_CHANNEL_OUT_MONO"/>
-                    <profile name="" format="AUDIO_FORMAT_AAC_LC"
-                             samplingRates="8000,16000,32000,44100,48000"
-                             channelMasks="AUDIO_CHANNEL_OUT_STEREO,AUDIO_CHANNEL_OUT_MONO"/>
-                </mixPort>
-                -->
-
                 <mixPort name="primary_input" role="sink" flags="AUDIO_INPUT_FLAG_PRIMARY"
                          card="bytcrrt5640" device="0"
                          requirePreEnable="0" requirePostDisable="0"
