@@ -22,21 +22,7 @@ KERNEL_ARCH := $(TARGET_KERNEL_ARCH)
 MAKE_FLAGS :=
 
 # Configure kernel compiler toolchain
-KERNEL_TOOLCHAIN_PATH := $(TARGET_KERNEL_CROSS_COMPILE_PREFIX)
-
-ifneq ($(USE_CCACHE),)
-    # Detect if the system already has ccache installed to use instead of the prebuilt
-    ccache := $(shell which ccache)
-
-    ifeq ($(ccache),)
-        ccache := $(ANDROID_BUILD_TOP)/prebuilts/misc/$(HOST_PREBUILT_TAG)/ccache/ccache
-        # Check that the executable is here.
-        ccache := $(strip $(wildcard $(ccache)))
-    endif
-endif
-
-KERNEL_CROSS_COMPILE := CROSS_COMPILE="$(ccache) $(KERNEL_TOOLCHAIN_PATH)"
-ccache :=
+KERNEL_CROSS_COMPILE := CROSS_COMPILE="$(CC_WRAPPER) $(TARGET_KERNEL_CROSS_COMPILE_PREFIX)"
 
 # Kernel output directory
 KERNEL_OUT := $(abspath $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ)
