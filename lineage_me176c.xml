@@ -11,6 +11,9 @@
     <project name="kernel_asus_me176c" path="kernel/asus/me176c" remote="me176c" groups="me176c" />
     <project name="proprietary_vendor_asus_me176c" path="vendor/asus/me176c" remote="me176c" groups="me176c" />
 
+    <!-- ACPI -->
+    <project name="external_acpica" path="external/acpica" remote="me176c" groups="me176c" />
+
     <!-- Graphics -->
     <remove-project name="platform/external/libdrm" />
     <project name="external_libdrm" path="external/libdrm" remote="me176c" groups="me176c" />
