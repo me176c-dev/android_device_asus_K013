@@ -10859,9 +10859,19 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x00000004)
                             {   // Pin list
                                 0x003C
                             }
+                        GpioIo (Exclusive, PullDefault, 0, 0, IoRestrictionOutputOnly, "\\_SB.GPO2") {28}
                     })
                     Return (ABUF) /* \_SB_.I2C6.GDIX._CRS.ABUF */
                 }
+
+                // Define GPIO names
+                Name (_DSD, Package () {
+                    ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
+                    Package () {
+                        Package () {"reset-gpios", Package () {^GDIX, 0, 0, 0}},
+                        Package () {"irq-gpios", Package () {^GDIX, 1, 0, 0}},
+                    }
+                })
 
                 Method (_STA, 0, NotSerialized)  // _STA: Status
                 {
