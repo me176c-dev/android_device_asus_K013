@@ -5437,6 +5437,11 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x00000004)
                 })
             }
 
+            Name (_CRS, ResourceTemplate () {
+                GpioIo (Exclusive, PullDefault, 0, 0, IoRestrictionOutputOnly, "\\_SB.GPO2") {14} /* reset */
+                GpioIo (Exclusive, PullDefault, 0, 0, IoRestrictionOutputOnly, "\\_SB.GPO0") {54} /* cs */
+            })
+
             Method (_STA, 0, NotSerialized)  // _STA: Status
             {
                 If ((OTGM != Zero))
