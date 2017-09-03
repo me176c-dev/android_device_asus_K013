@@ -12528,7 +12528,21 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x00000004)
 
             Method (_STA, 0, NotSerialized)  // _STA: Status
             {
-                Return (0x0F)
+                Return (Zero)
+            }
+        }
+
+        Device (BQCG) {
+            Name (_HID, "TIBQ2419")  // _HID: Hardware ID
+            Name (_CID, "TIBQ2419")  // _CID: Compatible ID
+            Name (_DDN, "BQ24192")  // _DDN: DOS Device Name
+
+            Name (_CRS, ResourceTemplate () {  // _CRS: Current Resource Settings
+                I2cSerialBusV2 (0x6b, ControllerInitiated, 100000, AddressingMode7Bit, "\\_SB.I2C1")
+            })
+
+            Method (_STA) {  // _STA: Status
+                Return (0xf)
             }
         }
 
