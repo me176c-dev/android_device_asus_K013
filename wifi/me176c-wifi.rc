@@ -1,6 +1,6 @@
 on boot
-    insmod /system/lib/modules/brcmutil.ko
-    insmod /system/lib/modules/brcmfmac.ko
+    insmod /vendor/lib/modules/brcmutil.ko
+    insmod /vendor/lib/modules/brcmfmac.ko
 
     # Wait for the WiFi driver to finish loading
     wait /sys/class/rfkill/rfkill2/soft
