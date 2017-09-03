@@ -12,3 +12,4 @@ on boot
     insmod /vendor/lib/modules/snd-intel-sst-acpi.ko
 
     insmod /vendor/lib/modules/snd-soc-sst-bytcr-rt5640.ko
+    insmod /vendor/lib/modules/snd-soc-sst-bytcr-rt5640-jack.ko
