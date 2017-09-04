@@ -5,8 +5,10 @@ on early-init
     chmod 0644 /sys/devices/system/cpu/intel_pstate/no_turbo
 
 on init
-    # Block Bluetooth and GPS (unsupported)
+    # Disable Bluetooth by default (will by enabled by Android later)
     write /sys/class/rfkill/rfkill0/soft 1
+
+    # Block GPS (unsupported)
     write /sys/class/rfkill/rfkill1/soft 1
 
 on boot
