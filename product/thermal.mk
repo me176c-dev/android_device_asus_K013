@@ -6,4 +6,4 @@ THERMALD_DETECT_THERMAL_ZONES := false
 THERMALD_BACKLIGHT_COOLING_DEVICE := false
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-conf.xml:system/etc/thermald/thermal-conf.xml
+    $(LOCAL_PATH)/thermal/thermal-conf.xml:system/etc/thermald/thermal-conf.xml

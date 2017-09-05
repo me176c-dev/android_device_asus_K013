@@ -16,4 +16,4 @@ PRODUCT_PACKAGES += \
     libmfxhw32
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/mfx_omxil_core.conf:system/etc/mfx_omxil_core.conf
+    $(LOCAL_PATH)/media/mfx_omxil_core.conf:system/etc/mfx_omxil_core.conf
