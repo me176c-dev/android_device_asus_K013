@@ -17,5 +17,4 @@ LOCAL_SRC_FILES := driver_cmd_nl80211.c
 include $(BUILD_STATIC_LIBRARY)
 
 # wpa_supplicant.conf
-WIFI_DRIVER_SOCKET_IFACE := wlan0
 include $(WPA_SUPPL_DIR)/wpa_supplicant/wpa_supplicant_conf.mk
