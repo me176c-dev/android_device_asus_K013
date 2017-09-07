@@ -37,8 +37,7 @@ on post-fs-data
 on charger
     start watchdogd
 
-service watchdogd /sbin/watchdogd 10 30
-    user root
+service watchdogd /sbin/watchdogd
     class core
     oneshot
     seclabel u:r:watchdogd:s0
