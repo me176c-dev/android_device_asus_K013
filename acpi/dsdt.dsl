@@ -40,7 +40,7 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x00000004)
      * because the disassembler had to guess at the number of arguments
      * required for each:
      */
-    External (_PR_.CPU0._PPC, UnknownObj)
+    External (_PR_.CPU0._PPC, IntObj)
     External (_SB_.DPTF, UnknownObj)
     External (_SB_.PCI0.LPCB.TPM_.PTS_, MethodObj)    // Warning: Unknown method, guessing 1 arguments
     External (_SB_.STR3, UnknownObj)
