@@ -1,4 +1,4 @@
-BOARD_KERNEL_CMDLINE += vga=current i915.modeset=1 drm.vblankoffdelay=1
+BOARD_KERNEL_CMDLINE += vga=current i915.modeset=1 i915.nuclear_pageflip=1 drm.vblankoffdelay=1
 
 USE_OPENGL_RENDERER := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
