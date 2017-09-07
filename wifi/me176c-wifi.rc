@@ -3,8 +3,8 @@ on boot
     insmod /vendor/lib/modules/brcmfmac.ko
 
     # Wait for the WiFi driver to finish loading
-    wait /sys/class/rfkill/rfkill2/soft
-    chown system system /sys/class/rfkill/rfkill2/soft
+    wait /sys/class/rfkill/rfkill2/state
+    chown system system /sys/class/rfkill/rfkill2/state
 
 service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
