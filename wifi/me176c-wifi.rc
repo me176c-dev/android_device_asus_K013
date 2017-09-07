@@ -6,9 +6,6 @@ on boot
     wait /sys/class/rfkill/rfkill2/soft
     chown system system /sys/class/rfkill/rfkill2/soft
 
-    # Disable WiFi by default (will by enabled by Android later)
-    write /sys/class/rfkill/rfkill2/soft 1
-
 service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
     -O/data/misc/wifi/sockets \

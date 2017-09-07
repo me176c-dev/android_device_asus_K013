@@ -4,13 +4,6 @@ on early-init
     chown system system /sys/devices/system/cpu/intel_pstate/no_turbo
     chmod 0644 /sys/devices/system/cpu/intel_pstate/no_turbo
 
-on init
-    # Disable Bluetooth by default (will by enabled by Android later)
-    write /sys/class/rfkill/rfkill0/soft 1
-
-    # Block GPS (unsupported)
-    write /sys/class/rfkill/rfkill1/soft 1
-
 on boot
     # Enable runtime PM for PCI devices
     write /sys/bus/pci/devices/0000:00:00.0/power/control auto
