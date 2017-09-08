@@ -12,7 +12,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Firmware
 PRODUCT_COPY_FILES += \
-    vendor/linux/firmware/intel/fw_sst_0f28.bin:system/vendor/firmware/intel/fw_sst_0f28.bin
+    vendor/linux/firmware/intel/fw_sst_0f28.bin:system/vendor/firmware/intel/fw_sst_0f28.bin \
+    vendor/linux/firmware/LICENCE.fw_sst_0f28:system/vendor/firmware/LICENCE.fw_sst_0f28
 
 # Debug tools
 PRODUCT_PACKAGES_DEBUG += \

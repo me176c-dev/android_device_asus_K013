@@ -20,4 +20,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Firmware and NVRAM config
 PRODUCT_COPY_FILES += \
     vendor/linux/firmware/brcm/brcmfmac43362-sdio.bin:system/vendor/firmware/brcm/brcmfmac43362-sdio.bin \
-    $(LOCAL_PATH)/wifi/nvram.txt:system/vendor/firmware/brcm/brcmfmac43362-sdio.txt
+    $(LOCAL_PATH)/wifi/nvram.txt:system/vendor/firmware/brcm/brcmfmac43362-sdio.txt \
+    vendor/linux/firmware/LICENCE.broadcom_bcm43xx:system/vendor/firmware/LICENCE.broadcom_bcm43xx
