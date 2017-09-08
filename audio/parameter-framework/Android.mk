@@ -7,6 +7,7 @@ PFW_SCHEMAS_DIR := $(PFW_DEFAULT_SCHEMAS_DIR)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := AudioParameterFramework.xml
+LOCAL_PROPRIETARY_MODULE := true
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES := $(LOCAL_MODULE)
 LOCAL_MODULE_RELATIVE_PATH := parameter-framework
@@ -18,6 +19,7 @@ include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := AudioConfigurableDomains.xml
+LOCAL_PROPRIETARY_MODULE := true
 LOCAL_MODULE_RELATIVE_PATH := parameter-framework/Settings/Audio
 
 PFW_TOPLEVEL_FILE := $(LOCAL_PATH)/AudioParameterFramework.xml
