@@ -63,4 +63,10 @@
     <remove-project name="LineageOS/android_frameworks_native" />
     <project name="frameworks_native" path="frameworks/native" remote="me176c" groups="me176c" />
 
+    <!-- CVE-2017-0753 -->
+    <remove-project name="platform/external/libgdx" />
+
+    <!-- CVE-2017-0766 -->
+    <remove-project name="platform/external/jhead" />
+
 </manifest>
