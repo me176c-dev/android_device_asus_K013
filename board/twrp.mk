@@ -13,5 +13,5 @@ TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone6/temp
 
 TW_NO_LEGACY_PROPS := true
 
-TARGET_RECOVERY_UPDATER_LIBS := libasus_updater
+TARGET_RECOVERY_UPDATER_LIBS += libasus_updater
 TW_FORCE_DEFAULT_UPDATER_FINGERPRINT := asus/WW_K013/K013:5.0/
