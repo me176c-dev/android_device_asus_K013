@@ -8,3 +8,6 @@ TW_EXCLUDE_TWRPAPP := true
 
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file"
+
+TARGET_RECOVERY_UPDATER_LIBS := libasus_updater
+TW_FORCE_DEFAULT_UPDATER_FINGERPRINT := asus/WW_K013/K013:5.0/
