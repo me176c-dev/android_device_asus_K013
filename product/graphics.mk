@@ -24,8 +24,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Vulkan
 PRODUCT_PACKAGES += \
-    vulkan.mesa \
-    libvulkan_intel
+    vulkan.mesa
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hardware.vulkan=mesa
