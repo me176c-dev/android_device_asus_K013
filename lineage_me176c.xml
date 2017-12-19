@@ -23,9 +23,6 @@
     <remove-project name="platform/external/mesa3d" />
     <project name="external_mesa" path="external/mesa" remote="me176c" groups="me176c" />
 
-    <!-- Vulkan -->
-    <project name="external_vulkan-hal" path="external/vulkan-hal" remote="me176c" groups="me176c" />
-
     <!-- Audio -->
     <project name="hardware_intel_audio" path="hardware/intel/audio" remote="me176c" groups="me176c" />
     <project name="hardware_intel_audio_utilities" path="hardware/intel/audio_utilities" remote="me176c" groups="me176c" />
