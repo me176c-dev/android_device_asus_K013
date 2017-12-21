@@ -42,11 +42,6 @@
     <project name="libva" path="external/libva" remote="01org" revision="refs/tags/1.8.3" />
     <project name="intel-vaapi-driver" path="external/intel-vaapi-driver" remote="01org" revision="refs/tags/1.8.3" />
 
-    <!-- Powertop -->
-    <project name="pciutils" path="external/pciutils" remote="android-ia" revision="fc0b12034b0b2e5f5adef5bdc93e5cad5c6b8c3f"/>
-    <remove-project name="LineageOS/android_external_powertop" />
-    <project name="powertop" path="external/powertop" remote="android-ia" revision="720278844fa1dfca37953a1d83654a36c5d2f54c"/>
-
     <!-- Patched AOSP/LineageOS projects -->
     <remove-project name="LineageOS/android_system_netd" />
     <project name="system_netd" path="system/netd" remote="me176c" groups="me176c" />
