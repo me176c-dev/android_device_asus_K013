@@ -14,6 +14,7 @@ LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES := $(LOCAL_MODULE)
 LOCAL_REQUIRED_MODULES := \
     a2dp_audio_policy_configuration.xml \
+    r_submix_audio_policy_configuration.xml \
     audio_policy_volumes.xml \
     default_volume_tables.xml \
     audio_criteria.xml \
@@ -26,6 +27,12 @@ LOCAL_PATH := frameworks/av/services/audiopolicy/config
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := a2dp_audio_policy_configuration.xml
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := r_submix_audio_policy_configuration.xml
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES := $(LOCAL_MODULE)
 include $(BUILD_PREBUILT)
