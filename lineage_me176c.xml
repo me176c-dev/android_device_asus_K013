@@ -55,4 +55,7 @@
     <remove-project name="LineageOS/android_frameworks_native" />
     <project name="frameworks_native" path="frameworks/native" remote="me176c" groups="me176c" />
 
+    <remove-project name="LineageOS/android_system_vold" />
+    <project name="system_vold" path="system/vold" remote="me176c" groups="me176c" />
+
 </manifest>
