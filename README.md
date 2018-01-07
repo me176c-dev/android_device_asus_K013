@@ -34,7 +34,19 @@ preparations required to build LineageOS (e.g. supported Linux distributions, ad
     $ repo sync -c --no-tags
     ```
 
-4. **Build the ROM:** Depending on your CPU, this will take even longer.
+4. **Prepare proprietary files:** Unfortunately, some functionality still requires proprietary firmware and/or libraries.
+For the full set of features, you need to download and unpack using a script.
+
+    ```bash
+    $ . build/envsetup.sh
+    $ cd vendor/asus/me176c
+    $ ./setup.sh
+    ```
+
+   Currently, one step requires root to temporarily mount a partition from a downloaded disk image. The script is using
+`sudo` to request root access.
+
+5. **Build the ROM:** Depending on your CPU, this will take even longer.
 
     ```bash
     $ . build/envsetup.sh
