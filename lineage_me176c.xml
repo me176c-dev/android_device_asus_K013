@@ -10,6 +10,7 @@
     <project name="android_device_asus_me176c" path="device/asus/me176c" remote="me176c" groups="me176c" />
     <project name="android_kernel_asus_me176c" path="kernel/asus/me176c" remote="me176c" groups="me176c" />
     <project name="android_vendor_asus_me176c" path="vendor/asus/me176c" remote="me176c" groups="me176c" />
+    <project name="me176c-acpi" path="vendor/asus/me176c/acpi" remote="me176c" revision="master" groups="me176c" />
 
     <!-- ACPI -->
     <project name="android_external_acpica" path="external/acpica" remote="me176c" groups="me176c" />
