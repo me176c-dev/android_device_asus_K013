@@ -26,9 +26,8 @@ on fs
     mount_all /fstab.${ro.hardware}
 
 on post-fs
-    # Enable SELinux labeling
-    restorecon_recursive /oemcfg
-    restorecon_recursive /factory
+    # Restore SELinux labeling
+    restorecon_recursive /vnddat
 
 on post-fs-data
     # Set indication (checked by vold) that we have finished this action

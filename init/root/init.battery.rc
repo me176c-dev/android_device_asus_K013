@@ -3,19 +3,19 @@ on early-init
 
 on fs
     # UPI gauge
-    chown system system /oemcfg/upi_gg
-    chmod 0660 /oemcfg/upi_gg
-    chown system system /oemcfg/upi_bo
-    chmod 0664 /oemcfg/upi_bo
+    chown system system /vnddat/upi_gg
+    chmod 0660 /vnddat/upi_gg
+    chown system system /vnddat/upi_bo
+    chmod 0664 /vnddat/upi_bo
 
 on charger
     # UPI gauge
-    mkdir /oemcfg 0775 system system
-    mount ext4 /dev/block/by-name/config /oemcfg rw nosuid nodev noatime data=ordered
-    chown system system /oemcfg/upi_gg
-    chmod 0660 /oemcfg/upi_gg
-    chown system system /oemcfg/upi_bo
-    chmod 0664 /oemcfg/upi_bo
+    mkdir /vnddat 0775 system system
+    mount ext4 /dev/block/by-name/config /vnddat rw nosuid nodev noatime data=ordered
+    chown system system /vnddat/upi_gg
+    chmod 0660 /vnddat/upi_gg
+    chown system system /vnddat/upi_bo
+    chmod 0664 /vnddat/upi_bo
 
     start upi_ug31xx
 

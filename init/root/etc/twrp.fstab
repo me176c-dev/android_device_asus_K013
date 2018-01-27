@@ -6,7 +6,7 @@
 
 /esp       vfat  /dev/block/by-name/ESP       flags=display="EFI System Partition (ESP)";backup=1
 
-/oemcfg    ext4  /dev/block/by-name/config    flags=display="Config";backup=1
+/vnddat    ext4  /dev/block/by-name/config    flags=display="Vendor Data";backup=1
 /factory   ext4  /dev/block/by-name/factory   flags=display="Factory";backup=1
 
 /external_sd  auto  /dev/block/platform/80860F14:01/by-num/p1  flags=display="Micro SDcard";storage;wipeingui;removable

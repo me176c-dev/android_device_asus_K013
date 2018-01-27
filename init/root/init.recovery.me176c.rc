@@ -30,12 +30,12 @@ on fs
     mount ext4 /dev/block/by-name/factory /factory ro nosuid nodev noatime data=ordered
 
     # UPI gauge
-    mkdir /oemcfg
-    mount ext4 /dev/block/by-name/config /oemcfg nosuid nodev noatime data=ordered
-    chown system system /oemcfg/upi_gg
-    chmod 0660 /oemcfg/upi_gg
-    chown system system /oemcfg/upi_bo
-    chmod 0664 /oemcfg/upi_bo
+    mkdir /vnddat
+    mount ext4 /dev/block/by-name/config /vnddat nosuid nodev noatime data=ordered
+    chown system system /vnddat/upi_gg
+    chmod 0660 /vnddat/upi_gg
+    chown system system /vnddat/upi_bo
+    chmod 0664 /vnddat/upi_bo
     chown system system /sys/module/ug31xx_battery/parameters/op_options
 
 on early-boot
