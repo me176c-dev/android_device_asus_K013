@@ -44,4 +44,4 @@
 
 # Bluetooth
 /dev/ttyS2  0660  bluetooth  bluetooth
-/sys/devices/platform/80860F0A:00/BCM2E3A:00/rfkill/rfkill*  state  0660  bluetooth  bluetooth
+/sys/devices/platform/80860F0A:01/BCM2E3A:00/rfkill/rfkill*  state  0660  bluetooth  bluetooth
