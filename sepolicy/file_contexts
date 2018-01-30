@@ -1,0 +1,37 @@
+# Block devices
+/dev/block/platform/80860F14:00/by-name/boot         u:object_r:boot_block_device:s0
+/dev/block/platform/80860F14:00/by-name/recovery     u:object_r:recovery_block_device:s0
+
+/dev/block/platform/80860F14:00/by-name/system       u:object_r:system_block_device:s0
+/dev/block/platform/80860F14:00/by-name/factory      u:object_r:factory_block_device:s0
+/dev/block/platform/80860F14:00/by-name/config       u:object_r:vendor_data_block_device:s0
+
+/dev/block/platform/80860F14:00/by-name/cache        u:object_r:cache_block_device:s0
+/dev/block/platform/80860F14:00/by-name/data         u:object_r:userdata_block_device:s0
+
+/dev/block/zram0                                     u:object_r:swap_block_device:s0
+
+# Partitions
+/vnddat                                              u:object_r:vendor_data_file:s0
+
+# Graphics
+/dev/dri/                                            u:object_r:gpu_device:s0
+/dev/dri/card0                                       u:object_r:gpu_device:s0
+/dev/dri/controlD64                                  u:object_r:gpu_device:s0
+/dev/dri/renderD128                                  u:object_r:gpu_device:s0
+
+# Hardware video decoding
+/sys/devices/pci0000:00/0000:00:02\.0/config         u:object_r:sysfs_gpu_pci_config:s0
+
+# Battery daemon
+/dev/ug31xx                                          u:object_r:upi_ug31xx_device:s0
+/vnddat/upi.*                                        u:object_r:upi_ug31xx_file:s0
+
+# Thermal daemon
+/system/vendor/bin/thermald                          u:object_r:thermald_exec:s0
+/sys/devices/virtual/dmi/id/product_name             u:object_r:sysfs_dmi_product_name:s0
+
+/sys/class/thermal                                   u:object_r:sysfs_thermal:s0
+/sys/devices/virtual/thermal(/.*)?                   u:object_r:sysfs_thermal:s0
+/sys/devices/virtual/powercap(/.*)?                  u:object_r:sysfs_powercap:s0
+/sys/devices/platform/INT3401:00/power_limits(/.*)?  u:object_r:sysfs_powercap:s0

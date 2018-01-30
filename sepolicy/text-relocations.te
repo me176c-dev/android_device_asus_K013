@@ -1,0 +1,15 @@
+# TODO: I really need to consider switching to x86_64 to avoid these stupid
+# text relocations...
+
+# Needed for ASM in Mesa, might want to disable...
+allow bootanim system_file:file execmod;
+allow bootanim self:process execmem;
+allow zygote system_file:file execmod;
+allow zygote self:process execmem;
+allow surfaceflinger system_file:file execmod;
+allow surfaceflinger self:process execmem;
+
+# Needed for ASM in ffmpeg
+allow mediaserver system_file:file execmod;
+allow mediaextractor system_file:file execmod;
+allow mediacodec system_file:file execmod;

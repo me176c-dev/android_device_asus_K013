@@ -1,0 +1,3 @@
+# TODO: Check if still needed on O
+allow system_server self:capability2 wake_alarm;
+allow healthd self:capability2 wake_alarm;

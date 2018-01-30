@@ -1,0 +1,23 @@
+# Thermal daemon
+type thermald, domain;
+type thermald_exec, exec_type, file_type;
+init_daemon_domain(thermald)
+
+allow thermald self:netlink_kobject_uevent_socket { bind create read setopt };
+
+# DMI product name
+type sysfs_dmi_product_name, fs_type, sysfs_type;
+allow thermald sysfs_dmi_product_name:file r_file_perms;
+
+# Thermal zones
+allow thermald sysfs_thermal:dir r_dir_perms;
+allow thermald sysfs_thermal:file rw_file_perms;
+
+# CPU control (e.g. intel_pstate)
+allow thermald sysfs_devices_system_cpu:file rw_file_perms;
+
+# RAPL
+type sysfs_powercap, fs_type, sysfs_type;
+allow thermald sysfs_powercap:dir r_dir_perms;
+allow thermald sysfs_powercap:file rw_file_perms;
+dontaudit thermald sysfs_powercap:lnk_file read;

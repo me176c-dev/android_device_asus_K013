@@ -1,0 +1,16 @@
+# Battery daemon
+type upi_ug31xx, domain;
+domain_trans(init, rootfs, upi_ug31xx)
+
+# Needed to switch to system user/group
+# I don't like this very much, but system user is unable to access /sbin/upi_ug31xx
+allow upi_ug31xx self:capability { setuid setgid };
+
+# Kernel device
+type upi_ug31xx_device, dev_type;
+allow upi_ug31xx upi_ug31xx_device:chr_file rw_file_perms;
+
+# Files in vendor data partition
+type upi_ug31xx_file, file_type;
+allow upi_ug31xx upi_ug31xx_file:file rw_file_perms;
+allow upi_ug31xx vendor_data_file:dir search;

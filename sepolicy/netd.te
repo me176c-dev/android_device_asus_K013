@@ -1,0 +1,2 @@
+# Seems unneeded, considering we don't use network kernel modules
+dontaudit netd kernel:system module_request;

@@ -26,4 +26,4 @@ service charger /charger
 service upi_ug31xx /sbin/upi_ug31xx
     class core
     critical
-    seclabel u:r:watchdogd:s0
+    seclabel u:r:upi_ug31xx:s0

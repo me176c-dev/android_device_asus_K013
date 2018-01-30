@@ -1,0 +1,2 @@
+# TODO: Check if still needed on O
+allow system_server surfaceflinger_tmpfs:file { read write };

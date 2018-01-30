@@ -1,0 +1,6 @@
+type factory_block_device, dev_type;
+type vendor_data_block_device, dev_type;
+type vendor_data_file, file_type;
+
+# Allow file system check on vendor data partition
+allow fsck vendor_data_block_device:blk_file rw_file_perms;

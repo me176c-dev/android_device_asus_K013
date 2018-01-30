@@ -6,7 +6,7 @@ LOCAL_C_INCLUDES := system/core/init
 LOCAL_SRC_FILES := init_me176c.cpp
 
 # Omnirom doesn't allow replacing the serialno from userspace
-ifneq ($(TWRP_BUILD),)
+ifeq ($(CM_BUILD),)
 LOCAL_CFLAGS := -DREPLACE_PROPERTIES
 endif
 

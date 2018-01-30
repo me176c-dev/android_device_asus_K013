@@ -1,0 +1,22 @@
+# Symlink /sdcard to backing block
+allow init tmpfs:lnk_file create;
+
+# Mount on and write to /proc/sys/fs/binfmt_misc
+allow init proc:dir mounton;
+allow init binfmt_miscfs:file w_file_perms;
+
+# ConfigFS
+allow init configfs:{ file lnk_file } create_file_perms;
+
+# Kernel modules
+allow init self:capability sys_module;
+allow init system_file:system module_load;
+allow init kernel:key search;
+
+# TODO: Not sure why it wants to create files in the cgroup,
+# these should be already present. Just ignore for now.
+dontaudit init cgroup:file create;
+
+# TODO: Not sure why it wants write permissions for directories.
+# It seems like writing to files works anyway so just ignore this for now...
+dontaudit init sysfs:dir write;
