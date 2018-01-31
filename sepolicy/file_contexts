@@ -28,6 +28,11 @@
 /sys/devices/pci0000:00/0000:00:02\.0/config            u:object_r:sysfs_gpu:s0
 /sys/devices/pci0000:00/0000:00:02\.0/uevent            u:object_r:sysfs_gpu:s0
 
+# Bluetooth
+/dev/ttyS2                                              u:object_r:bluetooth_device:s0
+/sys/devices/platform/80860F0A:01/BCM2E3A:00/rfkill/rfkill[0-9]/state  u:object_r:sysfs_bluetooth_writable:s0
+/vnddat/bt(/.*)?                                        u:object_r:bluetooth_config_file:s0
+
 # Battery daemon
 /dev/ug31xx                                             u:object_r:upi_ug31xx_device:s0
 /vnddat/upi.*                                           u:object_r:upi_ug31xx_file:s0
