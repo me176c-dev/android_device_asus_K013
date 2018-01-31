@@ -20,8 +20,13 @@
 /dev/dri/controlD64                                     u:object_r:gpu_device:s0
 /dev/dri/renderD128                                     u:object_r:gpu_device:s0
 
-# Hardware video decoding
-/sys/devices/pci0000:00/0000:00:02\.0/config            u:object_r:sysfs_gpu_pci_config:s0
+/sys/devices/pci0000:00/0000:00:02\.0/vendor            u:object_r:sysfs_gpu:s0
+/sys/devices/pci0000:00/0000:00:02\.0/device            u:object_r:sysfs_gpu:s0
+/sys/devices/pci0000:00/0000:00:02\.0/revision          u:object_r:sysfs_gpu:s0
+/sys/devices/pci0000:00/0000:00:02\.0/subsystem_vendor  u:object_r:sysfs_gpu:s0
+/sys/devices/pci0000:00/0000:00:02\.0/subsystem_device  u:object_r:sysfs_gpu:s0
+/sys/devices/pci0000:00/0000:00:02\.0/config            u:object_r:sysfs_gpu:s0
+/sys/devices/pci0000:00/0000:00:02\.0/uevent            u:object_r:sysfs_gpu:s0
 
 # Battery daemon
 /dev/ug31xx                                             u:object_r:upi_ug31xx_device:s0
