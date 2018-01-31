@@ -1,0 +1,7 @@
+type smartcover_app, domain;
+app_domain(smartcover_app)
+
+allow smartcover_app activity_service:service_manager find;
+
+type smartcover_prop, property_type;
+set_prop(smartcover_app, smartcover_prop)
