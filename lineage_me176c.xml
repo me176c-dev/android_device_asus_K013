@@ -43,6 +43,9 @@
     <project name="libva" path="external/libva" remote="01org" revision="refs/tags/1.8.3" />
     <project name="intel-vaapi-driver" path="external/intel-vaapi-driver" remote="01org" revision="refs/tags/1.8.3" />
 
+    <!-- Patched signapk with proper PBES2 encrypted private key support -->
+    <project name="android_vendor_lambdadroid_signapk" path="vendor/lambdadroid/signapk" remote="me176c" revision="android-7.1" />
+
     <!-- Patched AOSP/LineageOS projects -->
     <remove-project name="LineageOS/android_system_netd" />
     <project name="android_system_netd" path="system/netd" remote="me176c" groups="me176c" />
