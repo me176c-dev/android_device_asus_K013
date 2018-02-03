@@ -46,4 +46,4 @@ on early-boot
     umount /factory
 
 service upi_ug31xx /sbin/upi_ug31xx
-    seclabel u:r:recovery:s0
+    seclabel u:r:upi_ug31xx:s0
