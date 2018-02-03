@@ -8,7 +8,7 @@
 /vnddat       ext4  /dev/block/by-name/config                  flags=display="Vendor Data";backup=1
 
 # User partitions
-/data         ext4  /dev/block/by-name/data
+/data         ext4  /dev/block/by-name/data                    flags=encryptable=footer;length=-16384
 /cache        ext4  /dev/block/by-name/cache
 
 # EFI partition (contains bootloader)
