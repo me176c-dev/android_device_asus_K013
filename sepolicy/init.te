@@ -20,3 +20,8 @@ dontaudit init cgroup:file create;
 # TODO: Not sure why it wants write permissions for directories.
 # It seems like writing to files works anyway so just ignore this for now...
 dontaudit init sysfs:dir write;
+
+# Mount /vnddat in recovery
+recovery_only(`
+  allow init vendor_data_file:dir mounton;
+')
