@@ -2,7 +2,7 @@
 <ThermalConfiguration>
 <Platform>
     <Name>ME176C</Name>
-    <ProductName>*</ProductName>
+    <ProductName>ME176C</ProductName>
 
     <ThermalZones>
         <ThermalZone>
