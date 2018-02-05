@@ -11,6 +11,9 @@
 /data         ext4  /dev/block/by-name/data                    flags=encryptable=footer;length=-16384
 /cache        ext4  /dev/block/by-name/cache
 
+# Other partitions
+/misc         emmc  /dev/block/by-name/misc
+
 # EFI partition (contains bootloader)
 /esp          vfat  /dev/block/by-name/ESP                     flags=display="EFI System Partition (ESP)";backup=1
 
