@@ -15,3 +15,6 @@ TW_NO_LEGACY_PROPS := true
 
 TARGET_RECOVERY_UPDATER_LIBS += libasus_updater
 TW_FORCE_DEFAULT_UPDATER_FINGERPRINT := asus/WW_K013/K013:5.0/
+
+# Include build date in TWRP version
+TW_DEVICE_VERSION := $(shell date -u +%Y-%m-%d)
