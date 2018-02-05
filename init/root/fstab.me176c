@@ -4,10 +4,10 @@
 /dev/block/by-name/config           /vnddat   ext4  nosuid,nodev,noatime,data=ordered                          wait,check
 
 # User partitions
-/dev/block/by-name/cache            /cache    f2fs  nosuid,nodev,noatime,inline_xattr                          wait,check
 /dev/block/by-name/cache            /cache    ext4  nosuid,nodev,noatime,data=ordered                          wait,check
-/dev/block/by-name/data             /data     f2fs  nosuid,nodev,noatime,discard,inline_xattr                  wait,check,encryptable=footer,length=-16384
+/dev/block/by-name/cache            /cache    f2fs  nosuid,nodev,noatime,inline_xattr                          wait,check
 /dev/block/by-name/data             /data     ext4  nosuid,nodev,noatime,discard,noauto_da_alloc,data=ordered  wait,check,encryptable=footer,length=-16384
+/dev/block/by-name/data             /data     f2fs  nosuid,nodev,noatime,discard,inline_xattr                  wait,check,encryptable=footer,length=-16384
 
 # External SD Card
 /devices/platform/80860F14:01/mmc*  auto      auto  defaults                                                   voldmanaged=sdcard1:auto,encryptable=userdata
