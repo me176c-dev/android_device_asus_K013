@@ -20,7 +20,7 @@ PRODUCT_PACKAGES += \
 
 # GLES version
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.opengles.version=196609
+    ro.opengles.version=196608
 
 # Vulkan
 PRODUCT_PACKAGES += \
