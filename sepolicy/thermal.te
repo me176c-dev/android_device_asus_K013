@@ -1,3 +1,7 @@
+# Allow apps access to thermal zones
+allow { appdomain -isolated_app } sysfs_thermal:dir r_dir_perms;
+allow { appdomain -isolated_app } sysfs_thermal:file r_file_perms;
+
 # Thermal daemon
 type thermald, domain;
 type thermald_exec, exec_type, file_type;
