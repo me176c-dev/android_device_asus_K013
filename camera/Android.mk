@@ -1,3 +1,5 @@
+LOCAL_PATH := $(call my-dir)
+
 include $(CLEAR_VARS)
 LOCAL_MODULE := me176c-camera.rc
 LOCAL_PROPRIETARY_MODULE := true
