@@ -1,4 +1,7 @@
 on boot
+    insmod /vendor/lib/modules/snd-compress.ko
+    insmod /vendor/lib/modules/snd-soc-core.ko
+
     insmod /vendor/lib/modules/snd-soc-rl6231.ko
     insmod /vendor/lib/modules/snd-soc-rt5640.ko
 

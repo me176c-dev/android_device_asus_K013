@@ -1,0 +1,10 @@
+on boot
+    insmod /vendor/lib/modules/media.ko
+
+    insmod /vendor/lib/modules/videodev.ko
+    insmod /vendor/lib/modules/v4l2-common.ko
+    insmod /vendor/lib/modules/v4l2-dv-timings.ko
+    insmod /vendor/lib/modules/videobuf-core.ko
+    insmod /vendor/lib/modules/videobuf-vmalloc.ko
+
+    insmod /vendor/lib/modules/atomisp.ko
