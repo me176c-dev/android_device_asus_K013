@@ -14,7 +14,10 @@
     <remove-project name="platform/external/libdrm" />
     <project name="android_external_libdrm" path="external/libdrm" remote="me176c" revision="cm-14.1" groups="me176c" />
 
-    <!-- Recovery -->
+    <!-- Patched AOSP/OmniROM projects -->
+    <remove-project name="android_system_sepolicy" />
+    <project name="android_system_sepolicy" path="system/sepolicy" remote="me176c" revision="omni-7.1" groups="me176c" />
+
     <remove-project name="android_bootable_recovery" />
     <project name="android_bootable_recovery" path="bootable/recovery" remote="me176c" revision="android-7.1" groups="me176c" />
 
