@@ -4,6 +4,10 @@ on early-init
     chown system system /sys/devices/system/cpu/intel_pstate/no_turbo
     chmod 0644 /sys/devices/system/cpu/intel_pstate/no_turbo
 
+on init
+    # TODO: Avoid going into suspend until it works properly
+    write /sys/power/wake_lock ME176C.DisableSuspend
+
 on boot
     # Enable runtime PM for PCI devices
     write /sys/bus/pci/devices/0000:00:00.0/power/control auto
