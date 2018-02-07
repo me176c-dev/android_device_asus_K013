@@ -1,5 +1,5 @@
 on property:persist.smart_cover=1
-    write /sys/devices/platform/gpio-keys.2.auto/disabled_switches " "
+    write /sys/devices/platform/YOB8251:00/gpio-keys.2.auto/disabled_switches " "
 
 on property:persist.smart_cover=0
-    write /sys/devices/platform/gpio-keys.2.auto/disabled_switches 0
+    write /sys/devices/platform/YOB8251:00/gpio-keys.2.auto/disabled_switches 0
