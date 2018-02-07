@@ -13,6 +13,9 @@ allow init self:capability sys_module;
 allow init system_file:system module_load;
 allow init kernel:key search;
 
+# Add wake_lock to avoid suspend (TODO: Remove when suspend is fixed)
+allow init self:capability2 block_suspend;
+
 # TODO: Not sure why it wants to create files in the cgroup,
 # these should be already present. Just ignore for now.
 dontaudit init cgroup:file create;
