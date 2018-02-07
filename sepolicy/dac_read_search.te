@@ -1,0 +1,14 @@
+# "fs: switch order of CAP_DAC_OVERRIDE and CAP_DAC_READ_SEARCH checks"
+# https://github.com/torvalds/linux/commit/2a4c22426955d4fc04069811997b7390c0fb858e
+# in Linux 4.12 changed the order in which dac_override and dac_read_search
+# are checked, which means we're now seeing warnings for everything that has
+# dac_override but not dac_read_search.
+# Just silence them because dac_override will still allow the access at the end.
+
+dontaudit init self:capability dac_read_search;
+dontaudit installd self:capability dac_read_search;
+dontaudit lmkd self:capability dac_read_search;
+dontaudit netd self:capability dac_read_search;
+dontaudit ueventd self:capability dac_read_search;
+dontaudit vold self:capability dac_read_search;
+dontaudit zygote self:capability dac_read_search;
