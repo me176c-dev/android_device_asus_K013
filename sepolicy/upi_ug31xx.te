@@ -14,3 +14,6 @@ allow upi_ug31xx upi_ug31xx_device:chr_file rw_file_perms;
 type upi_ug31xx_file, file_type;
 allow upi_ug31xx upi_ug31xx_file:file rw_file_perms;
 allow upi_ug31xx vendor_data_file:dir search;
+
+# No need to read properties, don't care.
+dontaudit upi_ug31xx properties_device:dir map;
