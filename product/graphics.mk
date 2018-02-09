@@ -3,10 +3,6 @@ PRODUCT_PACKAGES += \
     libdrm \
     libdrm_intel
 
-# Hardware composer
-PRODUCT_PACKAGES += \
-    hwcomposer.me176c
-
 # Gralloc
 PRODUCT_PACKAGES += \
     gralloc.android_ia
