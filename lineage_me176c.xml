@@ -2,7 +2,7 @@
 <manifest>
     <remote name="me176c" fetch="https://github.com/me176c-dev/" />
     <remote name="kernel" fetch="https://git.kernel.org/pub/scm/linux/" />
-    <remote name="01org" fetch="https://github.com/01org/" />
+    <remote name="intel" fetch="https://github.com/intel/" />
     <remote name="android-ia" fetch="https://github.com/android-ia/" />
     <remote name="xuguangxin" fetch="https://github.com/xuguangxin/" />
 
@@ -40,8 +40,8 @@
 
     <!-- Hardware video acceleration -->
     <project name="mediasdk_release" path="vendor/intel/mediasdk" remote="xuguangxin" revision="0d2d734505e5237b845a5cef7a817153377e3c6d" />
-    <project name="libva" path="external/libva" remote="01org" revision="refs/tags/1.8.3" />
-    <project name="intel-vaapi-driver" path="external/intel-vaapi-driver" remote="01org" revision="refs/tags/1.8.3" />
+    <project name="libva" path="external/libva" remote="intel" revision="refs/tags/1.8.3" />
+    <project name="intel-vaapi-driver" path="external/intel-vaapi-driver" remote="intel" revision="refs/tags/1.8.3" />
 
     <!-- Patched signapk with proper PBES2 encrypted private key support -->
     <project name="android_vendor_lambdadroid_signapk" path="vendor/lambdadroid/signapk" remote="me176c" revision="android-7.1" />
