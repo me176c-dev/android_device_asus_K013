@@ -9,12 +9,8 @@
 
 #define BRIGHTNESS_PATH  "/sys/class/backlight/intel_backlight/brightness"
 
-#define MAX_BRIGHTNESS_INPUT   255
-#define MAX_BRIGHTNESS_OUTPUT  100
-
-static unsigned char get_brightness(const struct light_state_t *state) {
-    // Based on recommendation in lights.h
-    unsigned int color = state->color;
+static inline unsigned char get_brightness(const unsigned int color) {
+    // Based on specification in lights.h
     return ((77*((color>>16)&0x00ff)) + (150*((color>>8)&0x00ff)) + (29*(color&0x00ff))) >> 8;
 }
 
@@ -24,15 +20,12 @@ static int set_light(struct light_device_t *dev, const struct light_state_t *sta
     char buf[5];
     dev;
 
-    brightness = get_brightness(state);
-    if (brightness) {
-        // Input brightness is 0-255, however intel_backlight accepts 0-100
-        brightness = brightness * MAX_BRIGHTNESS_OUTPUT / MAX_BRIGHTNESS_INPUT;
-    }
+    brightness = get_brightness(state->color);
+    ALOGV("Setting brightness: %d", brightness);
 
     fd = open(BRIGHTNESS_PATH, O_WRONLY);
     if (fd < 0) {
-        ALOGE("Failed to open %s: %s", BRIGHTNESS_PATH, strerror(errno));
+        ALOGE("Failed to open brightness control: %s", strerror(errno));
         return -errno;
     }
 
@@ -42,7 +35,12 @@ static int set_light(struct light_device_t *dev, const struct light_state_t *sta
     }
     close(fd);
 
-    return count < 0 ? -errno : 0;
+    if (count >= 0) {
+        return 0;
+    } else {
+        ALOGE("Failed to set brightness to %d: %s", brightness, strerror(errno));
+        return -errno;
+    }
 }
 
 static int close_lights(struct hw_device_t *dev) {
