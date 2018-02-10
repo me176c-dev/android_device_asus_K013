@@ -1,0 +1,6 @@
+# Additional permissions needed due to "selinux: add a map permission check for mmap"
+# https://github.com/torvalds/linux/commit/3ba4bf5f1e2c58bddd84ba27c5aeaf8ca1d36bff
+# in Linux 4.13
+
+# avc: denied { map } for path="/data/app/.../base.apk" scontext=u:r:dex2oat:s0 tcontext=u:object_r:apk_tmp_file:s0 tclass=file
+allow dex2oat apk_tmp_file:file map;
