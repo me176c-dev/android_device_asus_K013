@@ -7,7 +7,7 @@ type thermald, domain;
 type thermald_exec, exec_type, file_type;
 init_daemon_domain(thermald)
 
-allow thermald self:netlink_kobject_uevent_socket { bind create read setopt };
+allow thermald self:netlink_kobject_uevent_socket create_socket_perms;
 
 # DMI product name
 type sysfs_dmi_product_name, fs_type, sysfs_type;
