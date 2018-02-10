@@ -5,10 +5,19 @@
 # dac_override but not dac_read_search.
 # Just silence them because dac_override will still allow the access at the end.
 
+dontaudit debuggerd self:capability dac_read_search;
+dontaudit dumpstate self:capability dac_read_search;
 dontaudit init self:capability dac_read_search;
 dontaudit installd self:capability dac_read_search;
 dontaudit lmkd self:capability dac_read_search;
 dontaudit netd self:capability dac_read_search;
+dontaudit postinstall_dexopt self:capability dac_read_search;
+dontaudit sdcardd self:capability dac_read_search;
 dontaudit ueventd self:capability dac_read_search;
+dontaudit uncrypt self:capability dac_read_search;
 dontaudit vold self:capability dac_read_search;
 dontaudit zygote self:capability dac_read_search;
+
+userdebug_or_eng(`
+  dontaudit perfprofd self:capability dac_read_search;
+')
