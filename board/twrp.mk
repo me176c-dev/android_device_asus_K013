@@ -6,6 +6,9 @@ TW_INCLUDE_CRYPTO := true
 TW_EXCLUDE_SUPERSU := true
 TW_EXCLUDE_TWRPAPP := true
 
+# Remove once TWRP supports FunctionFS for MTP
+TW_EXCLUDE_MTP := true
+
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file"
 
