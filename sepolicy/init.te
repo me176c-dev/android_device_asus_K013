@@ -13,16 +13,17 @@ allow init self:capability sys_module;
 allow init system_file:system module_load;
 allow init kernel:key search;
 
+# No need to request kernel modules (those don't exist anyway)
+# avc: denied { module_request } for kmod="usbfunc:mtp" scontext=u:r:init:s0 tcontext=u:r:kernel:s0 tclass=system
+dontaudit init kernel:system module_request;
+
 # Add wake_lock to avoid suspend (TODO: Remove when suspend is fixed)
 allow init self:capability2 block_suspend;
 
 # TODO: Not sure why it wants to create files in the cgroup,
 # these should be already present. Just ignore for now.
+# avc: denied { create } for name="cpus" scontext=u:r:init:s0 tcontext=u:object_r:cgroup:s0 tclass=file
 dontaudit init cgroup:file create;
-
-# TODO: Not sure why it wants write permissions for directories.
-# It seems like writing to files works anyway so just ignore this for now...
-dontaudit init sysfs:dir write;
 
 # Mount /vnddat in recovery
 recovery_only(`

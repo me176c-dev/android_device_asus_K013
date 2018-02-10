@@ -15,5 +15,6 @@ type upi_ug31xx_file, file_type;
 allow upi_ug31xx upi_ug31xx_file:file rw_file_perms;
 allow upi_ug31xx vendor_data_file:dir search;
 
-# No need to read properties, don't care.
+# No need to read properties
+# avc: denied { map } path="/dev/__properties__" scontext=u:r:upi_ug31xx:s0 tcontext=u:object_r:properties_device:s0 tclass=dir
 dontaudit upi_ug31xx properties_device:dir map;
