@@ -18,7 +18,7 @@ allow init kernel:key search;
 dontaudit init kernel:system module_request;
 
 # Add wake_lock to avoid suspend (TODO: Remove when suspend is fixed)
-allow init self:capability2 block_suspend;
+wakelock_use(init)
 
 # TODO: Not sure why it wants to create files in the cgroup,
 # these should be already present. Just ignore for now.
