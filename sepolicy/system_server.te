@@ -1,0 +1,4 @@
+# avc: denied { read } for scontext=u:r:system_app:s0 tcontext=u:object_r:system_server_tmpfs:s0 tclass=file
+# when reading battery information (e.g. from the Settings app)
+allow system_app system_server_tmpfs:file read;
+allow platform_app system_server_tmpfs:file read;
