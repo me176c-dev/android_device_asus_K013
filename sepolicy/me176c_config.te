@@ -1,5 +1,8 @@
 type me176c_config_block_device, dev_type;
 type me176c_config_file, file_type;
 
-# Allow file system check on vendor data partition
+# Allow file system check on config partition
 allow fsck me176c_config_block_device:blk_file rw_file_perms;
+
+# Allow vold to trim /me176c /config partition)
+allow vold me176c_config_file:dir r_dir_perms;
