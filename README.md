@@ -31,14 +31,13 @@ preparations required to build LineageOS (e.g. supported Linux distributions, ad
 3. **Sync the repositories:** Depending on your Internet connection, this will take a long time.
 
     ```bash
-    $ repo sync -c --no-tags
+    $ repo sync
     ```
 
 4. **Prepare proprietary files:** Unfortunately, some functionality still requires proprietary firmware and/or libraries.
 For the full set of features, you need to download and unpack using a script.
 
     ```bash
-    $ . build/envsetup.sh
     $ cd vendor/asus/me176c
     $ ./setup.sh
     ```
