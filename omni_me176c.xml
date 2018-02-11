@@ -19,6 +19,6 @@
     <project name="android_system_sepolicy" path="system/sepolicy" remote="me176c" revision="omni-7.1" groups="me176c" />
 
     <remove-project name="android_bootable_recovery" />
-    <project name="android_bootable_recovery" path="bootable/recovery" remote="me176c" revision="android-7.1" groups="me176c" />
+    <project name="android_bootable_recovery_twrp" path="bootable/recovery" remote="me176c" revision="android-7.1" groups="me176c" />
 
 </manifest>

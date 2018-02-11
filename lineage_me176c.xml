@@ -50,6 +50,9 @@
     <remove-project name="LineageOS/android_art" />
     <project name="android_art" path="art" remote="me176c" groups="me176c" />
 
+    <remove-project name="LineageOS/android_bootable_recovery" />
+    <project name="android_bootable_recovery" path="bootable/recovery" remote="me176c" groups="me176c" />
+
     <remove-project name="LineageOS/android_frameworks_base" />
     <project name="android_frameworks_base" path="frameworks/base" remote="me176c" groups="me176c" />
 
