@@ -47,15 +47,6 @@
     <project name="android_vendor_lambdadroid_signapk" path="vendor/lambdadroid/signapk" remote="me176c" revision="android-7.1" />
 
     <!-- Patched AOSP/LineageOS projects -->
-    <remove-project name="LineageOS/android_system_core" />
-    <project name="android_system_core" path="system/core" remote="me176c" groups="me176c" />
-
-    <remove-project name="LineageOS/android_system_sepolicy" />
-    <project name="android_system_sepolicy" path="system/sepolicy" remote="me176c" groups="me176c" />
-
-    <remove-project name="LineageOS/android_system_netd" />
-    <project name="android_system_netd" path="system/netd" remote="me176c" groups="me176c" />
-
     <remove-project name="LineageOS/android_art" />
     <project name="android_art" path="art" remote="me176c" groups="me176c" />
 
@@ -64,6 +55,15 @@
 
     <remove-project name="LineageOS/android_frameworks_native" />
     <project name="android_frameworks_native" path="frameworks/native" remote="me176c" groups="me176c" />
+
+    <remove-project name="LineageOS/android_system_core" />
+    <project name="android_system_core" path="system/core" remote="me176c" groups="me176c" />
+
+    <remove-project name="LineageOS/android_system_netd" />
+    <project name="android_system_netd" path="system/netd" remote="me176c" groups="me176c" />
+
+    <remove-project name="LineageOS/android_system_sepolicy" />
+    <project name="android_system_sepolicy" path="system/sepolicy" remote="me176c" groups="me176c" />
 
     <remove-project name="LineageOS/android_system_vold" />
     <project name="android_system_vold" path="system/vold" remote="me176c" groups="me176c" />
