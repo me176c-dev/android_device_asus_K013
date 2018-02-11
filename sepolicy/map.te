@@ -5,6 +5,9 @@
 # avc: denied { map } for path="/data/app/.../base.apk" scontext=u:r:dex2oat:s0 tcontext=u:object_r:apk_tmp_file:s0 tclass=file
 allow dex2oat apk_tmp_file:file map;
 
+# avc: denied { map } for scontext=u:r:isolated_app:s0:c512,c768 tcontext=u:object_r:app_data_file:s0:c512,c768 tclass=file
+allow isolated_app app_data_file:file map;
+
 userdebug_or_eng(`
   # avc: denied { map } for scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:su_exec:s0 tclass=file
   allow untrusted_app su_exec:file map;
