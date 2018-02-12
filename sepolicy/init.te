@@ -25,7 +25,5 @@ wakelock_use(init)
 # avc: denied { create } for name="cpus" scontext=u:r:init:s0 tcontext=u:object_r:cgroup:s0 tclass=file
 dontaudit init cgroup:file create;
 
-# Mount /vnddat in recovery
-recovery_only(`
-  allow init vendor_data_file:dir mounton;
-')
+# Mount /vnddat in recovery and charger mode
+allow init vendor_data_file:dir mounton;

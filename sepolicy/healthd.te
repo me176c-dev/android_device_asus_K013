@@ -1,3 +1,6 @@
+# Show charger screen
+allow healthd gpu_device:chr_file rw_file_perms;
+
 # TODO: Check if still needed on O
 # healthd: wakealarm_init: timerfd_create failed
 allow healthd self:capability2 wake_alarm;
