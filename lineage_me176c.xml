@@ -68,7 +68,4 @@
     <remove-project name="LineageOS/android_system_sepolicy" />
     <project name="android_system_sepolicy" path="system/sepolicy" remote="me176c" groups="me176c" />
 
-    <remove-project name="LineageOS/android_system_vold" />
-    <project name="android_system_vold" path="system/vold" remote="me176c" groups="me176c" />
-
 </manifest>
