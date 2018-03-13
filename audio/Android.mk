@@ -1,6 +1,22 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
+LOCAL_MODULE := audio.primary.me176c
+LOCAL_PROPRIETARY_MODULE := true
+LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_SRC_FILES := audio_hw.c
+LOCAL_SHARED_LIBRARIES := \
+    libcutils \
+    libtinyalsa \
+    libaudioroute \
+    liblog
+LOCAL_C_INCLUDES := \
+    external/tinyalsa/include \
+    $(call include-path-for, audio-route)
+LOCAL_CFLAGS := -Werror -pedantic -Wno-unused-parameter
+include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE := me176c-audio.rc
 LOCAL_PROPRIETARY_MODULE := true
 LOCAL_SRC_FILES := $(LOCAL_MODULE)

@@ -1,6 +1,7 @@
 # Audio HAL
 PRODUCT_PACKAGES += \
     me176c-audio.rc \
+    audio.primary.me176c \
     audio.a2dp.default \
     audio.r_submix.default \
     audio_policy_configuration.xml
