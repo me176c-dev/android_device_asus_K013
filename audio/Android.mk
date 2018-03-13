@@ -16,12 +16,8 @@ LOCAL_REQUIRED_MODULES := \
     a2dp_audio_policy_configuration.xml \
     r_submix_audio_policy_configuration.xml \
     audio_policy_volumes.xml \
-    default_volume_tables.xml \
-    audio_criteria.xml \
-    audio_criterion_types.xml
+    default_volume_tables.xml
 include $(BUILD_PREBUILT)
-
-include $(call all-makefiles-under, $(LOCAL_PATH))
 
 LOCAL_PATH := frameworks/av/services/audiopolicy/config
 
@@ -45,20 +41,6 @@ include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := default_volume_tables.xml
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES := $(LOCAL_MODULE)
-include $(BUILD_PREBUILT)
-
-LOCAL_PATH := hardware/intel/audio/audio_route_manager/config
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := audio_criteria.xml
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES := $(LOCAL_MODULE)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := audio_criterion_types.xml
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES := $(LOCAL_MODULE)
 include $(BUILD_PREBUILT)

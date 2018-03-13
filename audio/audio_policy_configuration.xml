@@ -13,32 +13,16 @@
             <defaultOutputDevice>Speaker</defaultOutputDevice>
 
             <mixPorts>
-                <mixPort name="primary_output" role="source" flags="AUDIO_OUTPUT_FLAG_PRIMARY"
-                         card="bytcrrt5640" device="0"
-                         requirePreEnable="0" requirePostDisable="0"
-                         periodSize="512" periodCount="2"
-                         startThreshold="511" stopThreshold="1024" silenceThreshold="0"
-                         availMin="512" silencePrologMs="0">
+                <mixPort name="primary_output" role="source" flags="AUDIO_OUTPUT_FLAG_PRIMARY">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </mixPort>
-                <mixPort name="deep_buffer" role="source" flags="AUDIO_OUTPUT_FLAG_DEEP_BUFFER"
-                         card="bytcrrt5640" device="1"
-                         requirePreEnable="0" requirePostDisable="0"
-                         periodSize="2048" periodCount="4"
-                         startThreshold="512" stopThreshold="8192" silenceThreshold="0"
-                         availMin="512" silencePrologMs="0">
+                <mixPort name="deep_buffer" role="source" flags="AUDIO_OUTPUT_FLAG_DEEP_BUFFER">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </mixPort>
 
-                <mixPort name="primary_input" role="sink" flags="AUDIO_INPUT_FLAG_PRIMARY"
-                         card="bytcrrt5640" device="0"
-                         requirePreEnable="0" requirePostDisable="0"
-                         periodSize="512" periodCount="2"
-                         startThreshold="1" stopThreshold="1024" silenceThreshold="0"
-                         availMin="512" silencePrologMs="0"
-                         supportedUseCases="AUDIO_SOURCE_MIC,AUDIO_SOURCE_VOICE_COMMUNICATION,AUDIO_SOURCE_CAMCORDER,AUDIO_SOURCE_VOICE_RECOGNITION,AUDIO_SOURCE_HOTWORD">
+                <mixPort name="primary_input" role="sink" flags="AUDIO_INPUT_FLAG_PRIMARY">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="48000"
                              channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
@@ -80,20 +64,16 @@
             </routes>
 
         </module>
+
+        <!-- A2dp Audio HAL -->
+        <xi:include href="a2dp_audio_policy_configuration.xml"/>
+
+        <!-- Remote Submix Audio HAL -->
+        <xi:include href="r_submix_audio_policy_configuration.xml"/>
     </modules>
-
-    <!-- A2dp Audio HAL -->
-    <xi:include href="a2dp_audio_policy_configuration.xml"/>
-
-    <!-- Remote Submix Audio HAL -->
-    <xi:include href="r_submix_audio_policy_configuration.xml"/>
 
     <!-- Volume section -->
     <xi:include href="audio_policy_volumes.xml"/>
     <xi:include href="default_volume_tables.xml"/>
-
-    <!-- Audio HAL -->
-    <xi:include href="audio_criteria.xml"/>
-    <xi:include href="audio_criterion_types.xml"/>
 
 </audioPolicyConfiguration>
