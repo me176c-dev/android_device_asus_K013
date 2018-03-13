@@ -130,7 +130,7 @@
     <ctl name="RECMIXR BST1 Switch" value="0" />
 
     <ctl name="Internal Mic Switch" value="0" />
-    <ctl name="IN1 Boost" value="1" />
+    <ctl name="IN1 Boost" value="8" />
 
     <!-- Internal Microphone -->
     <path name="internal-mic">
@@ -148,7 +148,7 @@
     <ctl name="RECMIXR BST2 Switch" value="0" />
 
     <ctl name="Headset Mic Switch" value="0" />
-    <ctl name="IN2 Boost" value="8" />
+    <ctl name="IN2 Boost" value="1" />
 
     <!-- Headset Microphone -->
     <path name="headset-mic">
