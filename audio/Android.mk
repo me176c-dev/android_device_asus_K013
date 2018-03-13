@@ -5,6 +5,8 @@ LOCAL_MODULE := audio.primary.me176c
 LOCAL_PROPRIETARY_MODULE := true
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_SRC_FILES := audio_hw.c
+LOCAL_REQUIRED_MODULES := \
+    mixer_paths.xml
 LOCAL_SHARED_LIBRARIES := \
     libcutils \
     libtinyalsa \
@@ -15,6 +17,13 @@ LOCAL_C_INCLUDES := \
     $(call include-path-for, audio-route)
 LOCAL_CFLAGS := -Werror -pedantic -Wno-unused-parameter
 include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := mixer_paths.xml
+LOCAL_PROPRIETARY_MODULE := true
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+LOCAL_MODULE_CLASS := ETC
+include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := me176c-audio.rc
