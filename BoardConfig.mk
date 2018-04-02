@@ -19,3 +19,4 @@ BOARD_SEPOLICY_DIRS += device/asus/$(TARGET_DEVICE)/sepolicy
 TARGET_RELEASETOOLS_EXTENSIONS := device/asus/$(TARGET_DEVICE)
 
 include device/asus/$(TARGET_DEVICE)/board/*.mk
+include vendor/asus/me176c/board.mk
