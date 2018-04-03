@@ -1,5 +1,4 @@
 TARGET_KERNEL_SOURCE := kernel/asus/me176c
-TARGET_KERNEL_DEFCONFIG = $(BUILT_ME176C_DEFCONFIG)
 TARGET_KERNEL_ARCH := x86_64
 
 # Use host distribution compiler if it is recent enough for Retpoline support
