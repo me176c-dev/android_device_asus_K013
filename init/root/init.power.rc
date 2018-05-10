@@ -15,8 +15,6 @@ on boot
     write /sys/bus/pci/devices/0000:00:03.0/power/control auto
     write /sys/bus/pci/devices/0000:00:14.0/power/control auto
     write /sys/bus/pci/devices/0000:00:16.0/power/control auto
+    write /sys/bus/pci/devices/0000:00:16.0/dwc3.1.auto/power/control auto
     write /sys/bus/pci/devices/0000:00:1a.0/power/control auto
     write /sys/bus/pci/devices/0000:00:1f.0/power/control auto
-
-    # TODO: Allow auto-suspend of USB gadget devices
-    # write /sys/bus/pci/devices/0000\:00\:16.0/dwc3.1.auto/power/control auto
