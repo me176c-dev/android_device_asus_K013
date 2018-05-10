@@ -16,8 +16,9 @@
 # Other partitions
 /dev/block/by-name/misc             /misc      emmc  defaults                                                   defaults
 
-# External SD Card
+# Removable storage
 /devices/platform/80860F14:01/mmc*  auto       auto  defaults                                                   voldmanaged=sdcard1:auto,encryptable=userdata
+/devices/*/usb*/*                   auto       auto  defaults                                                   voldmanaged=usb:auto
 
 # Swap
 /dev/block/zram0                    none       swap  defaults                                                   zramsize=50%,notrim
