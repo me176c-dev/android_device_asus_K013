@@ -19,4 +19,4 @@
 
 # Removable storage
 /external_sd  auto  /dev/block/platform/80860F14:01/by-num/p1
-/usb-otg      auto  /dev/block/sda                             flags=storage;wipeingui;removable
+/usb-otg      auto  /dev/block/sda1                            flags=storage;wipeingui;removable
