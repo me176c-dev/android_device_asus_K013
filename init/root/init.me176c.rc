@@ -1,19 +1,17 @@
-import /init.memory.rc
-import /init.battery.rc
-import /init.power.rc
-import /init.${ro.hardware}.usb.rc
-import /init.houdini.rc
-
-on early-init
-    mount debugfs none /sys/kernel/debug
-    chmod 0755 /sys/kernel/debug
+import /init.${ro.hardware}.common.rc
 
 on init
-    # Android creates by-name disk links with the disk controller
-    # in the generated path, so that the names pulled out of the GPT
-    # can be associated with the correct disk. Create a shortcut to
-    # /dev/block/by-name so that we can use the same fstabs everywhere.
-    symlink /dev/block/platform/80860F14:00/by-name /dev/block/by-name
+    mount binfmt_misc binfmt_misc /proc/sys/fs/binfmt_misc
+
+    # ZRAM
+    write /sys/block/zram0/comp_algorithm lz4
+    write /proc/sys/vm/page-cluster 0
+
+    # Permissions
+    chown system system /sys/devices/system/cpu/intel_pstate/max_perf_pct
+    chmod 0644 /sys/devices/system/cpu/intel_pstate/max_perf_pct
+    chown system system /sys/devices/system/cpu/intel_pstate/no_turbo
+    chmod 0644 /sys/devices/system/cpu/intel_pstate/no_turbo
 
 on late-init
     write /dev/cpuset/foreground/cpus 0-2
@@ -24,6 +22,7 @@ on late-init
 
 on fs
     mount_all /fstab.${ro.hardware}
+    swapon_all /fstab.${ro.hardware}
 
 on post-fs
     # Restore SELinux labeling
@@ -33,10 +32,45 @@ on post-fs-data
     # Set indication (checked by vold) that we have finished this action
     setprop vold.post_fs_data_done 1
 
-on charger
-    start watchdogd
+on early-boot
+    mkdir /dev/usb-ffs 0770 shell shell
+    mkdir /dev/usb-ffs/adb 0770 shell shell
+    mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
+
+on boot
+    # Enable KSM (Kernel samepage merging)
+    write /sys/kernel/mm/ksm/pages_to_scan 100
+    write /sys/kernel/mm/ksm/sleep_millisecs 500
+    write /sys/kernel/mm/ksm/run 1
+
+# Native bridge
+on property:ro.enable.native.bridge.exec=1
+    copy /system/etc/binfmt_misc/arm_exe /proc/sys/fs/binfmt_misc/register
+    copy /system/etc/binfmt_misc/arm_dyn /proc/sys/fs/binfmt_misc/register
 
 service watchdogd /sbin/watchdogd
     class core
     oneshot
     seclabel u:r:watchdogd:s0
+
+# Battery
+service upi_ug31xx /sbin/upi_ug31xx
+    class core
+    critical
+    seclabel u:r:upi_ug31xx:s0
+
+# Charging mode
+service charger /charger
+    class charger
+    seclabel u:r:healthd:s0
+
+on charger
+    start watchdogd
+
+    mkdir /vnddat
+    mount ext4 /dev/block/by-name/config /vnddat rw nosuid nodev noatime data=ordered
+    chown system system /vnddat/upi_gg
+    chmod 0660 /vnddat/upi_gg
+    chown system system /vnddat/upi_bo
+    chmod 0664 /vnddat/upi_bo
+    start upi_ug31xx

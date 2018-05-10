@@ -1,8 +1,3 @@
-on early-fs
-    mkdir /config/usb_gadget/g1/functions/ffs.adb
-    mkdir /config/usb_gadget/g1/functions/mass_storage.0
-    mkdir /config/usb_gadget/g1/functions/mtp.gs0
-
 on boot
     setprop sys.usb.config adb
 
@@ -20,7 +15,6 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=mass_storage,adb
     write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "mass_storage_adb"
     rm /config/usb_gadget/g1/configs/b.1/f1
     rm /config/usb_gadget/g1/configs/b.1/f2
-    rm /config/usb_gadget/g1/configs/b.1/f3
     symlink /config/usb_gadget/g1/functions/mass_storage.0 /config/usb_gadget/g1/configs/b.1/f1
     symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f2
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
@@ -33,7 +27,6 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=mtp,adb
     write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "mtp_adb"
     rm /config/usb_gadget/g1/configs/b.1/f1
     rm /config/usb_gadget/g1/configs/b.1/f2
-    rm /config/usb_gadget/g1/configs/b.1/f3
     symlink /config/usb_gadget/g1/functions/mtp.gs0 /config/usb_gadget/g1/configs/b.1/f1
     symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f2
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
@@ -46,7 +39,6 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=adb
     write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adb"
     rm /config/usb_gadget/g1/configs/b.1/f1
     rm /config/usb_gadget/g1/configs/b.1/f2
-    rm /config/usb_gadget/g1/configs/b.1/f3
     symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f1
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
