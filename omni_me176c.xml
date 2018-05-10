@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
     <remote name="me176c" fetch="https://github.com/me176c-dev/" />
+    <remote name="freedesktop" fetch="https://anongit.freedesktop.org/git/" />
 
     <project name="android_device_asus_me176c" path="device/asus/K013" remote="me176c" revision="cm-14.1" groups="me176c" />
     <project name="android_kernel_asus_me176c" path="kernel/asus/me176c" remote="me176c" revision="cm-14.1" groups="me176c" />
@@ -12,7 +13,7 @@
 
     <!-- Graphics -->
     <remove-project name="platform/external/libdrm" />
-    <project name="android_external_libdrm" path="external/libdrm" remote="me176c" revision="cm-14.1" groups="me176c" />
+    <project name="mesa/drm" path="external/libdrm" remote="freedesktop" revision="refs/tags/libdrm-2.4.92" />
 
     <!-- Patched AOSP/OmniROM projects -->
     <remove-project name="android_system_sepolicy" />
