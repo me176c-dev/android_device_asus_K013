@@ -8,9 +8,6 @@ on init
     # /dev/block/by-name so that we can use the same fstabs everywhere.
     symlink /dev/block/platform/80860F14:00/by-name /dev/block/by-name
 
-    # TODO: Avoid going into suspend until it works properly
-    write /sys/power/wake_lock ME176C.DisableSuspend
-
     # USB gadget configuration
     mkdir /config/usb_gadget/g1
     write /config/usb_gadget/g1/idVendor 0x0b05

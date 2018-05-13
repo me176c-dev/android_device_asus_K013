@@ -17,9 +17,6 @@ allow init kernel:key search;
 # avc: denied { module_request } for kmod="usbfunc:mtp" scontext=u:r:init:s0 tcontext=u:r:kernel:s0 tclass=system
 dontaudit init kernel:system module_request;
 
-# Add wake_lock to avoid suspend (TODO: Remove when suspend is fixed)
-wakelock_use(init)
-
 # TODO: Not sure why it wants to create files in the cgroup,
 # these should be already present. Just ignore for now.
 # avc: denied { create } for name="cpus" scontext=u:r:init:s0 tcontext=u:object_r:cgroup:s0 tclass=file
