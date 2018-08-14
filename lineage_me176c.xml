@@ -16,7 +16,7 @@
 
     <!-- Graphics -->
     <remove-project name="platform/external/libdrm" />
-    <project name="mesa/drm.git" path="external/libdrm" remote="freedesktop" revision="refs/tags/libdrm-2.4.92" />
+    <project name="mesa/drm.git" path="external/libdrm" remote="freedesktop" revision="refs/tags/libdrm-2.4.93" />
 
     <project name="android_external_minigbm" path="external/minigbm" remote="me176c" groups="me176c" />
 
