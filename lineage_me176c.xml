@@ -2,7 +2,7 @@
 <manifest>
     <remote name="me176c" fetch="https://github.com/me176c-dev/" />
     <remote name="kernel" fetch="https://git.kernel.org/pub/scm/linux/" />
-    <remote name="freedesktop" fetch="https://anongit.freedesktop.org/git/" />
+    <remote name="freedesktop" fetch="https://gitlab.freedesktop.org/" />
     <remote name="intel" fetch="https://github.com/intel/" />
     <remote name="xuguangxin" fetch="https://github.com/xuguangxin/" />
 
@@ -17,7 +17,7 @@
 
     <!-- Graphics -->
     <remove-project name="platform/external/libdrm" />
-    <project name="mesa/drm" path="external/libdrm" remote="freedesktop" revision="refs/tags/libdrm-2.4.92" />
+    <project name="mesa/drm.git" path="external/libdrm" remote="freedesktop" revision="refs/tags/libdrm-2.4.92" />
 
     <project name="android_external_minigbm" path="external/minigbm" remote="me176c" groups="me176c" />
 
