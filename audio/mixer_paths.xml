@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Adapted from https://github.com/plbossart/UCM/blob/master/bytcr-rt5640/HiFi -->
+<!-- Based on https://github.com/plbossart/UCM/blob/master/bytcr-rt5640/HiFi -->
 <mixer>
     <!-- Compressed -->
     <ctl name="media0_in Gain 0 Switch" value="1" />
@@ -130,7 +130,10 @@
     <ctl name="RECMIXR BST1 Switch" value="0" />
 
     <ctl name="Internal Mic Switch" value="0" />
-    <ctl name="IN1 Boost" value="1" />
+
+    <ctl name="ADC Capture Volume" value="63" />
+    <ctl name="ADC Boost Gain" value="1" />
+    <ctl name="IN1 Boost" value="8" />
 
     <!-- Internal Microphone -->
     <path name="internal-mic">
@@ -140,7 +143,6 @@
         <ctl name="RECMIXR BST1 Switch" value="1" />
 
         <ctl name="Internal Mic Switch" value="1" />
-        <ctl name="ADC Capture Volume" value="125" />
     </path>
 
 
