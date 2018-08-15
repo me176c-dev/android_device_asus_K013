@@ -1,0 +1,3 @@
+# Properly allow reading symlinks in sysfs
+# avc: denied { getattr } for path="/sys/dev/char/226:0" dev="sysfs" scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:sysfs:s0 tclass=lnk_file
+allow domain sysfs:lnk_file getattr;
