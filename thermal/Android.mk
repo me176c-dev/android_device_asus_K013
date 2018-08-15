@@ -1,0 +1,9 @@
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := thermal-conf.xml
+LOCAL_PROPRIETARY_MODULE := true
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_RELATIVE_PATH := thermald
+include $(BUILD_PREBUILT)

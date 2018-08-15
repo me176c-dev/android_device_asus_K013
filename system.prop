@@ -1,0 +1,33 @@
+# WiFi-only device
+ro.radio.noril=true
+
+# Screen density
+ro.sf.lcd_density=213
+
+# Hardware
+ro.hardware.gralloc=android_ia
+ro.hardware.sensors=iio
+ro.hardware.vulkan=mesa
+
+# OpenGL ES version (3.0, 196608=0x30000)
+ro.opengles.version=196608
+
+# Property to choose between virtual/external wfd display
+persist.sys.wfd.virtual=0
+
+# Audio (Enable deep buffer for video playback)
+media.stagefright.audio.deep=true
+
+# Bluetooth (TODO: Move to /factory)
+ro.bt.bdaddr_path=/vnddat/bt/bd_addr.conf
+
+# Sensors
+ro.iio.accel.panel=5
+ro.iio.accel.rotation=4
+ro.iio.magn.quirks=no-trig
+
+# Enable sdcardfs
+ro.sys.sdcardfs=true
+
+# WiFi
+wifi.interface=wlan0
