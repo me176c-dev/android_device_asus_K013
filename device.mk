@@ -42,10 +42,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES_DEBUG += \
     tinymix
 
-# Camera (TODO)
-PRODUCT_PACKAGES += \
-    me176c-camera.rc
-
 # Light HAL
 PRODUCT_PACKAGES += \
     lights.me176c
