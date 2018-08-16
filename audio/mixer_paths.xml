@@ -81,7 +81,7 @@
         <ctl name="Speaker Channel Switch" value="1" />
         <ctl name="Speaker L Playback Switch" value="1" />
         <ctl name="Speaker R Playback Switch" value="1" />
-        <ctl name="Speaker Playback Volume" value="29" />
+        <ctl name="Speaker Playback Volume" value="30" />
     </path>
 
 
