@@ -14,6 +14,11 @@
 # Other partitions
 /misc         emmc  /dev/block/by-name/misc
 
+# "ASUS Product Demo", contains mostly useless audio/video files for demo purposes...
+# However, it has a lot of space (~300 MB), so it's perfect as a second EFI partition.
+# (This is only relevant when setting up Linux dual-boot...)
+/apd          ext4  /dev/block/by-name/APD                     flags=display="ASUS Product Demo (APD)";wipeingui;backup=1
+
 # EFI partition (contains bootloader)
 /esp          vfat  /dev/block/by-name/ESP                     flags=display="EFI System Partition (ESP)";backup=1
 
