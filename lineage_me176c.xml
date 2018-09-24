@@ -30,7 +30,7 @@
     <project name="android_external_thermald" path="external/thermald" remote="me176c" groups="me176c" />
 
     <!-- Linux firmware files -->
-    <project name="kernel/git/firmware/linux-firmware.git" path="vendor/linux/firmware" remote="kernel" revision="7d2c913dcd1be083350d97a8cb1eba24cfacbc8a" />
+    <project name="kernel/git/firmware/linux-firmware.git" path="vendor/linux/firmware" remote="kernel" revision="253a573936ee2078d206527f3ae845b4dc681269" />
 
     <!-- Hardware video acceleration -->
     <project name="android_vendor_intel_mediasdk" path="vendor/intel/mediasdk" remote="me176c" groups="me176c" />
