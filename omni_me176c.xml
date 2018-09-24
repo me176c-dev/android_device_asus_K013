@@ -13,7 +13,7 @@
 
     <!-- Graphics -->
     <remove-project name="platform/external/libdrm" />
-    <project name="mesa/drm.git" path="external/libdrm" remote="freedesktop" revision="refs/tags/libdrm-2.4.93" />
+    <project name="mesa/drm.git" path="external/libdrm" remote="freedesktop" revision="refs/tags/libdrm-2.4.94" />
 
     <!-- Patched AOSP/OmniROM projects -->
     <remove-project name="android_system_sepolicy" />
