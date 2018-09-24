@@ -12,3 +12,6 @@ userdebug_or_eng(`
   # avc: denied { map } for scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:su_exec:s0 tclass=file
   allow untrusted_app su_exec:file map;
 ')
+
+# avc: denied { map } for path="/system/bin/mkfs.f2fs" scontext=u:r:vold:s0 tcontext=u:object_r:mkfs_exec:s0 tclass=file
+allow vold mkfs_exec:file map;
