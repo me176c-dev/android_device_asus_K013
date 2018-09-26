@@ -48,4 +48,3 @@ on boot
     write /sys/bus/pci/devices/0000:00:1a.0/power/control auto
     write /sys/bus/pci/devices/0000:00:1f.0/power/control auto
     write /sys/bus/platform/devices/dwc3.1.auto/power/control auto
-    write /sys/bus/platform/devices/hdmi-lpe-audio/power/control auto
