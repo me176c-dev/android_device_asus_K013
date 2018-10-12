@@ -13,6 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+ifeq ($(TARGET_DEVICE), K013)
+ifneq ($(TARGET_NO_KERNEL),true)
+
 ## Externally influenced variables
 KERNEL_SRC := $(TARGET_KERNEL_SOURCE)
 KERNEL_DEFCONFIG := $(TARGET_KERNEL_DEFCONFIG)
@@ -30,7 +33,7 @@ KERNEL_OUT := $(abspath $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ)
 # Kernel config
 KERNEL_CONFIG := $(KERNEL_OUT)/.config
 
-$(KERNEL_CONFIG): $(KERNEL_DEFCONFIG) | $(ACP)
+$(KERNEL_CONFIG): $(KERNEL_DEFCONFIG)
 	@echo "Building Kernel Config"
 	$(copy-file-to-target)
 	$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) olddefconfig
@@ -46,8 +49,9 @@ KERNEL_BIN := $(KERNEL_OUT)/arch/$(KERNEL_ARCH)/boot/$(BOARD_KERNEL_IMAGE_NAME)
 
 TARGET_KERNEL_BINARIES: $(KERNEL_CONFIG)
 	@echo "Building Kernel"
-	$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(BOARD_KERNEL_IMAGE_NAME)
+	$(MAKE) $(MAKE_FLAGS) -j6 -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(BOARD_KERNEL_IMAGE_NAME)
 
+ifneq ($(TARGET_KERNEL_BUILD_MODULES), false)
 # Kernel modules
 KERNEL_MODULES_OUT := $(abspath $(TARGET_OUT_VENDOR)/lib/modules)
 KERNEL_MODULES_OBJ := $(abspath $(TARGET_OUT_INTERMEDIATES)/KERNEL_MODULES)
@@ -68,11 +72,17 @@ $(KERNEL_MODULES_OUT): $(KERNEL_MODULES_OBJ)
 
 # TODO: Remove kernel modules from kernel target
 $(KERNEL_BIN): TARGET_KERNEL_BINARIES | $(KERNEL_MODULES_OUT)
+else
+$(KERNEL_BIN): TARGET_KERNEL_BINARIES
+endif
 
-$(INSTALLED_KERNEL_TARGET): $(KERNEL_BIN) | $(ACP)
+$(INSTALLED_KERNEL_TARGET): $(KERNEL_BIN)
 	$(transform-prebuilt-to-target)
 
 ALL_PREBUILT += $(INSTALLED_KERNEL_TARGET)
 
 .PHONY: kernel
 kernel: $(INSTALLED_KERNEL_TARGET)
+
+endif # TARGET_NO_KERNEL
+endif # TARGET_DEVICE

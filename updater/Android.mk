@@ -9,6 +9,8 @@ endif
 include $(CLEAR_VARS)
 LOCAL_MODULE := libasus_updater
 LOCAL_SRC_FILES := asus-updater.cpp
-LOCAL_C_INCLUDES := $(RECOVERY_PATH)
+LOCAL_C_INCLUDES := \
+    $(RECOVERY_PATH)/edify/include \
+    $(RECOVERY_PATH)/otautil/include
 LOCAL_CFLAGS := -Werror
 include $(BUILD_STATIC_LIBRARY)

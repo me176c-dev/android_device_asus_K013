@@ -1,3 +1,5 @@
+TARGET_DEVICE_DIR := device/asus/$(TARGET_DEVICE)
+
 # Architecture
 TARGET_BOARD_PLATFORM := baytrail
 
@@ -5,17 +7,13 @@ TARGET_ARCH := x86
 TARGET_ARCH_VARIANT := silvermont
 TARGET_CPU_ABI := x86
 
-TARGET_DEVICE ?= me176c
-
 # Text relocations
 # Needed for most ASM code on x86 right now
-# TODO: I should consider switching to x86_64...
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 TARGET_NEEDS_PLATFORM_TEXTRELS := true
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 4096
-BOARD_NAND_SPARE_SIZE := 0
 
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
@@ -27,7 +25,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel/asus/me176c
+TARGET_KERNEL_SOURCE := kernel/asus/$(TARGET_DEVICE)
 TARGET_KERNEL_ARCH := x86_64
 
 # Use host distribution compiler if it is recent enough for Retpoline support
@@ -39,9 +37,9 @@ BOARD_KERNEL_IMAGE_NAME := bzImage
 BOARD_KERNEL_CMDLINE += quiet androidboot.hardware=me176c tsc=reliable rfkill.default_state=0
 BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware
 
-BOARD_SEPOLICY_DIRS += device/asus/$(TARGET_DEVICE)/sepolicy
+#BOARD_SEPOLICY_DIRS += device/asus/$(TARGET_DEVICE)/sepolicy
 # Uncomment this to set SELinux to permissive by default
-#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 TARGET_USES_64_BIT_BINDER := true
 ENABLE_CPUSETS := true
@@ -51,7 +49,6 @@ MALLOC_SVELTE := true
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_me176c
-TARGET_IGNORE_RO_BOOT_SERIALNO := true
 
 # Graphics
 BOARD_KERNEL_CMDLINE += vga=current i915.modeset=1 i915.enable_fbc=1 drm.vblankoffdelay=1
@@ -77,7 +74,7 @@ USE_XML_AUDIO_POLICY_CONF := 1
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_CUSTOM_BT_CONFIG := device/asus/me176c/bluetooth/vnd_me176c.txt
+BOARD_CUSTOM_BT_CONFIG := $(TARGET_DEVICE_DIR)/bluetooth/vnd_me176c.txt
 
 # Media
 BUILD_WITH_FULL_STAGEFRIGHT := true
@@ -109,31 +106,52 @@ WITH_DEXPREOPT := true
 WITH_DEXPREOPT_PIC := true
 
 # Set correct fingerprint in ZIP package
-TARGET_RELEASETOOLS_EXTENSIONS := device/asus/$(TARGET_DEVICE)
+TARGET_RELEASETOOLS_EXTENSIONS := $(TARGET_DEVICE_DIR)
+
+# Recovery
+TARGET_RECOVERY_FSTAB := $(TARGET_DEVICE_DIR)/init/root/fstab.me176c
 
 # TWRP
-BOARD_HAS_NO_REAL_SDCARD := true
-RECOVERY_SDCARD_ON_DATA := true
+ifeq ($(RECOVERY_VARIANT), twrp)
+    # No need to compile kernel modules on TWRP
+    TARGET_KERNEL_BUILD_MODULES := false
 
-TW_THEME := portrait_hdpi
-TW_INCLUDE_CRYPTO := true
-TW_EXCLUDE_SUPERSU := true
-TW_EXCLUDE_TWRPAPP := true
+    # The ramdisk is too large to fit into the recovery partition
+    # LZMA is slower, but compresses better to make it fit into the partition
+    LZMA_RAMDISK_TARGETS := recovery
 
-# Remove once TWRP supports FunctionFS for MTP
-TW_EXCLUDE_MTP := true
+    # Include build date in TWRP version
+    TW_DEVICE_VERSION := $(shell date -u +%Y-%m-%d)
+    TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
 
-TW_EXCLUDE_DEFAULT_USB_INIT := true
-TARGET_USE_CUSTOM_LUN_FILE_PATH := "/config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file"
+    TW_THEME := portrait_hdpi
+    TW_USE_TOOLBOX := true
 
-TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone6/temp
+    # Include/exclude some features
+    TW_INCLUDE_CRYPTO := true
+    TW_INCLUDE_CRYPTO_FBE := false
+    TW_EXCLUDE_TWRPAPP := true
 
-TW_NO_LEGACY_PROPS := true
+    # SD card is on internal storage
+    BOARD_HAS_NO_REAL_SDCARD := true
+    RECOVERY_SDCARD_ON_DATA := true
 
-TARGET_RECOVERY_UPDATER_LIBS += libasus_updater
-TW_FORCE_DEFAULT_UPDATER_FINGERPRINT := asus/WW_K013/K013:5.0/
+    # TODO: Remove once TWRP supports FunctionFS for MTP
+    TW_EXCLUDE_MTP := true
 
-# Include build date in TWRP version
-TW_DEVICE_VERSION := $(shell date -u +%Y-%m-%d)
+    # This is needed to get ADB working with USB configfs
+    TW_EXCLUDE_DEFAULT_USB_INIT := true
+    TARGET_USE_CUSTOM_LUN_FILE_PATH := "/config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file"
 
--include vendor/asus/me176c/board.mk
+    TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone6/temp
+
+    # This is only used by the original ASUS packages, which is broken anyway
+    # and replaced automatically with an newer "updater" binary
+    TW_NO_LEGACY_PROPS := true
+
+    # TODO: Re-enable once updater is fixed in TWRP
+    #TW_FORCE_DEFAULT_UPDATER_FINGERPRINT := asus/WW_K013/K013:5.0/
+    TARGET_RECOVERY_UPDATER_LIBS += libasus_updater
+endif
+
+-include vendor/asus/$(TARGET_DEVICE)/BoardConfigVendor.mk

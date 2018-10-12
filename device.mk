@@ -1,6 +1,12 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk)
 
+PRODUCT_BRAND := asus
+PRODUCT_DEVICE := K013
+
+PRODUCT_MANUFACTURER := ASUS
+PRODUCT_MODEL := ASUS MeMO Pad 7 (ME176C)
+
 PRODUCT_CHARACTERISTICS := tablet
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := hdpi
@@ -16,9 +22,7 @@ PRODUCT_PACKAGES += \
     fstab.me176c \
     init.me176c.rc \
     ueventd.me176c.rc \
-    twrp.fstab \
-    init.recovery.me176c.rc \
-    init.recovery.usb.rc
+    init.recovery.me176c.rc
 
 # Display
 TARGET_SCREEN_WIDTH := 1280
@@ -92,10 +96,13 @@ PRODUCT_COPY_FILES += \
     vendor/linux/firmware/intel/fw_sst_0f28.bin:system/vendor/firmware/intel/fw_sst_0f28.bin \
     vendor/linux/firmware/LICENCE.fw_sst_0f28:system/vendor/firmware/LICENCE.fw_sst_0f28
 
-# Recovery - include Lambdadroid and LineageOS keys in recovery
+# This is needed to let TWRP detect its own path in the LineageOS tree
+$(call project-set-path,recovery,bootable/recovery)
+
+# Include well known keys for verification
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     $(LOCAL_PATH)/recovery/lambdadroid \
     $(LOCAL_PATH)/recovery/lineage \
     $(LOCAL_PATH)/recovery/open_gapps
 
-$(call inherit-product-if-exists, vendor/asus/me176c/product.mk)
+$(call inherit-product-if-exists, vendor/asus/$(PRODUCT_DEVICE)/product.mk)
