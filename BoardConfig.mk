@@ -47,6 +47,8 @@ ENABLE_CPUSETS := true
 # Optimize for low RAM devices
 MALLOC_SVELTE := true
 
+DEVICE_MANIFEST_FILE := $(TARGET_DEVICE_DIR)/manifest.xml
+
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_me176c
 

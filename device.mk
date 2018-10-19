@@ -39,6 +39,7 @@ PRODUCT_PACKAGES += \
     gralloc.android_ia \
     libGLES_mesa \
     vulkan.mesa \
+    android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.composer@2.1-service \
     android.hardware.graphics.composer@2.1-impl \
