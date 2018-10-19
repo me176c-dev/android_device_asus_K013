@@ -59,7 +59,7 @@ PRODUCT_PACKAGES_DEBUG += \
 
 # Light HAL
 PRODUCT_PACKAGES += \
-    lights.me176c
+    android.hardware.light@2.0-service-me176c
 
 # Media
 PRODUCT_PACKAGES += \

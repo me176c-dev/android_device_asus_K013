@@ -1,0 +1,19 @@
+cc_binary {
+    name: "android.hardware.light@2.0-service-me176c",
+    relative_install_path: "hw",
+    vendor: true,
+    init_rc: ["android.hardware.light@2.0-service-me176c.rc"],
+
+    srcs: [
+        "service.cpp",
+        "Light.cpp",
+    ],
+
+    shared_libs: [
+        "libbase",
+        "libhidlbase",
+        "libhidltransport",
+        "libutils",
+        "android.hardware.light@2.0",
+    ],
+}
