@@ -24,6 +24,10 @@ PRODUCT_PACKAGES += \
     ueventd.me176c.rc \
     init.recovery.me176c.rc
 
+# Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@4.0-service
+
 # Display
 TARGET_SCREEN_WIDTH := 1280
 TARGET_SCREEN_HEIGHT := 800
@@ -34,7 +38,11 @@ PRODUCT_PACKAGES += \
     libdrm_intel \
     gralloc.android_ia \
     libGLES_mesa \
-    vulkan.mesa
+    vulkan.mesa \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.composer@2.1-service \
+    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.mapper@2.0-impl
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -42,7 +50,9 @@ PRODUCT_PACKAGES += \
     audio.primary.me176c \
     audio.a2dp.default \
     audio.r_submix.default \
-    audio_policy_configuration.xml
+    audio_policy_configuration.xml \
+    android.hardware.audio@4.0-impl
+
 PRODUCT_PACKAGES_DEBUG += \
     tinymix
 
@@ -77,6 +87,11 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf \
     hostapd
+
+# Bluetooth
+PRODUCT_PACKAGES += \
+    libbt-vendor \
+    android.hardware.bluetooth@1.0-impl
 
 # Hardware
 PRODUCT_COPY_FILES += \

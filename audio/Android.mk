@@ -15,7 +15,7 @@ LOCAL_SHARED_LIBRARIES := \
 LOCAL_C_INCLUDES := \
     external/tinyalsa/include \
     $(call include-path-for, audio-route)
-LOCAL_CFLAGS := -Werror -pedantic -Wno-unused-parameter
+LOCAL_CFLAGS := -Werror -Wno-unused-parameter
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)

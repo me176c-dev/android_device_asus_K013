@@ -81,6 +81,7 @@ static void power_set_interactive(struct power_module *module, int on) {
     update_battery_state(on);
 }
 
+#if 0
 static void power_set_profile(int profile) {
     switch (profile) {
     case PROFILE_POWER_SAVE:
@@ -112,13 +113,16 @@ static void power_set_profile(int profile) {
         ALOGE("Invalid performance profile: %d", profile);
     }
 }
+#endif
 
 static void power_hint(struct power_module *module, power_hint_t hint, void *data) {
     module;
     switch (hint) {
+#if 0
     case POWER_HINT_SET_PROFILE:
         power_set_profile(*(int*) data);
         break;
+#endif
     case POWER_HINT_DISABLE_TOUCH:
         update_touchscreen_state(!data);
         break;
@@ -127,6 +131,7 @@ static void power_hint(struct power_module *module, power_hint_t hint, void *dat
     }
 }
 
+#if 0
 static int power_get_feature(struct power_module *module, feature_t feature) {
     module;
     switch (feature) {
@@ -136,6 +141,7 @@ static int power_get_feature(struct power_module *module, feature_t feature) {
         return -1;
     }
 }
+#endif
 
 static struct hw_module_methods_t power_module_methods = {
     .open = NULL,
@@ -155,5 +161,7 @@ struct power_module HAL_MODULE_INFO_SYM = {
     .init = power_init,
     .setInteractive = power_set_interactive,
     .powerHint = power_hint,
+#if 0
     .getFeature = power_get_feature,
+#endif
 };
