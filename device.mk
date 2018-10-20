@@ -52,7 +52,9 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.r_submix.default \
     audio_policy_configuration.xml \
-    android.hardware.audio@4.0-impl
+    android.hardware.audio@4.0-impl \
+    android.hardware.audio.effect@4.0-impl \
+    android.hardware.audio@2.0-service
 
 PRODUCT_PACKAGES_DEBUG += \
     tinymix
