@@ -155,6 +155,9 @@ ifeq ($(RECOVERY_VARIANT), twrp)
     # TODO: Re-enable once updater is fixed in TWRP
     #TW_FORCE_DEFAULT_UPDATER_FINGERPRINT := asus/WW_K013/K013:5.0/
     TARGET_RECOVERY_UPDATER_LIBS += libasus_updater
+
+    # Fix build error on LineageOS
+    -include vendor/lineage/config/BoardConfigLineage.mk
 endif
 
 -include vendor/asus/$(TARGET_DEVICE)/BoardConfigVendor.mk
