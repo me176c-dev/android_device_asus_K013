@@ -47,7 +47,13 @@ ENABLE_CPUSETS := true
 # Optimize for low RAM devices
 MALLOC_SVELTE := true
 
+# Treble
 DEVICE_MANIFEST_FILE := $(TARGET_DEVICE_DIR)/manifest.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE += \
+    system/libhidl/vintfdata/manifest_healthd_exclude.xml
+
+# TODO: This isn't passing currently due to the missing Gatekeeper HAL
+#PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_me176c

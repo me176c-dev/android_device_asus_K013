@@ -24,6 +24,13 @@ PRODUCT_PACKAGES += \
     ueventd.me176c.rc \
     init.recovery.me176c.rc
 
+# Health
+# Note: android.hardware.health@2.0-service.override would be enough but it's
+# completely broken: its init.rc file still references the binary without .override
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.0-service \
+    android.hardware.health@2.0-service.override
+
 # Keymaster
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.0-service
@@ -99,6 +106,10 @@ PRODUCT_PACKAGES += \
     libbt-vendor \
     android.hardware.bluetooth@1.0-impl \
     android.hardware.bluetooth@1.0-service
+
+# DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.1-service.clearkey
 
 # Hardware
 PRODUCT_COPY_FILES += \
