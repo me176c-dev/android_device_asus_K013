@@ -68,7 +68,7 @@ PRODUCT_PACKAGES_DEBUG += \
 
 # Light HAL
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service-me176c
+    android.hardware.light@2.0-service.me176c
 
 # Media
 PRODUCT_PACKAGES += \
@@ -79,7 +79,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.0-service-me176c
+    android.hardware.power@1.0-service.me176c
 
 # Sensors
 PRODUCT_PACKAGES += \
