@@ -28,3 +28,8 @@ ro.sys.sdcardfs=true
 
 # WiFi
 wifi.interface=wlan0
+
+# Factory Reset Protection
+# Note: This partition doesn't actually exist.
+# However, setting this property fixes a crash when entering Developer Options.
+ro.frp.pst=/dev/block/by-name/frp
