@@ -1,6 +1,9 @@
 on early-init
     mount debugfs none /sys/kernel/debug mode=0755
 
+    # Needed to fix "Permission Denied" error when using webview
+    chmod 0222 /sys/kernel/debug/tracing/trace_marker
+
 on init
     # Android creates by-name disk links with the disk controller
     # in the generated path, so that the names pulled out of the GPT
