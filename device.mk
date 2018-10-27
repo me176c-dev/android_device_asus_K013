@@ -142,4 +142,4 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
     $(LOCAL_PATH)/recovery/lineage \
     $(LOCAL_PATH)/recovery/open_gapps
 
-$(call inherit-product-if-exists, vendor/asus/$(PRODUCT_DEVICE)/product.mk)
+$(call inherit-product-if-exists, vendor/asus/$(PRODUCT_DEVICE)/device-vendor.mk)
