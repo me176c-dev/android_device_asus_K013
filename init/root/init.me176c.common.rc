@@ -41,6 +41,12 @@ on early-boot
     write /config/usb_gadget/g1/strings/0x409/product ${ro.product.model}
     write /config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
 
+    # MTP/PTP
+    mkdir /dev/usb-ffs/mtp 0770 mtp mtp
+    mkdir /dev/usb-ffs/ptp 0770 mtp mtp
+    mount functionfs mtp /dev/usb-ffs/mtp rmode=0770,fmode=0660,uid=1024,gid=1024,no_disconnect=1
+    mount functionfs ptp /dev/usb-ffs/ptp rmode=0770,fmode=0660,uid=1024,gid=1024,no_disconnect=1
+
 on boot
     setprop sys.usb.configfs 1
 

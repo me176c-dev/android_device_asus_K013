@@ -34,7 +34,9 @@ ifneq ($(shell printf "%s\n" "7.3" "`gcc -dumpversion`" | sort -cV 2>&1),)
 endif
 
 BOARD_KERNEL_IMAGE_NAME := bzImage
-BOARD_KERNEL_CMDLINE += quiet androidboot.hardware=me176c tsc=reliable rfkill.default_state=0
+BOARD_KERNEL_CMDLINE += quiet androidboot.hardware=me176c tsc=reliable
+BOARD_KERNEL_CMDLINE += rfkill.default_state=0
+BOARD_KERNEL_CMDLINE += ug31xx_battery.early=1
 BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware
 
 #BOARD_SEPOLICY_DIRS += device/asus/$(TARGET_DEVICE)/sepolicy
@@ -59,10 +61,7 @@ DEVICE_FRAMEWORK_MANIFEST_FILE += \
 TARGET_INIT_VENDOR_LIB := libinit_me176c
 
 # Graphics
-BOARD_KERNEL_CMDLINE += vga=current i915.modeset=1 i915.enable_fbc=1 drm.vblankoffdelay=1
-
-# Enable all 255 brightness levels
-BOARD_KERNEL_CMDLINE += i915.pwm_max_brightness=255
+BOARD_KERNEL_CMDLINE += vga=current i915.modeset=1 i915.fastboot=1 i915.enable_fbc=1 drm.vblankoffdelay=1
 
 # Surfaceflinger
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
