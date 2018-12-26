@@ -102,8 +102,7 @@ PRODUCT_PACKAGES += \
     me176c-wifi.rc \
     wpa_supplicant \
     wpa_supplicant.conf \
-    hostapd \
-    android.hardware.wifi@1.0-service
+    hostapd
 
 # Bluetooth
 PRODUCT_PACKAGES += \

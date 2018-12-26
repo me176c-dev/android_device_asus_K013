@@ -2,9 +2,10 @@ on boot
     insmod /vendor/lib/modules/brcmutil.ko
     insmod /vendor/lib/modules/brcmfmac.ko
 
-    # Wait for the WiFi driver to finish loading
-    wait /sys/class/rfkill/rfkill2/state
-    chown wifi wifi /sys/class/rfkill/rfkill2/state
+service vendor.wifi-unblock /bin/toybox rfkill unblock wifi
+    class early_hal
+    seclabel u:r:watchdogd:s0  # TODO
+    oneshot
 
 on zygote-start
     # Create the directories used by the Wireless subsystem
