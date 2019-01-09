@@ -5,9 +5,9 @@ ro.radio.noril=true
 ro.sf.lcd_density=213
 
 # Hardware
-ro.hardware.gralloc=android_ia
+ro.hardware.gralloc=minigbm
 ro.hardware.sensors=iio
-ro.hardware.vulkan=mesa
+ro.hardware.vulkan=anv
 
 # OpenGL ES version (3.0, 196608=0x30000)
 ro.opengles.version=196608

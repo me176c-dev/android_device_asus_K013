@@ -17,6 +17,7 @@
     <project name="platform/external/libdrm" path="external/libdrm" remote="aosp" groups="pdk" revision="0fb967dea8a8e5205d9bab3af696bef7ae009bdd" />
 
     <project name="android_external_minigbm" path="external/minigbm" remote="me176c" groups="me176c" />
+    <project name="drmfb-composer" path="external/drmfb-composer" remote="me176c" revision="master" />
 
     <remove-project name="platform/external/mesa3d" />
     <project name="android_external_mesa" path="external/mesa" remote="me176c" groups="me176c" />
@@ -44,8 +45,5 @@
 
     <remove-project name="LineageOS/android_frameworks_opt_net_wifi" />
     <project name="android_frameworks_opt_net_wifi" path="frameworks/opt/net/wifi" remote="me176c" groups="me176c" />
-
-    <remove-project name="LineageOS/android_hardware_interfaces" />
-    <project name="android_hardware_interfaces" path="hardware/interfaces" remote="me176c" groups="me176c" />
 
 </manifest>
