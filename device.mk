@@ -32,8 +32,10 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service.override
 
 # Keymaster
+# TODO: 4.0 causes issues with the lock screen
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.0-service
+    android.hardware.keymaster@3.0-service \
+    android.hardware.keymaster@3.0-impl
 
 # USB
 PRODUCT_PACKAGES += \
