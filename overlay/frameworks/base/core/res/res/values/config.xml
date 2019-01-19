@@ -56,6 +56,12 @@
          it causes the device to wake up. -->
     <bool name="config_lidControlsSleep">true</bool>
 
+    <!-- Boolean indicating whether the HWC setColorTransform function can be performed efficiently
+         in hardware. -->
+    <!-- TODO: This is not actually performed in hardware at the moment.
+         However, disabling this breaks LiveDisplay. -->
+    <bool name="config_setColorTransformAccelerated">true</bool>
+
     <!-- Indicate whether the SD card is accessible without removing the battery. -->
     <bool name="config_batterySdCardAccessibility">true</bool>
 
