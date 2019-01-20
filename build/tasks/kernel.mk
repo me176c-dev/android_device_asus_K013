@@ -21,14 +21,12 @@ KERNEL_SRC := $(TARGET_KERNEL_SOURCE)
 KERNEL_DEFCONFIG := $(TARGET_KERNEL_DEFCONFIG)
 KERNEL_ARCH := $(TARGET_KERNEL_ARCH)
 
-# Clear this first to prevent accidental poisoning from env
-MAKE_FLAGS :=
+# Kernel output directory
+KERNEL_OUT := $(abspath $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ)
 
 # Configure kernel compiler toolchain
 KERNEL_CROSS_COMPILE := CROSS_COMPILE="$(CC_WRAPPER) $(TARGET_KERNEL_CROSS_COMPILE_PREFIX)"
-
-# Kernel output directory
-KERNEL_OUT := $(abspath $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ)
+KERNEL_MAKE := $(MAKE) -j6 -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE)
 
 # Kernel config
 KERNEL_CONFIG := $(KERNEL_OUT)/.config
@@ -36,39 +34,39 @@ KERNEL_CONFIG := $(KERNEL_OUT)/.config
 $(KERNEL_CONFIG): $(KERNEL_DEFCONFIG)
 	@echo "Building Kernel Config"
 	$(copy-file-to-target)
-	$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) olddefconfig
+	$(KERNEL_MAKE) olddefconfig
 
 # Kernel headers
 KERNEL_HEADERS_INSTALL := $(KERNEL_OUT)/usr
 $(KERNEL_HEADERS_INSTALL):
 #	@echo "Building Kernel Headers"
-#	$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) headers_install
+#	$(KERNEL_MAKE) headers_install
 
 # Kernel binary
 KERNEL_BIN := $(KERNEL_OUT)/arch/$(KERNEL_ARCH)/boot/$(BOARD_KERNEL_IMAGE_NAME)
+KERNEL_MAKE_TARGET := $(BOARD_KERNEL_IMAGE_NAME)
 
 TARGET_KERNEL_BINARIES: $(KERNEL_CONFIG)
 	@echo "Building Kernel"
-	$(MAKE) $(MAKE_FLAGS) -j6 -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(BOARD_KERNEL_IMAGE_NAME)
+	$(KERNEL_MAKE) $(KERNEL_MAKE_TARGET)
 
-ifneq ($(TARGET_KERNEL_BUILD_MODULES), false)
 # Kernel modules
+ifneq ($(TARGET_KERNEL_BUILD_MODULES), false)
+KERNEL_MAKE_TARGET := $(KERNEL_MAKE_TARGET) modules
+
 KERNEL_MODULES_OUT := $(abspath $(TARGET_OUT_VENDOR)/lib/modules)
 KERNEL_MODULES_OBJ := $(abspath $(TARGET_OUT_INTERMEDIATES)/KERNEL_MODULES)
 
 $(KERNEL_MODULES_OBJ): TARGET_KERNEL_BINARIES
-	@echo "Building Kernel Modules"
-	$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) modules
-	$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) INSTALL_MOD_PATH=$(KERNEL_MODULES_OBJ) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) modules_install
-
-	find $(KERNEL_MODULES_OBJ) -type f -name '*.ko' -exec $(KERNEL_TOOLCHAIN_PATH)strip --strip-unneeded {} ';'
-	$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) INSTALL_MOD_PATH=$(KERNEL_MODULES_OBJ) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) modules_sign
+	@echo "Installing Kernel Modules"
+	$(KERNEL_MAKE) INSTALL_MOD_PATH=$(KERNEL_MODULES_OBJ) modules_install
 
 $(KERNEL_MODULES_OUT): $(KERNEL_MODULES_OBJ)
 	@echo "Copying Kernel Modules"
 	$(hide) rm -rf $(KERNEL_MODULES_OUT)
-	$(hide) mkdir -p $(KERNEL_MODULES_OUT)
-	find $(KERNEL_MODULES_OBJ) -type f -name '*.ko' -exec cp {} $(KERNEL_MODULES_OUT) ';'
+	KERNELRELEASE=$$(<$(KERNEL_OUT)/include/config/kernel.release) && \
+		cp -a $(KERNEL_MODULES_OBJ)/lib/modules/$$KERNELRELEASE $(KERNEL_MODULES_OUT) && \
+		rm -f $(KERNEL_MODULES_OUT)/{source,build}
 
 # TODO: Remove kernel modules from kernel target
 $(KERNEL_BIN): TARGET_KERNEL_BINARIES | $(KERNEL_MODULES_OUT)

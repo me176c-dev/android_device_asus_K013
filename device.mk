@@ -22,7 +22,8 @@ PRODUCT_PACKAGES += \
     fstab.me176c \
     init.me176c.rc \
     ueventd.me176c.rc \
-    init.recovery.me176c.rc
+    init.recovery.me176c.rc \
+    kernel-modules.me176c.rc
 
 # Health
 # Note: android.hardware.health@2.0-service.override would be enough but it's
@@ -59,7 +60,6 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    me176c-audio.rc \
     audio.primary.me176c \
     audio.a2dp.default \
     audio.r_submix.default \
@@ -100,7 +100,7 @@ PRODUCT_PACKAGES += \
 
 # WiFi
 PRODUCT_PACKAGES += \
-    me176c-wifi.rc \
+    wifi.me176c.rc \
     wpa_supplicant \
     wpa_supplicant.conf \
     hostapd

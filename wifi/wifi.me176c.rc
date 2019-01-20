@@ -1,7 +1,3 @@
-on boot
-    insmod /vendor/lib/modules/brcmutil.ko
-    insmod /vendor/lib/modules/brcmfmac.ko
-
 service vendor.wifi-unblock /bin/toybox rfkill unblock wifi
     class early_hal
     seclabel u:r:watchdogd:s0  # TODO

@@ -1,7 +1,7 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := me176c-wifi.rc
+LOCAL_MODULE := wifi.me176c.rc
 LOCAL_VENDOR_MODULE := true
 LOCAL_SRC_FILES := $(LOCAL_MODULE)
 LOCAL_MODULE_CLASS := ETC
