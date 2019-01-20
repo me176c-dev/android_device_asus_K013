@@ -20,9 +20,6 @@ ro.iio.accel.panel=5
 ro.iio.accel.rotation=4
 ro.iio.magn.quirks=no-trig
 
-# Enable sdcardfs
-ro.sys.sdcardfs=true
-
 # WiFi
 wifi.interface=wlan0
 
