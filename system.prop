@@ -15,9 +15,6 @@ ro.opengles.version=196608
 # Audio (Enable deep buffer for video playback)
 media.stagefright.audio.deep=true
 
-# Bluetooth (TODO: Move to /factory)
-ro.bt.bdaddr_path=/vnddat/bt/bd_addr.conf
-
 # Sensors
 ro.iio.accel.panel=5
 ro.iio.accel.rotation=4
