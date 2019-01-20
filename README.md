@@ -1,5 +1,5 @@
-# LineageOS 14.1 for ASUS MeMO Pad 7 (ME176C/CX)
-LineageOS is a free, community built, aftermarket firmware distribution of Android 7.1.2 (Nougat),
+# LineageOS 16.0 for ASUS MeMO Pad 7 (ME176C/CX)
+LineageOS is a free, community built, aftermarket firmware distribution of Android 9 (Pie),
 which is designed to increase performance and reliability over stock Android for your device.
 
 This is an unofficial port for the ASUS MeMO Pad 7 (ME176C/CX), based on a recent upstream kernel
@@ -7,13 +7,13 @@ and various open-source components. More information available on the [XDA Threa
 https://forum.xda-developers.com/memo-pad-7/orig-development/rom-unofficial-lineageos-14-1-asus-memo-t3633341).
 
 ## Development
-The ROM consists out of multiple repositories, the [device configuration](https://github.com/me176c-dev/android_device_asus_me176c),
-the [kernel](https://github.com/me176c-dev/android_kernel_asus_me176c), a few [proprietary firmware files/libraries](
-https://github.com/me176c-dev/android_vendor_asus_me176c) :(, and a few forks of upstream repositories and other open-source
+The ROM consists out of multiple repositories, the [device configuration](https://github.com/me176c-dev/android_device_asus_K013),
+the [kernel](https://github.com/me176c-dev/android_kernel_asus_K013), a few [proprietary firmware files/libraries](
+https://github.com/me176c-dev/android_vendor_asus_K013) :(, and a few forks of upstream repositories and other open-source
 projects.
 
 ### Building the ROM
-The ROM is built in a regular LineageOS 14.1 build environment, with a few additional/replaced repositories using a
+The ROM is built in a regular LineageOS 16.0 build environment, with a few additional/replaced repositories using a
 local manifest.
 
 **Note:** This guide assumes you have built LineageOS for another device before and therefore are aware of
@@ -22,7 +22,7 @@ preparations required to build LineageOS (e.g. supported Linux distributions, ad
 1. **Initialize local repositories:**
 
     ```bash
-    $ repo init -u https://github.com/LineageOS/android.git -b cm-14.1
+    $ repo init -u https://github.com/LineageOS/android.git -b lineage-16.0
     ```
 
 2. **Add the local manifest:** Download [lineage_me176c.xml](lineage_me176c.xml) and copy it to `.repo/local_manifests/`.
@@ -38,8 +38,9 @@ preparations required to build LineageOS (e.g. supported Linux distributions, ad
 For the full set of features, you need to download and unpack using a script.
 
     ```bash
-    $ cd vendor/asus/me176c
-    $ ./setup.sh
+    $ . build/envsetup.sh
+    $ lunch lineage_me176c-userdebug
+    $ mka proprietary
     ```
 
    Currently, one step requires root to temporarily mount a partition from a downloaded disk image. The script is using
@@ -53,6 +54,8 @@ For the full set of features, you need to download and unpack using a script.
     ```
 
 ### Additional patches
+**Note:** This section will be updated for LineageOS 16.0 when the first "stable" build is released.
+
 The ROM distributed on XDA comes with additional patches not present in LineageOS or the me176c-dev repositories.
 These are applied manually before the ROM build is started.
 
