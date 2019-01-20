@@ -78,6 +78,7 @@ PRODUCT_PACKAGES += \
 # Media
 PRODUCT_PACKAGES += \
     media_codecs.xml \
+    media_profiles_V1_0.xml \
     i965_drv_video \
     libstagefrighthw \
     libmfxhw32
@@ -96,7 +97,7 @@ PRODUCT_PACKAGES += \
 # Thermal daemon
 PRODUCT_PACKAGES += \
     thermald \
-	thermal-conf.xml
+    thermal-conf.xml
 
 # WiFi
 PRODUCT_PACKAGES += \

@@ -1,6 +1,13 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
+LOCAL_MODULE := media_profiles_V1_0.xml
+LOCAL_VENDOR_MODULE := true
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE := media_codecs.xml
 LOCAL_VENDOR_MODULE := true
 LOCAL_MODULE_CLASS := ETC
