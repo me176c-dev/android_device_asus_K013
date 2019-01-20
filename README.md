@@ -53,6 +53,25 @@ For the full set of features, you need to download and unpack using a script.
     $ brunch lineage_me176c-userdebug
     ```
 
+#### TWRP
+[TWRP (TeamWin Recovery Project)](https://twrp.me) is also built in the LineageOS 16.0 tree.
+
+1. **Checkout TWRP fork:** Right now, a few extra patches are needed to build TWRP.
+The command fetches TWRP and the extra patches and checks it out in `bootable/recovery`.
+
+    ```bash
+    $ . build/envsetup.sh
+    $ device/asus/K013/twrp-checkout.sh
+    ```
+
+2. **Build TWRP:**
+
+    ```bash
+    $ . build/envsetup.sh
+    $ lunch twrp_me176c-userdebug
+    $ mka recoveryimage
+    ```
+
 ### Additional patches
 **Note:** This section will be updated for LineageOS 16.0 when the first "stable" build is released.
 
