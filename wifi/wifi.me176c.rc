@@ -1,6 +1,5 @@
-service vendor.wifi-unblock /bin/toybox rfkill unblock wifi
+service vendor.wifi-unblock /vendor/bin/rfkill unblock wifi
     class early_hal
-    seclabel u:r:watchdogd:s0  # TODO
     oneshot
 
 on zygote-start

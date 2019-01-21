@@ -8,6 +8,10 @@ LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_RELATIVE_PATH := init
 include $(BUILD_PREBUILT)
 
+# Create symlink for "rfkill" tool in toybox (used in wifi.me176c.rc)
+$(call symlink-file,$(TARGET_OUT_VENDOR_EXECUTABLES)/toybox_vendor,toybox_vendor,$(TARGET_OUT_VENDOR_EXECUTABLES)/rfkill)
+$(LOCAL_INSTALLED_MODULE): | $(TARGET_OUT_VENDOR_EXECUTABLES)/rfkill
+
 WPA_SUPPL_DIR = external/wpa_supplicant_8
 
 # Private driver command implementation
