@@ -15,7 +15,15 @@ LOCAL_SRC_FILES := $(LOCAL_MODULE)
 LOCAL_REQUIRED_MODULES := \
     media_codecs_ffmpeg.xml \
     media_codecs_google_audio.xml \
-    media_codecs_google_video.xml
+    media_codecs_google_video.xml \
+    mfx_omxil_core.conf
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := mfx_omxil_core.conf
+LOCAL_VENDOR_MODULE := true
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
 include $(BUILD_PREBUILT)
 
 LOCAL_PATH := frameworks/av/media/libstagefright/data

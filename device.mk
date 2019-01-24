@@ -81,6 +81,8 @@ PRODUCT_PACKAGES += \
     media_profiles_V1_0.xml \
     i965_drv_video \
     libstagefrighthw \
+    libmfx_omx_core \
+    libmfx_omx_components_hw \
     libmfxhw32
 
 # Power
