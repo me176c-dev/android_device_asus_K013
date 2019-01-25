@@ -23,7 +23,9 @@
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" range="1-972000" />
             <Limit name="bitrate" range="1-40000000" />
-            <Feature name="adaptive-playback" />
+            <!-- TODO: Disabled for now because it causes green artifacts
+                       when switching to other resolutions -->
+            <!--<Feature name="adaptive-playback" />-->
         </MediaCodec>
     </Decoders>
     <Encoders>
