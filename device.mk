@@ -42,10 +42,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
 
-# Display
-TARGET_SCREEN_WIDTH := 1280
-TARGET_SCREEN_HEIGHT := 800
-
 # Graphics
 PRODUCT_PACKAGES += \
     libdrm \

@@ -57,6 +57,10 @@ TARGET_INIT_VENDOR_LIB := libinit_me176c
 # Graphics
 BOARD_KERNEL_CMDLINE += vga=current i915.modeset=1 i915.fastboot=1 i915.enable_fbc=1 drm.vblankoffdelay=1
 
+# Display
+TARGET_SCREEN_WIDTH := 1280
+TARGET_SCREEN_HEIGHT := 800
+
 # Surfaceflinger
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 VSYNC_EVENT_PHASE_OFFSET_NS := 7500000
