@@ -1,10 +1,8 @@
 #ifndef ANDROID_HARDWARE_LIGHT_V2_0_LIGHT_H
 #define ANDROID_HARDWARE_LIGHT_V2_0_LIGHT_H
 
+#include <fstream>
 #include <android/hardware/light/2.0/ILight.h>
-#include <hidl/MQDescriptor.h>
-#include <hidl/Status.h>
-#include <android-base/logging.h>
 
 namespace android {
 namespace hardware {
@@ -20,9 +18,16 @@ using ::android::hardware::Return;
 using ::android::hardware::Void;
 
 struct Light : public ILight {
+    static sp<Light> create();
+
+    Light(std::ofstream&& brightness);
+
     // Methods from ::android::hardware::light::V2_0::ILight follow.
     Return<Status> setLight(Type type, const LightState& state) override;
     Return<void> getSupportedTypes(getSupportedTypes_cb _hidl_cb) override;
+
+private:
+    std::ofstream mBrightness;
 };
 
 }  // namespace implementation
