@@ -7,34 +7,37 @@
 #define property_replace(name, value) \
     __system_property_update((prop_info*) __system_property_find(name), value, strlen(value))
 
-#define PHONE_INFO  "/factory/PhoneInfodisk/PhoneInfo_inf"
+#define PHONE_INFO_FILE  "/factory/PhoneInfodisk/PhoneInfo_inf"
 
-/* Serial number */
+// Serial number
 #define SERIALNO_PROP  "ro.serialno"
-#define SERIALNO_SIZE  12+1
+#define SERIALNO_LEN   12
 
-static void load_serialno() {
-    // Open file
-    std::ifstream file(PHONE_INFO);
-    if (!file) {
-        PLOG(ERROR) << "Failed to open phone info file";
-        return;
-    }
-
+namespace {
+void load_serialno(std::ifstream& file) {
     // Read serialno from file
-    char serialno[SERIALNO_SIZE];
-    if (!file.get(serialno, SERIALNO_SIZE)) {
-        PLOG(ERROR) << "Failed to read serialno from phone info file";
+    char serialno[SERIALNO_LEN + 1];
+    serialno[SERIALNO_LEN] = 0;
+    if (!file.read(serialno, SERIALNO_LEN)) {
+        PLOG(ERROR) << "Failed to read serialno";
         return;
     }
 
     // Replace serialno property
-    int ret = property_replace(SERIALNO_PROP, serialno);
-    if (ret) {
+    if (auto ret = property_replace(SERIALNO_PROP, serialno); ret) {
         LOG(ERROR) << "Failed to set " SERIALNO_PROP " property: " << ret;
+        return;
     }
+}
 }
 
 void vendor_load_properties() {
-    load_serialno();
+    // Open file
+    std::ifstream file{PHONE_INFO_FILE};
+    if (!file) {
+        PLOG(ERROR) << "Failed to open phone info file (" PHONE_INFO_FILE ")";
+        return;
+    }
+
+    load_serialno(file);
 }
