@@ -39,7 +39,6 @@ BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 TARGET_USES_64_BIT_BINDER := true
-ENABLE_CPUSETS := true
 
 # Optimize for low RAM devices
 MALLOC_SVELTE := true
