@@ -7,11 +7,6 @@ TARGET_ARCH := x86
 TARGET_ARCH_VARIANT := silvermont
 TARGET_CPU_ABI := x86
 
-# Text relocations
-# Needed for most ASM code on x86 right now
-TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
-TARGET_NEEDS_PLATFORM_TEXTRELS := true
-
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 4096
 
