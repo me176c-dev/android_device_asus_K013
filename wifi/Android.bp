@@ -1,0 +1,12 @@
+cc_binary {
+    name: "net_hwaddr",
+    relative_install_path: "hw",
+    vendor: true,
+
+    srcs: ["net_hwaddr.c"],
+
+    shared_libs: [
+        "libcutils",
+        "liblog",
+    ],
+}

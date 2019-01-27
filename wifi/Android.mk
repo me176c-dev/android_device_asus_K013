@@ -6,6 +6,7 @@ LOCAL_VENDOR_MODULE := true
 LOCAL_SRC_FILES := $(LOCAL_MODULE)
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_RELATIVE_PATH := init
+LOCAL_REQUIRED_MODULES := net_hwaddr
 include $(BUILD_PREBUILT)
 
 # Create symlink for "rfkill" tool in toybox (used in wifi.me176c.rc)
