@@ -105,7 +105,6 @@ BOARD_HOSTAPD_DRIVER := NL80211
 
 # Build pre-optimized to speed up initial boot
 WITH_DEXPREOPT := true
-WITH_DEXPREOPT_PIC := true
 
 # Set correct fingerprint in ZIP package
 TARGET_RELEASETOOLS_EXTENSIONS := $(TARGET_DEVICE_DIR)
