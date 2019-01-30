@@ -1,0 +1,8 @@
+cc_binary {
+    name: "bdaddr",
+    relative_install_path: "hw",
+    vendor: true,
+
+    srcs: ["bdaddr.c"],
+    shared_libs: ["liblog"],
+}

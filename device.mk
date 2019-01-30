@@ -106,6 +106,7 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
+    bluetooth.me176c.rc \
     android.hardware.bluetooth@1.0-service.btlinux
 
 # DRM
