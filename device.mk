@@ -14,6 +14,9 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 # Tablet originally shipped with Android 4.4 KitKat
 PRODUCT_SHIPPING_API_LEVEL := 19
 
+# Soong Namespace to build all Blueprint modules in this repository
+PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
+
 # Overlays
 PRODUCT_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
