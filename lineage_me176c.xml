@@ -42,8 +42,8 @@
     <!--<project name="android_vendor_lambdadroid_signapk" path="vendor/lambdadroid/signapk" remote="me176c" revision="android-7.1" />-->
 
     <!-- Patched AOSP/LineageOS projects -->
-    <!--<remove-project name="LineageOS/android_bootable_recovery" />
-    <project name="android_bootable_recovery" path="bootable/recovery" remote="me176c" groups="me176c" />-->
+    <remove-project name="LineageOS/android_bootable_recovery" />
+    <project name="android_bootable_recovery" path="bootable/recovery" remote="me176c" groups="me176c" />
 
     <remove-project name="LineageOS/android_frameworks_opt_net_wifi" />
     <project name="android_frameworks_opt_net_wifi" path="frameworks/opt/net/wifi" remote="me176c" groups="me176c" />
