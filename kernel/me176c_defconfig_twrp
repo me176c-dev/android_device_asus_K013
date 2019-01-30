@@ -16,5 +16,6 @@ CONFIG_RD_LZMA=y
 # CONFIG_NETFILTER is not set
 # CONFIG_L2TP is not set
 # CONFIG_NET_SCHED is not set
+# CONFIG_BT is not set
 # CONFIG_NETDEVICES is not set
 # CONFIG_SOUND is not set
