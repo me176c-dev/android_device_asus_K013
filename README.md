@@ -56,6 +56,9 @@ For the full set of features, you need to download and unpack using a script.
 #### TWRP
 [TWRP (TeamWin Recovery Project)](https://twrp.me) is also built in the LineageOS 16.0 tree.
 
+**Note:** By default, the built TWRP will not be able to flash stock ASUS firmware ZIPs.  
+See [recovery/asus_updater/README.md](recovery/asus_updater/README.md) for details.
+
 1. **Checkout TWRP fork:** Right now, a few extra patches are needed to build TWRP.
 The command fetches TWRP and the extra patches and checks it out in `bootable/recovery`.
 

@@ -147,13 +147,18 @@ ifeq ($(RECOVERY_VARIANT), twrp)
 
     TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone6/temp
 
-    # This is only used by the original ASUS packages, which is broken anyway
-    # and replaced automatically with an newer "updater" binary
+    # This is only needed for ancient updater binaries from older Android versions
     TW_NO_LEGACY_PROPS := true
 
-    # TODO: Re-enable once updater is fixed in TWRP
-    #TW_FORCE_DEFAULT_UPDATER_FINGERPRINT := asus/WW_K013/K013:5.0/
-    TARGET_RECOVERY_UPDATER_LIBS += libasus_updater
+    # See recovery/asus_updater/README.md
+    ifneq ($(wildcard $(TARGET_DEVICE_DIR)/recovery/asus_updater/asus_updater),)
+        TW_FORCE_CUSTOM_UPDATER := asus_updater
+        TW_FORCE_CUSTOM_UPDATER_FINGERPRINT := asus/WW_K013/K013:5.0/
+    else
+        $(warning Building without custom ASUS updater binary. \
+            You will not be able to flash the Android 5.0 stock firmware ZIPs from ASUS.\
+            See recovery/asus_updater/README.md for details.)
+    endif
 
     # Fix build error on LineageOS
     -include vendor/lineage/config/BoardConfigLineage.mk

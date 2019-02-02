@@ -1,0 +1,3 @@
+PRODUCT_NAME := aosp_updater_me176c
+PRODUCT_BRAND := asus
+PRODUCT_DEVICE := K013
