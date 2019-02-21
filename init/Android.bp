@@ -7,4 +7,5 @@ cc_library_static {
 
     include_dirs: ["system/core/init"],
     static_libs: ["libbase"],
+    whole_static_libs: ["libme176c-factory"],
 }

@@ -10,13 +10,6 @@ on fs
     mkdir /vnddat
     mount ext4 /dev/block/by-name/config /vnddat rw nosuid nodev noatime data=ordered
 
-    mkdir /factory
-    mount ext4 /dev/block/by-name/factory /factory ro nosuid nodev noatime data=ordered
-
-on early-boot
-    # Factory partition was only needed to read the serial number
-    umount /factory
-
 service upi_ug31xx /sbin/upi_ug31xx
     # TODO
     #seclabel u:r:upi_ug31xx:s0
