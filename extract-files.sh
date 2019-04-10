@@ -1,0 +1,1 @@
+firmware/extract-files.sh

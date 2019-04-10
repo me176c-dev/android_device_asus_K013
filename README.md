@@ -1,18 +1,14 @@
-# LineageOS 16.0 for ASUS MeMO Pad 7 (ME176C/CX)
-LineageOS is a free, community built, aftermarket firmware distribution of Android 9 (Pie),
+# LineageOS 16.0 for ASUS MeMO Pad 7 (ME176C(X)))
+[LineageOS] is a free, community built, aftermarket firmware distribution of Android 9 (Pie),
 which is designed to increase performance and reliability over stock Android for your device.
 
-This is an unofficial port for the ASUS MeMO Pad 7 (ME176C/CX), based on a recent upstream kernel
+This is an unofficial port for the [ASUS MeMO Pad 7 (ME176C(X))], based on a recent mainline kernel
 and various open-source components. More information available on the [XDA Thread](
 https://forum.xda-developers.com/memo-pad-7/orig-development/rom-unofficial-lineageos-14-1-asus-memo-t3633341).
 
-## Development
-The ROM consists out of multiple repositories, the [device configuration](https://github.com/me176c-dev/android_device_asus_K013),
-the [kernel](https://github.com/me176c-dev/android_kernel_asus_K013), a few [proprietary firmware files/libraries](
-https://github.com/me176c-dev/android_vendor_asus_K013) :(, and a few forks of upstream repositories and other open-source
-projects.
+See [Development](#development) for a technical overview of the ROM.
 
-### Building the ROM
+## Building
 The ROM is built in a regular LineageOS 16.0 build environment, with a few additional/replaced repositories using a
 local manifest.
 
@@ -34,17 +30,15 @@ preparations required to build LineageOS (e.g. supported Linux distributions, ad
     $ repo sync
     ```
 
-4. **Prepare proprietary files:** Unfortunately, some functionality still requires proprietary firmware and/or libraries.
-For the full set of features, you need to download and unpack using a script.
+4. **Extract firmware:** (also see: [Firmware README](firmware/README.md))
 
     ```bash
-    $ . build/envsetup.sh
-    $ lunch lineage_me176c-userdebug
-    $ mka proprietary
+    $ cd device/asus/K013
+    $ ./extract_files.sh
     ```
 
-   Currently, one step requires root to temporarily mount a partition from a downloaded disk image. The script is using
-`sudo` to request root access.
+    **Note:** This step is "optional". However, WiFi/BT will not be functional
+    without the firmware from the stock system.
 
 5. **Build the ROM:** Depending on your CPU, this will take even longer.
 
@@ -111,3 +105,65 @@ https://forum.xda-developers.com/android/development/wireguard-rom-integration-t
 ```bash
 $ ./patch-kernel.sh kernel/asus/me176c
 ```
+
+## Development
+
+### Introduction
+Almost all Android device ports rely on components from the vendor:
+
+  - **Kernel:** The [Linux] kernel used in these devices is usually forked from a rather old
+    release, and then modified heavily with millions lines of code changed for additional
+    hardware support. This code is usually messy, and potentially insecure because it does
+    not go through the same review process. Those kernels also get increasingly more
+    difficult to maintain with upstream security fixes.
+
+    Projects like [LineageOS] usually take this kernel, and try to make the best of it, by porting
+    certain changes made in other projects.
+
+  - **User-space components:** Each Android device needs device-specific user-space components
+    that make Android work with the specific hardware. Some parts of that code may be open-source,
+    either through [AOSP] or related projects. However, there is not a single device that fully works
+    without additional proprietary user-space components.
+
+    Most devices cannot even boot without those proprietary "blobs", because for example the
+    OpenGL implementation is proprietary. It is almost impossible to maintain these "blobs" properly,
+    because they need to be provided from some vendor in compiled form or can be only edited manually
+    in binary form. As the device ages, more and more security issues will be found in these
+    "blobs", and it becomes increasingly difficult to keep them working on newer Android versions.
+
+This port is different: Except for a bit of firmware, there are no components used from the stock system:
+
+ - **Kernel:** This port uses a mainline (i.e. a largely unmodified) [Linux] kernel.
+   There are a few minor changes and extra drivers that have not been submitted upstream yet,
+   but those changes can be easily rebased on top of new kernel releases. Therefore, this port usually
+   targets the latest Linux LTS release, as those are maintained with Android-specific patches in AOSP.
+
+ - **User-space components:** This port does not make use of proprietary user-space libraries.
+   Various open-source projects are used to implement the device-specific parts:
+     - OpenGL/Vulkan: [Mesa](https://www.mesa3d.org)
+     - Gralloc: [Minigbm](https://github.com/intel/minigbm)
+       (originally from [ChromiumOS](https://chromium.googlesource.com/chromiumos/platform/minigbm/))
+     - Sensors: [android-iio-sensors-hal](https://github.com/intel/android-iio-sensors-hal)
+     - Hardware-accelerated video codecs:
+       [libva](https://github.com/intel/libva), [intel-vaapi-driver](https://github.com/intel/intel-vaapi-driver),
+       [MediaSDK](https://github.com/Intel-Media-SDK/MediaSDK), [MediaSDK_OMX_IL](https://github.com/Intel-Media-SDK/MediaSDK_OMX_IL)
+     - Thermal: [thermald](https://github.com/intel/thermal_daemon)
+
+ - **Firmware:** See [Firmware README](firmware/README.md).
+
+Unfortunately, some hardware components are hard to get working in such an environment.
+[Camera](https://github.com/me176c-dev/me176c/issues/2) and [GPS](https://github.com/me176c-dev/me176c/issues/3)
+are the two main features missing in this port either because of missing kernel drivers, or because the user-space
+portion is proprietary and completely undocumented.
+
+### Overview
+The ROM consists out of multiple repositories:
+  - [Device configuration](https://github.com/me176c-dev/android_device_asus_K013) (this repository)
+  - [Kernel fork (linux-me176c)](https://github.com/me176c-dev/linux-me176c)
+  - A few forks of upstream repository and other open-source projects (with minor changes only). See [lineage_me176c.xml](lineage_me176c.xml).
+
+[ASUS MeMO Pad 7 (ME176C(X))]: https://github.com/me176c-dev/me176c
+[LineageOS]: https://lineageos.org
+[Linux]: https://www.kernel.org
+[AOSP]: https://source.android.com
+[Android-x86]: http://www.android-x86.org

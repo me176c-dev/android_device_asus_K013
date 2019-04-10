@@ -128,13 +128,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml
 
-# Firmware
-PRODUCT_COPY_FILES += \
-    vendor/linux/firmware/brcm/brcmfmac43362-sdio.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/brcm/brcmfmac43362-sdio.bin \
-    vendor/linux/firmware/LICENCE.broadcom_bcm43xx:$(TARGET_COPY_OUT_VENDOR)/firmware/LICENCE.broadcom_bcm43xx \
-    vendor/linux/firmware/intel/fw_sst_0f28.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/intel/fw_sst_0f28.bin \
-    vendor/linux/firmware/LICENCE.fw_sst_0f28:$(TARGET_COPY_OUT_VENDOR)/firmware/LICENCE.fw_sst_0f28
-
 # This is needed to let TWRP detect its own path in the LineageOS tree
 $(call project-set-path,recovery,bootable/recovery)
 
@@ -144,4 +137,5 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
     $(LOCAL_PATH)/recovery/lineage \
     $(LOCAL_PATH)/recovery/open_gapps
 
-$(call inherit-product-if-exists, vendor/asus/$(PRODUCT_DEVICE)/device-vendor.mk)
+# See firmware/README.md
+$(call inherit-product-if-exists, $(LOCAL_PATH)/firmware/device-vendor.mk)
