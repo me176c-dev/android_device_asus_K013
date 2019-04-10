@@ -24,17 +24,26 @@ KERNEL_ARCH := $(TARGET_KERNEL_ARCH)
 # Kernel output directory
 KERNEL_OUT := $(abspath $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ)
 
+# Build kernel configuration in separate directory
+# For some reason, include/config/auto.conf otherwise gets
+# CONFIG_INITRAMFS_COMPRESSION incorrectly set to ".gz"
+KERNEL_OUT_CONFIG := $(abspath $(TARGET_OUT_INTERMEDIATES)/KERNEL_CONFIG_OBJ)
+
 # Configure kernel compiler toolchain
 KERNEL_CROSS_COMPILE := CROSS_COMPILE="$(CC_WRAPPER) $(TARGET_KERNEL_CROSS_COMPILE_PREFIX)"
 KERNEL_MAKE := $(MAKE) -j6 -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE)
 
 # Kernel config
+KERNEL_CONFIG_GENERATED := $(KERNEL_OUT_CONFIG)/.config
 KERNEL_CONFIG := $(KERNEL_OUT)/.config
 
-$(KERNEL_CONFIG): $(KERNEL_DEFCONFIG)
+$(KERNEL_CONFIG_GENERATED): $(KERNEL_DEFCONFIG)
 	@echo "Building Kernel Config"
 	$(copy-file-to-target)
-	$(KERNEL_MAKE) olddefconfig
+	$(KERNEL_MAKE) O=$(KERNEL_OUT_CONFIG) olddefconfig
+
+$(KERNEL_CONFIG): $(KERNEL_CONFIG_GENERATED)
+	$(copy-file-to-target)
 
 # Kernel headers
 KERNEL_HEADERS_INSTALL := $(KERNEL_OUT)/usr
