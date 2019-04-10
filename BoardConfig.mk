@@ -131,15 +131,11 @@ ifeq ($(RECOVERY_VARIANT), twrp)
 
     # Include/exclude some features
     TW_INCLUDE_CRYPTO := true
-    TW_INCLUDE_CRYPTO_FBE := false
     TW_EXCLUDE_TWRPAPP := true
 
     # SD card is on internal storage
     BOARD_HAS_NO_REAL_SDCARD := true
     RECOVERY_SDCARD_ON_DATA := true
-
-    # TODO: Remove once TWRP supports FunctionFS for MTP
-    TW_EXCLUDE_MTP := true
 
     # This is needed to get ADB working with USB configfs
     TW_EXCLUDE_DEFAULT_USB_INIT := true
