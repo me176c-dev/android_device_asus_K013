@@ -42,22 +42,10 @@
         <interface>
             <name>ICryptoFactory</name>
             <instance>clearkey</instance>
-            <!--
-            Note: This is only provided when proprietary files are present
-                  on the device. However, it shouldn't break anything when it's
-                  not actually available.
-            -->
-            <instance>widevine</instance>
         </interface>
         <interface>
             <name>IDrmFactory</name>
             <instance>clearkey</instance>
-            <!--
-            Note: This is only provided when proprietary files are present
-                  on the device. However, it shouldn't break anything when it's
-                  not actually available.
-            -->
-            <instance>widevine</instance>
         </interface>
     </hal>
     <!--
