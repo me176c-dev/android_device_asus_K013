@@ -113,6 +113,9 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(TARGET_DEVICE_DIR)
 TARGET_RECOVERY_FSTAB := $(TARGET_DEVICE_DIR)/init/root/fstab.me176c
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 
+# Include support for ARM on x86 native bridge
+-include vendor/google/chromeos/board/native_bridge_arm_on_x86.mk
+
 # TWRP
 ifeq ($(RECOVERY_VARIANT), twrp)
     # No need to compile kernel modules on TWRP
@@ -159,5 +162,3 @@ ifeq ($(RECOVERY_VARIANT), twrp)
     # Fix build error on LineageOS
     -include vendor/lineage/config/BoardConfigLineage.mk
 endif
-
--include vendor/asus/$(TARGET_DEVICE)/BoardConfigVendor.mk

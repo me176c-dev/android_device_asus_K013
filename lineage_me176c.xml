@@ -38,6 +38,9 @@
     <project name="android_vendor_intel_mediasdk" path="vendor/intel/mediasdk" remote="me176c" groups="me176c" />
     <project name="android_vendor_intel_mediasdk-omx" path="vendor/intel/mediasdk-omx" remote="me176c" groups="me176c" />
 
+    <!-- ARM native bridge / DRM from ChromeOS (not built by default) -->
+    <project name="android_vendor_google_chromeos" path="vendor/google/chromeos" remote="me176c" revision="pie-x86" />
+
     <!-- Patched signapk with proper PBES2 encrypted private key support -->
     <!--<project name="android_vendor_lambdadroid_signapk" path="vendor/lambdadroid/signapk" remote="me176c" revision="android-7.1" />-->
 

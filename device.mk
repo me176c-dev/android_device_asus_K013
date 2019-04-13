@@ -139,3 +139,7 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 
 # See firmware/README.md
 $(call inherit-product-if-exists, $(LOCAL_PATH)/firmware/device-vendor.mk)
+
+# Include support for Houdini as ARM on x86 native bridge
+# Note: WITH_NATIVE_BRIDGE is not set, so proprietary files will not be built-in
+$(call inherit-product-if-exists, vendor/google/chromeos/target/houdini.mk)
