@@ -1,0 +1,23 @@
+This package installs CPU microcode updates for the main Android boot configuration
+when using me176c-boot.
+
+The actual CPU microcode update is not included in this package.
+Instead, it needs to be obtained separately and either
+  - added to the root directory of the flashable ZIP package, or
+  - placed in the same directory as the flashable ZIP package
+
+You may need to rename the downloaded file to "microcode.bin" to make it visible
+to this installer.
+
+Intel does not release all of its CPU microcode update to the public.
+Therefore it is quite hard to obtain the latest microcode update for the CPU
+in this tablet.
+
+However, fortunately there is an archive of the latest CPU microcode updates
+maintained by the community: https://github.com/platomav/CPUMicrocodes
+
+The latest microcode update for this tablet is the file that starts with
+"cpu30678_plat02_".
+
+At the time of this writing, the latest version is v837, available at:
+https://raw.githubusercontent.com/platomav/CPUMicrocodes/079248c4d1d82695555539ef7ad6886c8c4fce3e/Intel/cpu30678_plat02_ver00000837_2018-01-25_PRD_F0D56486.bin

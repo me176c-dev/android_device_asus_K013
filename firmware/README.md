@@ -46,8 +46,23 @@ with this ROM.
 The ultimate goal is to get rid of it entirely or replace it with a reverse-engineered
 open-source component.
 
+### CPU Microcode Updates
+CPU microcode updates can be (temporary) loaded on boot and may (or may not)
+improve stability or fix certain CPU bugs. For example, newer microcode for
+this tablet is known to have some fixes for Spectre.
+
+The ROM does no longer include the updated CPU microcode by default, however,
+it can be easily installed separately when using [me176c-boot].
+
+The `microcode` directory contains the source code for a flashable ZIP package,
+that installs microcode updates for the main Android installation.
+It is available in the releases or can be built by running its `build.sh` script.
+
+See the [microcode README](microcode/README) for usage instructions.
+
 ### Also see
 - [Dependencies in "Porting - Using linux-me176c in other distributions"](https://github.com/me176c-dev/linux-me176c/blob/master/porting.md#dependencies)
 
 [linux-firmware]: https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/
 [Linux]: https://www.kernel.org
+[me176c-boot]: https://github.com/me176c-dev/me176c-boot
