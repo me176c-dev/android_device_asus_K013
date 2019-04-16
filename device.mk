@@ -128,9 +128,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml
 
-# This is needed to let TWRP detect its own path in the LineageOS tree
-$(call project-set-path,recovery,bootable/recovery)
-
 # Include well known keys for verification
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     $(LOCAL_PATH)/recovery/lambdadroid \
