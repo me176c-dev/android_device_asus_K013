@@ -24,7 +24,6 @@ on init
     mkdir /config/usb_gadget/g1/functions/ffs.adb
     mkdir /config/usb_gadget/g1/functions/ffs.mtp
     mkdir /config/usb_gadget/g1/functions/ffs.ptp
-    setprop sys.usb.controller dwc3.1.auto
 
     # Permissions
     chown system system /sys/module/ug31xx_battery/parameters/op_options
