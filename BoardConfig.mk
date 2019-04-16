@@ -52,6 +52,7 @@ DEVICE_FRAMEWORK_MANIFEST_FILE += \
 #PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
 
 # Init
+TARGET_SYSTEM_PROP := $(TARGET_DEVICE_DIR)/system.prop
 TARGET_INIT_VENDOR_LIB := libinit_me176c
 
 # Graphics
@@ -115,6 +116,9 @@ TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 
 # Include support for ARM on x86 native bridge
 -include vendor/google/chromeos/board/native_bridge_arm_on_x86.mk
+
+# Include extra patches (if any)
+-include $(TARGET_DEVICE_DIR)/patches/board.mk
 
 # TWRP
 ifeq ($(RECOVERY_VARIANT), twrp)

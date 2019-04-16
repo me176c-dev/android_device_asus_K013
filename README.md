@@ -70,33 +70,14 @@ The command fetches TWRP and the extra patches and checks it out in `bootable/re
     ```
 
 ### Additional patches
-**Note:** This section will be updated for LineageOS 16.0 when the first "stable" build is released.
+The ROM distributed as releases/on XDA comes with additional patches that are not
+part of the build by default. These are applied manually before the ROM build is started.
 
-The ROM distributed on XDA comes with additional patches not present in LineageOS or the me176c-dev repositories.
-These are applied manually before the ROM build is started.
+The changes that are made are documented below. Some of the patches are available
+in the `patches` directory.
 
-#### Substratum theme engine
-Substratum patches are taken from [LineageOMS](https://forum.xda-developers.com/apps/substratum/reference-lineageos-substratum-support-t3580276)
-and applied using the provided [merge script](https://github.com/LineageOMS/merge_script).
-
-```bash
-$ ./lineage_oms_merge.sh path/to/your/lineage/folder
-```
-
-There are a few trivial merge conflicts that need to be solved manually (since LineageOMS isn't updated anymore).
-
-#### Signature spoofing
-Two patches are applied to `frameworks/base` to add support for [microG](https://microg.org). Download the first patch from
-[`android_frameworks_base-N.patch`](https://github.com/microg/android_packages_apps_GmsCore/blob/master/patches/android_frameworks_base-N.patch).
-The second patch is applied [from the OmniROM source](https://github.com/omnirom/android_frameworks_base/commit/8694596700d803cf287729e5324b544d143360e0).
-
-```bash
-$ cd frameworks/base
-$ git am path/to/android_frameworks_base-N.patch
-$ git remote add omni https://github.com/omnirom/android_frameworks_base.git
-$ git fetch omni android-7.1
-$ git cherry-pick 8694596700d803cf287729e5324b544d143360e0
-```
+#### Signature Spoofing
+See [Signature Spoofing Patch](patches/signature-spoofing/README.md).
 
 #### [WireGuard](https://www.wireguard.com) VPN
 WireGuard support is added to the kernel using the kernel patch script, as explained in the [official XDA thread](

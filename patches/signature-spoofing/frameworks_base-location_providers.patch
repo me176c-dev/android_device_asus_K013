@@ -1,0 +1,60 @@
+From 5903ba7c523a33081062383afcf685997f35e578 Mon Sep 17 00:00:00 2001
+From: lambdadroid <lambdadroid@gmail.com>
+Date: Tue, 16 Apr 2019 20:07:25 +0200
+Subject: [PATCH] Add a whitelist for location providers outside of /system
+
+Avoid restricting location providers to the system partition
+if a system property is set for a specific package.
+This allows using microG/UnifiedNlp as location provider without
+installing it to the system partition.
+
+Implements the same concept as:
+  https://gerrit.omnirom.org/#/c/android_frameworks_base/+/29360/
+although with slightly different code.
+
+Change-Id: Ic503f79ec9410cc6c082bae6bedf7008d424f2ff
+---
+ .../com/android/server/ServiceWatcher.java    | 20 +++++++++++++++++--
+ 1 file changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/services/core/java/com/android/server/ServiceWatcher.java b/services/core/java/com/android/server/ServiceWatcher.java
+index 42c836eab7d..54e68541360 100644
+--- a/services/core/java/com/android/server/ServiceWatcher.java
++++ b/services/core/java/com/android/server/ServiceWatcher.java
+@@ -85,6 +85,18 @@ public class ServiceWatcher implements ServiceConnection {
+     @GuardedBy("mLock")
+     private int mBoundUserId = UserHandle.USER_NULL;
+ 
++    private static final List<String> WHITELISTED_PACKAGES =
++            getStringList("ro.services.whitelist.packagelist", ",");
++
++    private static List<String> getStringList(String property, String separator) {
++        String value = android.os.SystemProperties.get(property);
++        if (value.isEmpty()) {
++            return java.util.Collections.emptyList();
++        } else {
++            return Arrays.asList(value.split(separator));
++        }
++    }
++
+     public static ArrayList<HashSet<Signature>> getSignatureSets(Context context,
+             List<String> initialPackageNames) {
+         PackageManager pm = context.getPackageManager();
+@@ -93,8 +105,12 @@ public class ServiceWatcher implements ServiceConnection {
+             String pkg = initialPackageNames.get(i);
+             try {
+                 HashSet<Signature> set = new HashSet<Signature>();
+-                Signature[] sigs = pm.getPackageInfo(pkg, PackageManager.MATCH_SYSTEM_ONLY
+-                        | PackageManager.GET_SIGNATURES).signatures;
++                int flags = PackageManager.MATCH_SYSTEM_ONLY | PackageManager.GET_SIGNATURES;
++                if (WHITELISTED_PACKAGES.contains(pkg)) {
++                    flags &= ~PackageManager.MATCH_SYSTEM_ONLY;
++                    Log.i("ServiceWatcher", pkg + " is whitelisted, ignoring PackageManager.MATCH_SYSTEM_ONLY");
++                }
++                Signature[] sigs = pm.getPackageInfo(pkg, flags).signatures;
+                 set.addAll(Arrays.asList(sigs));
+                 sigSets.add(set);
+             } catch (NameNotFoundException e) {
+-- 
+2.21.0
+

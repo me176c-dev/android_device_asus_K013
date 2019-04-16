@@ -1,0 +1,99 @@
+From 23efaf38ad6a9f1e72df715f47c31e23d9250f83 Mon Sep 17 00:00:00 2001
+From: mar-v-in <github@rvin.mooo.com>
+Date: Mon, 21 Dec 2015 22:11:35 +0100
+Subject: [PATCH] core: Add support for fake signatures, enabled per app by
+ dynamic permission
+
+Changes by lambdadroid:
+Additionally restrict signature spoofing to be only granted if
+the system property "ro.dangerous.signature_spoofing" is set.
+
+Change-Id: I28372d2f49f1ddf759b13255a13bf3e59146b596
+---
+ core/res/AndroidManifest.xml                  |  7 +++++
+ core/res/res/values/strings.xml               |  5 ++++
+ .../server/pm/PackageManagerService.java      | 27 +++++++++++++++++--
+ 3 files changed, 37 insertions(+), 2 deletions(-)
+
+diff --git a/core/res/AndroidManifest.xml b/core/res/AndroidManifest.xml
+index 34d26f0da90..f256b5846f1 100644
+--- a/core/res/AndroidManifest.xml
++++ b/core/res/AndroidManifest.xml
+@@ -2357,6 +2357,13 @@
+         android:description="@string/permdesc_getPackageSize"
+         android:protectionLevel="normal" />
+ 
++    <!-- @hide Allows an application to change the package signature as
++         seen by applications -->
++    <permission android:name="android.permission.FAKE_PACKAGE_SIGNATURE"
++        android:protectionLevel="dangerous"
++        android:label="@string/permlab_fakePackageSignature"
++        android:description="@string/permdesc_fakePackageSignature" />
++
+     <!-- @deprecated No longer useful, see
+          {@link android.content.pm.PackageManager#addPackageToPreferred}
+          for details. -->
+diff --git a/core/res/res/values/strings.xml b/core/res/res/values/strings.xml
+index f6600462ea7..da43c72bb8e 100644
+--- a/core/res/res/values/strings.xml
++++ b/core/res/res/values/strings.xml
+@@ -1542,6 +1542,11 @@
+     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+     <string name="permdesc_access_notification_policy">Allows the app to read and write Do Not Disturb configuration.</string>
+ 
++    <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
++    <string name="permlab_fakePackageSignature">spoof package signature</string>
++    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
++    <string name="permdesc_fakePackageSignature">Allows the app to pretend to be a different app. Malicious applications might be able to use this to access private application data. Grant this permission with caution only!</string>
++
+     <!-- Policy administration -->
+ 
+     <!-- Title of policy access to limiting the user's password choices -->
+diff --git a/services/core/java/com/android/server/pm/PackageManagerService.java b/services/core/java/com/android/server/pm/PackageManagerService.java
+index 9b50a1545a5..6912b514070 100644
+--- a/services/core/java/com/android/server/pm/PackageManagerService.java
++++ b/services/core/java/com/android/server/pm/PackageManagerService.java
+@@ -4001,8 +4001,9 @@ public class PackageManagerService extends IPackageManager.Stub
+             final Set<String> permissions = ArrayUtils.isEmpty(p.requestedPermissions)
+                     ? Collections.<String>emptySet() : permissionsState.getPermissions(userId);
+ 
+-            PackageInfo packageInfo = PackageParser.generatePackageInfo(p, gids, flags,
+-                    ps.firstInstallTime, ps.lastUpdateTime, permissions, state, userId);
++            PackageInfo packageInfo = mayFakeSignature(p, PackageParser.generatePackageInfo(p, gids, flags,
++                    ps.firstInstallTime, ps.lastUpdateTime, permissions, state, userId),
++                    permissions);
+ 
+             if (packageInfo == null) {
+                 return null;
+@@ -4038,6 +4039,28 @@ public class PackageManagerService extends IPackageManager.Stub
+         }
+     }
+ 
++    private static final boolean ENABLE_SIGNATURE_SPOOFING =
++            SystemProperties.getBoolean("ro.dangerous.signature_spoofing", false);
++
++    private static PackageInfo mayFakeSignature(PackageParser.Package p,
++            PackageInfo pi, Set<String> permissions) {
++        try {
++            if (ENABLE_SIGNATURE_SPOOFING
++                    && permissions.contains("android.permission.FAKE_PACKAGE_SIGNATURE")
++                    && p.applicationInfo.targetSdkVersion > Build.VERSION_CODES.LOLLIPOP_MR1
++                    && p.mAppMetaData != null) {
++                String sig = p.mAppMetaData.getString("fake-signature");
++                if (sig != null) {
++                    pi.signatures = new Signature[] {new Signature(sig)};
++                }
++            }
++        } catch (Throwable t) {
++            // We should never die because of any failures, this is system code!
++            Log.w("PackageManagerService.FAKE_PACKAGE_SIGNATURE", t);
++        }
++        return pi;
++    }
++
+     @Override
+     public void checkPackageStartable(String packageName, int userId) {
+         final int callingUid = Binder.getCallingUid();
+-- 
+2.21.0
+

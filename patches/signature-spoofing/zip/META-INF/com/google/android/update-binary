@@ -1,0 +1,69 @@
+#!/sbin/sh
+ADDOND_SCRIPT="/system/addon.d/65-signature-spoofing.sh"
+OUTFD="/proc/self/fd/$2"
+
+ui_print() {
+    echo "ui_print $*" > "$OUTFD"
+    echo "ui_print" > "$OUTFD"
+}
+set_progress() {
+    echo "set_progress $1" > "$OUTFD"
+}
+
+mounted=""
+mount_if_necessary() {
+    [ -d "$1" ] || return 0
+    mountpoint=$(grep "$1" /proc/mounts || :)
+    if [ -z "$mountpoint" ]; then
+        mounted="$mounted $1"
+        mount -w "$1"
+    else
+        case "$mountpoint" in
+            *rw*) ;;
+            *) mount -o remount,rw "$1" ;;
+        esac
+    fi
+}
+
+unmount() {
+    set +e
+    for m in $mounted; do
+        umount "$m"
+    done
+}
+trap unmount EXIT
+
+
+ui_print "Permanently enabling signature spoofing and location providers outside of /system."
+ui_print "This is potentially dangerous - grant the permission with caution only."
+
+mount_if_necessary /system
+set_progress 0.1
+
+ui_print " -> Installing addon.d"
+cat > "$ADDOND_SCRIPT" <<EOF
+#!/sbin/sh
+#
+# ADDOND_VERSION=1
+#
+# $ADDOND_SCRIPT
+# Permanently enable signature spoofing and location providers outside /system
+#
+
+case "\$1" in
+    post-restore)
+        exec sed -i -e 's/^\(ro\.dangerous\.signature_spoofing\)=.*/\1=1/' \
+            -e 's/^\(ro\.services\.whitelist\.packagelist\)=.*/\1=com.google.android.gms/' \
+            /system/build.prop
+        ;;
+esac
+EOF
+chmod +x "$ADDOND_SCRIPT"
+chown 0:0 "$ADDOND_SCRIPT"
+
+set_progress 0.5
+ui_print " -> Updating system properties"
+"$ADDOND_SCRIPT" post-restore
+
+ui_print " -> Done!"
+set_progress 1.0

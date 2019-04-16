@@ -1,0 +1,5 @@
+# Enable Signature Spoofing? Warning: Potentially dangerous - use with caution!
+ro.dangerous.signature_spoofing=0
+
+# Services allowed outside of the system partition (e.g. location providers)
+ro.services.whitelist.packagelist=
