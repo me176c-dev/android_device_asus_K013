@@ -13,7 +13,7 @@ ifneq ($(wildcard $(LOCAL_PATH)/proprietary),)
 
     # Battery daemon (TODO: Remove or replace with open-source component)
     PRODUCT_COPY_FILES += \
-        $(LOCAL_PATH)/proprietary/upi_ug31xx:root/sbin/upi_ug31xx:asus
+        $(LOCAL_PATH)/proprietary/upi_ug31xx:root/upi_ug31xx:asus
 
     # Allows verifying signature of stock firmware in recovery
     PRODUCT_EXTRA_RECOVERY_KEYS += $(LOCAL_PATH)/proprietary/asus

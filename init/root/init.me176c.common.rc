@@ -5,6 +5,8 @@ on early-init
     chmod 0222 /sys/kernel/debug/tracing/trace_marker
 
 on init
+    start watchdogd
+
     # Android creates by-name disk links with the disk controller
     # in the generated path, so that the names pulled out of the GPT
     # can be associated with the correct disk. Create a shortcut to
@@ -28,12 +30,8 @@ on init
     # Permissions
     chown system system /sys/module/ug31xx_battery/parameters/op_options
 
-on fs
-    # Battery
-    chown system system /me176c/upi_gg
-    chmod 0660 /me176c/upi_gg
-    chown system system /me176c/upi_bo
-    chmod 0664 /me176c/upi_bo
+on post-fs
+    trigger upi_ug31xx
 
 on early-boot
     write /config/usb_gadget/g1/strings/0x409/manufacturer ${ro.product.manufacturer}
@@ -77,3 +75,24 @@ on property:sys.usb.config=ptp && property:sys.usb.configfs=1
 on property:sys.usb.ffs.ready=1 && property:sys.usb.config=ptp,adb && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/idProduct 0x7777
     symlink /config/usb_gadget/g1/functions/ffs.ptp /config/usb_gadget/g1/configs/b.1/f1
+
+service watchdogd /sbin/watchdogd
+    seclabel u:r:watchdogd:s0
+
+# Battery
+service upi_ug31xx /upi_ug31xx
+    user system
+    group system
+    seclabel u:r:charger:s0
+
+on upi_ug31xx
+    # Restore SELinux labeling
+    restorecon_recursive /me176c
+
+    # Battery
+    chown system system /me176c/upi_gg
+    chmod 0660 /me176c/upi_gg
+    chown system system /me176c/upi_bo
+    chmod 0664 /me176c/upi_bo
+
+    start upi_ug31xx

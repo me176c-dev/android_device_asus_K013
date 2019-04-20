@@ -9,8 +9,3 @@ on late-init
 on fs
     mkdir /me176c
     mount ext4 /dev/block/by-name/config /me176c rw nosuid nodev noatime data=ordered
-
-service upi_ug31xx /sbin/upi_ug31xx
-    # TODO
-    #seclabel u:r:upi_ug31xx:s0
-    seclabel u:r:recovery:s0

@@ -22,10 +22,6 @@ on fs
     mount_all /fstab.${ro.hardware}
     swapon_all /fstab.${ro.hardware}
 
-on post-fs
-    # Restore SELinux labeling
-    restorecon_recursive /me176c
-
 on post-fs-data
     # Set indication (checked by vold) that we have finished this action
     setprop vold.post_fs_data_done 1
@@ -42,30 +38,12 @@ on boot
     write /sys/kernel/mm/ksm/sleep_millisecs 500
     write /sys/kernel/mm/ksm/run 1
 
-service watchdogd /sbin/watchdogd
-    class core
-    oneshot
-    seclabel u:r:watchdogd:s0
-
-# Battery
-service upi_ug31xx /sbin/upi_ug31xx
-    class core
-    critical
-    seclabel u:r:watchdogd:s0
-    #seclabel u:r:upi_ug31xx:s0
-
 # Charging mode
-service charger /charger
+service vendor.charger /charger
     class charger
-    seclabel u:r:healthd:s0
+    seclabel u:r:charger:s0
 
 on charger
-    start watchdogd
-
     mkdir /me176c
     mount ext4 /dev/block/by-name/config /me176c rw nosuid nodev noatime data=ordered
-    chown system system /me176c/upi_gg
-    chmod 0660 /me176c/upi_gg
-    chown system system /me176c/upi_bo
-    chmod 0664 /me176c/upi_bo
-    start upi_ug31xx
+    trigger upi_ug31xx
