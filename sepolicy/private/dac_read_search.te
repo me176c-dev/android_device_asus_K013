@@ -1,0 +1,28 @@
+# "fs: switch order of CAP_DAC_OVERRIDE and CAP_DAC_READ_SEARCH checks"
+# https://github.com/torvalds/linux/commit/2a4c22426955d4fc04069811997b7390c0fb858e
+# in Linux 4.12 changed the order in which dac_override and dac_read_search
+# are checked, which means we're now seeing warnings for everything that has
+# dac_override but not dac_read_search.
+# Just silence them because dac_override will still allow the access at the end.
+# TODO: Remove in Q: https://android.googlesource.com/platform/system/sepolicy/+/342362ae3e1afa577a73dc7f154a9de7da96edc4
+
+dontaudit {
+    dnsmasq
+    dumpstate
+    init
+    installd
+    install_recovery
+    lmkd
+    netd
+    perfprofd
+    postinstall_dexopt
+    recovery
+    sdcardd
+    tee
+    ueventd
+    uncrypt
+    vendor_init
+    vold
+    vold_prepare_subdirs
+    zygote
+} self:capability dac_read_search;

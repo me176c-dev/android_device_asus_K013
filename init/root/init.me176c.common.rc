@@ -83,7 +83,7 @@ service watchdogd /sbin/watchdogd
 service upi_ug31xx /upi_ug31xx
     user system
     group system
-    seclabel u:r:charger:s0
+    seclabel u:r:upi_ug31xx:s0
 
 on upi_ug31xx
     # Restore SELinux labeling

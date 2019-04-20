@@ -1,0 +1,29 @@
+# WORKAROUND: fc_sort orders system/sepolicy/private/file_contexts
+# in a way that all files under /system/vendor will be labeled as "system_file"
+# because the /system(/.*)? rule is considered more specific.
+# Adding these rules with /system/vendor again will make them correctly labeled.
+#    TODO: Is there a better fix for this?
+
+#############################
+# Vendor files
+#
+/system/vendor(/.*)?                  u:object_r:vendor_file:s0
+/system/vendor/bin/sh                 u:object_r:vendor_shell_exec:s0
+/system/vendor/bin/toybox_vendor      u:object_r:vendor_toolbox_exec:s0
+/system/vendor/bin/toolbox            u:object_r:vendor_toolbox_exec:s0
+/system/vendor/etc(/.*)?              u:object_r:vendor_configs_file:s0
+
+/system/vendor/lib(64)?/egl(/.*)?     u:object_r:same_process_hal_file:s0
+
+/system/vendor/lib(64)?/vndk-sp(/.*)? u:object_r:vndk_sp_file:s0
+
+/system/vendor/manifest.xml           u:object_r:vendor_configs_file:s0
+/system/vendor/compatibility_matrix.xml u:object_r:vendor_configs_file:s0
+/system/vendor/etc/vintf(/.*)?        u:object_r:vendor_configs_file:s0
+/system/vendor/app(/.*)?              u:object_r:vendor_app_file:s0
+/system/vendor/priv-app(/.*)?         u:object_r:vendor_app_file:s0
+/system/vendor/overlay(/.*)?          u:object_r:vendor_overlay_file:s0
+/system/vendor/framework(/.*)?        u:object_r:vendor_framework_file:s0
+
+# HAL location
+/system/vendor/lib(64)?/hw            u:object_r:vendor_hal_file:s0

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<policy>
-    <signer signature="@RELEASE" >
-        <!-- SmartCover -->
-        <package name="io.github.me176c_dev.smartcover">
-            <seinfo value="release" />
-        </package>
-    </signer>
-</policy>

@@ -1,0 +1,8 @@
+type hal_power_me176c, domain;
+hal_server_domain(hal_power_me176c, hal_power)
+
+type hal_power_me176c_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_power_me176c)
+
+type sysfs_power_runtime, fs_type, sysfs_type;
+allow hal_power_me176c sysfs_power_runtime:file w_file_perms;

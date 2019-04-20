@@ -1,4 +1,0 @@
-type bluetooth_config_file, file_type;
-allow bluetooth bluetooth_config_file:file r_file_perms;
-allow bluetooth bluetooth_config_file:dir search;
-allow bluetooth vendor_data_file:dir search;

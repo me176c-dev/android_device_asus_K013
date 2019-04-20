@@ -34,9 +34,14 @@ BOARD_KERNEL_CMDLINE += rfkill.default_state=0
 BOARD_KERNEL_CMDLINE += ug31xx_battery.early=1
 BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware
 
-#BOARD_SEPOLICY_DIRS += device/asus/$(TARGET_DEVICE)/sepolicy
+BOARD_SEPOLICY_DIRS += \
+    $(TARGET_DEVICE_DIR)/sepolicy \
+    external/drmfb-composer/sepolicy \
+    system/bt/vendor_libs/linux/sepolicy
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(TARGET_DEVICE_DIR)/sepolicy/private
+
 # Uncomment this to set SELinux to permissive by default
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 TARGET_USES_64_BIT_BINDER := true
 

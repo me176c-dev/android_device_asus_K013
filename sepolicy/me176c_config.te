@@ -1,0 +1,5 @@
+type me176c_config_block_device, dev_type;
+type me176c_config_file, file_type;
+
+# Allow file system check on vendor data partition
+allow fsck me176c_config_block_device:blk_file rw_file_perms;

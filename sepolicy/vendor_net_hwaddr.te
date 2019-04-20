@@ -1,0 +1,6 @@
+type vendor_net_hwaddr, domain;
+type vendor_net_hwaddr_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(vendor_net_hwaddr)
+
+allow vendor_net_hwaddr self:netlink_route_socket { create_socket_perms_no_ioctl nlmsg_read nlmsg_write };
+allow vendor_net_hwaddr self:global_capability_class_set net_admin;

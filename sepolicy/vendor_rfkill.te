@@ -1,0 +1,7 @@
+type rfkill_device, dev_type;
+type vendor_rfkill, domain;
+
+# For the use of /vendor/bin/rfkill from vendor init.rc fragments
+domain_trans(init, vendor_toolbox_exec, vendor_rfkill)
+
+allow vendor_rfkill rfkill_device:chr_file rw_file_perms;

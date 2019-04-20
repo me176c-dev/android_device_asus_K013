@@ -1,51 +1,34 @@
 # Block devices
 /dev/block/platform/80860F14:00/mmcblk[0-9]             u:object_r:root_block_device:s0
-
 /dev/block/platform/80860F14:00/by-name/boot            u:object_r:boot_block_device:s0
 /dev/block/platform/80860F14:00/by-name/recovery        u:object_r:recovery_block_device:s0
-
 /dev/block/platform/80860F14:00/by-name/system          u:object_r:system_block_device:s0
-/dev/block/platform/80860F14:00/by-name/factory         u:object_r:factory_block_device:s0
-/dev/block/platform/80860F14:00/by-name/config          u:object_r:vendor_data_block_device:s0
-
+/dev/block/platform/80860F14:00/by-name/config          u:object_r:me176c_config_block_device:s0
 /dev/block/platform/80860F14:00/by-name/cache           u:object_r:cache_block_device:s0
 /dev/block/platform/80860F14:00/by-name/data            u:object_r:userdata_block_device:s0
-
 /dev/block/platform/80860F14:00/by-name/misc            u:object_r:misc_block_device:s0
 
-/dev/block/zram0                                        u:object_r:swap_block_device:s0
-
 # Partitions
-/vnddat                                                 u:object_r:vendor_data_file:s0
+/me176c                                                 u:object_r:me176c_config_file:s0
 
 # Graphics
-/dev/dri/                                               u:object_r:gpu_device:s0
-/dev/dri/card0                                          u:object_r:gpu_device:s0
-/dev/dri/controlD64                                     u:object_r:gpu_device:s0
+/dev/dri                                                u:object_r:gpu_device:s0
+/dev/dri/card0                                          u:object_r:graphics_device:s0
 /dev/dri/renderD128                                     u:object_r:gpu_device:s0
 
-/sys/devices/pci0000:00/0000:00:02\.0/vendor            u:object_r:sysfs_gpu:s0
-/sys/devices/pci0000:00/0000:00:02\.0/device            u:object_r:sysfs_gpu:s0
-/sys/devices/pci0000:00/0000:00:02\.0/revision          u:object_r:sysfs_gpu:s0
-/sys/devices/pci0000:00/0000:00:02\.0/subsystem_vendor  u:object_r:sysfs_gpu:s0
-/sys/devices/pci0000:00/0000:00:02\.0/subsystem_device  u:object_r:sysfs_gpu:s0
-/sys/devices/pci0000:00/0000:00:02\.0/config            u:object_r:sysfs_gpu:s0
-/sys/devices/pci0000:00/0000:00:02\.0/uevent            u:object_r:sysfs_gpu:s0
-
-# Bluetooth
-/dev/ttyS2                                              u:object_r:hci_attach_dev:s0
-/sys/devices/platform/80860F0A:01/BCM2E3A:00/rfkill/rfkill[0-9]/state  u:object_r:sysfs_bluetooth_writable:s0
-/vnddat/bt(/.*)?                                        u:object_r:bluetooth_config_file:s0
+# Connectivity
+/dev/rfkill                                             u:object_r:rfkill_device:s0
 
 # Battery daemon
 /dev/ug31xx                                             u:object_r:upi_ug31xx_device:s0
-/vnddat/upi.*                                           u:object_r:upi_ug31xx_file:s0
+/me176c/upi.*                                           u:object_r:upi_ug31xx_file:s0
 
-# Thermal daemon
+# Daemons
 /system/vendor/bin/thermald                             u:object_r:thermald_exec:s0
-/sys/devices/virtual/dmi/id/product_name                u:object_r:sysfs_dmi_product_name:s0
+/system/vendor/bin/hw/bdaddr                            u:object_r:vendor_bdaddr_exec:s0
+/system/vendor/bin/hw/net_hwaddr                        u:object_r:vendor_net_hwaddr_exec:s0
 
-/sys/class/thermal                                      u:object_r:sysfs_thermal:s0
-/sys/devices/virtual/thermal(/.*)?                      u:object_r:sysfs_thermal:s0
-/sys/devices/virtual/powercap(/.*)?                     u:object_r:sysfs_powercap:s0
-/sys/devices/platform/INT3401:00/power_limits(/.*)?     u:object_r:sysfs_powercap:s0
+# HALs
+/system/vendor/bin/hw/android\.hardware\.drm@1\.1-service\.clearkey  u:object_r:hal_drm_clearkey_exec:s0
+/system/vendor/bin/hw/android\.hardware\.light@2\.0-service\.me176c  u:object_r:hal_light_me176c_exec:s0
+/system/vendor/bin/hw/android\.hardware\.power@1\.0-service\.me176c  u:object_r:hal_power_me176c_exec:s0

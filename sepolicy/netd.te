@@ -1,6 +1,0 @@
-# Seems unneeded, considering we don't use network kernel modules
-dontaudit netd kernel:system module_request;
-
-# Writing succeeds anyway, not sure why this is needed
-# avc: denied { write } for name="xt_quota" dev="proc" scontext=u:r:netd:s0 tcontext=u:object_r:proc_net:s0 tclass=dir
-dontaudit netd proc_net:dir write;

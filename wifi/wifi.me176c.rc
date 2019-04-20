@@ -1,6 +1,7 @@
 service vendor.wifi-unblock /vendor/bin/rfkill unblock wifi
     class early_hal
     oneshot
+    seclabel u:r:vendor_rfkill:s0
 
 # Set the correct WiFi MAC address
 service vendor.wifi-hwaddr /vendor/bin/hw/net_hwaddr ${wifi.interface} ${ro.boot.wifimacaddr}

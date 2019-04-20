@@ -1,0 +1,3 @@
+# avc: denied { map } for scontext=u:r:vendor_init:s0 tcontext=u:object_r:file_contexts_file:s0 tclass=file
+# TODO: Remove in Q
+allow vendor_init file_contexts_file:file r_file_perms;

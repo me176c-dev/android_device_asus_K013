@@ -4,3 +4,4 @@ service vendor.kernel-modules /vendor/bin/modprobe -a -d /vendor/lib/modules \
         snd-intel-sst-acpi snd-soc-sst-bytcr-rt5640
     class early_hal
     oneshot
+    seclabel u:r:vendor_modprobe:s0

@@ -1,0 +1,6 @@
+type vendor_bdaddr, domain;
+type vendor_bdaddr_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(vendor_bdaddr)
+
+allow vendor_bdaddr self:bluetooth_socket { create bind read write };
+allow vendor_bdaddr self:global_capability_class_set net_admin;

@@ -1,3 +1,0 @@
-allow ueventd sysfs_gpu:file w_file_perms;
-allow ueventd sysfs_thermal:file w_file_perms;
-allow ueventd sysfs_powercap:file w_file_perms;

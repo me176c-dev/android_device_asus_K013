@@ -1,29 +1,8 @@
-# Symlink /sdcard to backing block
-allow init tmpfs:lnk_file create;
+# Mount /mnt/vendor/factory
+allow init mnt_vendor_file:dir mounton;
 
-# Mount on and write to /proc/sys/fs/binfmt_misc
-allow init proc:dir mounton;
-allow init binfmt_miscfs:file w_file_perms;
-
-# ConfigFS
-allow init configfs:{ file lnk_file } create_file_perms;
-
-# Kernel modules
-allow init self:capability sys_module;
-allow init system_file:system module_load;
-allow init kernel:key search;
-
-# No need to request kernel modules (those don't exist anyway)
-# avc: denied { module_request } for kmod="usbfunc:mtp" scontext=u:r:init:s0 tcontext=u:r:kernel:s0 tclass=system
-dontaudit init kernel:system module_request;
+type sysfs_init, fs_type, sysfs_type;
+allow init sysfs_init:file w_file_perms;
 
 # Add wake_lock to avoid suspend (TODO: Remove when suspend is fixed)
 wakelock_use(init)
-
-# TODO: Not sure why it wants to create files in the cgroup,
-# these should be already present. Just ignore for now.
-# avc: denied { create } for name="cpus" scontext=u:r:init:s0 tcontext=u:object_r:cgroup:s0 tclass=file
-dontaudit init cgroup:file create;
-
-# Mount /vnddat in recovery and charger mode
-allow init vendor_data_file:dir mounton;

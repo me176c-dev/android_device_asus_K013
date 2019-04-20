@@ -1,0 +1,28 @@
+define(`gpu_domains', `{
+# private
+    adbd
+    surfaceflinger
+    system_server
+# public
+    appdomain -isolated_app
+    bootanim
+    bufferhubd
+    dumpstate
+    hal_graphics_allocator
+    hal_graphics_composer
+    mediacodec
+    mediaserver
+# extra
+    charger
+}')
+
+# /dev/dri/
+allow gpu_domains gpu_device:dir r_dir_perms;
+
+# /sys/devices/pci0000:00/0000:00:02.0/
+type sysfs_gpu, fs_type, sysfs_type;
+allow gpu_domains sysfs_gpu:file r_file_perms;
+
+# This should not be necessary for rendering clients
+# avc: denied { getattr } for path="/dev/dri/card0" scontext=u:r:system_app:s0 tcontext=u:object_r:graphics_device:s0 tclass=chr_file
+dontaudit gpu_domains graphics_device:chr_file getattr;

@@ -1,8 +1,0 @@
-# Needed to override MLS restrictions that break the allow rules below
-typeattribute surfaceflinger_tmpfs mlstrustedobject;
-
-allow adbd surfaceflinger_tmpfs:file { read write map };
-allow { appdomain -isolated_app } surfaceflinger_tmpfs:file { read write map };
-allow mediacodec surfaceflinger_tmpfs:file { read write map };
-allow mediaserver surfaceflinger_tmpfs:file { read write map };
-allow system_server surfaceflinger_tmpfs:file { read write map };

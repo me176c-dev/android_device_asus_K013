@@ -1,0 +1,48 @@
+# Bluetooth
+genfscon sysfs /devices/platform/80860F0A:01/serial0/serial0-0/bluetooth/hci0/rfkill  u:object_r:sysfs_bluetooth_writable:s0
+
+# Graphics
+genfscon sysfs /devices/pci0000:00/0000:00:02.0/vendor            u:object_r:sysfs_gpu:s0
+genfscon sysfs /devices/pci0000:00/0000:00:02.0/device            u:object_r:sysfs_gpu:s0
+genfscon sysfs /devices/pci0000:00/0000:00:02.0/revision          u:object_r:sysfs_gpu:s0
+genfscon sysfs /devices/pci0000:00/0000:00:02.0/subsystem_vendor  u:object_r:sysfs_gpu:s0
+genfscon sysfs /devices/pci0000:00/0000:00:02.0/subsystem_device  u:object_r:sysfs_gpu:s0
+genfscon sysfs /devices/pci0000:00/0000:00:02.0/config            u:object_r:sysfs_gpu:s0
+genfscon sysfs /devices/pci0000:00/0000:00:02.0/uevent            u:object_r:sysfs_gpu:s0
+
+# Init
+genfscon sysfs /kernel/mm/ksm/pages_to_scan    u:object_r:sysfs_init:s0
+genfscon sysfs /kernel/mm/ksm/sleep_millisecs  u:object_r:sysfs_init:s0
+genfscon sysfs /kernel/mm/ksm/run              u:object_r:sysfs_init:s0
+
+# Light
+genfscon sysfs /devices/pci0000:00/0000:00:02.0/drm/card0/card0-DSI-1/intel_backlight/brightness  u:object_r:sysfs_leds:s0
+
+# Power
+genfscon sysfs /class/power_supply                                                u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/80860F41:00/i2c-0/i2c-UPIG3105:00/power_supply   u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/80860F41:00/i2c-0/i2c-TIBQ2419:00/power_supply   u:object_r:sysfs_batteryinfo:s0
+
+genfscon sysfs /devices/pci0000:00/0000:00:00.0/power/control                     u:object_r:sysfs_init:s0
+genfscon sysfs /devices/pci0000:00/0000:00:02.0/power/control                     u:object_r:sysfs_init:s0
+genfscon sysfs /devices/pci0000:00/0000:00:03.0/power/control                     u:object_r:sysfs_init:s0
+genfscon sysfs /devices/pci0000:00/0000:00:14.0/power/control                     u:object_r:sysfs_init:s0
+genfscon sysfs /devices/pci0000:00/0000:00:16.0/power/control                     u:object_r:sysfs_init:s0
+genfscon sysfs /devices/pci0000:00/0000:00:16.0/dwc3.1.auto/power/control         u:object_r:sysfs_init:s0
+genfscon sysfs /devices/pci0000:00/0000:00:1a.0/power/control                     u:object_r:sysfs_init:s0
+genfscon sysfs /devices/pci0000:00/0000:00:1f.0/power/control                     u:object_r:sysfs_init:s0
+genfscon sysfs /devices/platform/80860F41:00/i2c-0/i2c-UPIG3105:00/power/control  u:object_r:sysfs_power_runtime:s0
+genfscon sysfs /devices/platform/80860F41:05/i2c-5/i2c-GDIX1001:00/power/control  u:object_r:sysfs_power_runtime:s0
+
+# Sensors
+genfscon sysfs /devices/platform/80860F41:04/i2c-4/i2c-KXJ2109:00/iio:device0     u:object_r:sysfs_sensors:s0
+genfscon sysfs /devices/platform/80860F41:04/i2c-4/i2c-KXJ2109:00/trigger0        u:object_r:sysfs_sensors:s0
+genfscon sysfs /devices/platform/80860F41:04/i2c-4/i2c-KXJ2109:00/trigger1        u:object_r:sysfs_sensors:s0
+genfscon sysfs /devices/platform/80860F41:04/i2c-4/i2c-AKM9911:00/iio:device1     u:object_r:sysfs_sensors:s0
+
+# Thermal
+genfscon sysfs /devices/virtual/dmi/id/product_name       u:object_r:sysfs_dmi_product_name:s0
+genfscon sysfs /class/thermal                             u:object_r:sysfs_thermal:s0
+genfscon sysfs /devices/virtual/thermal                   u:object_r:sysfs_thermal:s0
+genfscon sysfs /devices/virtual/powercap                  u:object_r:sysfs_powercap:s0
+genfscon sysfs /devices/platform/INT3401:00/power_limits  u:object_r:sysfs_powercap:s0

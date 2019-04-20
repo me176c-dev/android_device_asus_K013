@@ -1,0 +1,5 @@
+allow hal_sensors_default iio_device:chr_file rw_file_perms;
+
+type sysfs_sensors, fs_type, sysfs_type;
+allow hal_sensors_default sysfs_sensors:dir r_dir_perms;
+allow hal_sensors_default sysfs_sensors:file rw_file_perms;
