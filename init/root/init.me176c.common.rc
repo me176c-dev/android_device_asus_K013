@@ -30,10 +30,10 @@ on init
 
 on fs
     # Battery
-    chown system system /vnddat/upi_gg
-    chmod 0660 /vnddat/upi_gg
-    chown system system /vnddat/upi_bo
-    chmod 0664 /vnddat/upi_bo
+    chown system system /me176c/upi_gg
+    chmod 0660 /me176c/upi_gg
+    chown system system /me176c/upi_bo
+    chmod 0664 /me176c/upi_bo
 
 on early-boot
     write /config/usb_gadget/g1/strings/0x409/manufacturer ${ro.product.manufacturer}

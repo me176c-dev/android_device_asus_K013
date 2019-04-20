@@ -26,5 +26,5 @@ cp "$WIFI_NVRAM" "$TARGET_DIR"
 cp "$BLUETOOTH_FIRMWARE" "$TARGET_DIR/BCM2076B1.hcd"
 
 echo " -> Patching files"
-# /config partition is used by configfs so we move it to /vnddat (vendor data)
-sed -i 's@/config/@/vnddat/@g' "$TARGET_DIR/upi_ug31xx"
+# /config partition is used by configfs so we move it to /me176c
+sed -i 's@/config/@/me176c/@g' "$TARGET_DIR/upi_ug31xx"

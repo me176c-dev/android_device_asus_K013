@@ -24,7 +24,7 @@ on fs
 
 on post-fs
     # Restore SELinux labeling
-    restorecon_recursive /vnddat
+    restorecon_recursive /me176c
 
 on post-fs-data
     # Set indication (checked by vold) that we have finished this action
@@ -62,10 +62,10 @@ service charger /charger
 on charger
     start watchdogd
 
-    mkdir /vnddat
-    mount ext4 /dev/block/by-name/config /vnddat rw nosuid nodev noatime data=ordered
-    chown system system /vnddat/upi_gg
-    chmod 0660 /vnddat/upi_gg
-    chown system system /vnddat/upi_bo
-    chmod 0664 /vnddat/upi_bo
+    mkdir /me176c
+    mount ext4 /dev/block/by-name/config /me176c rw nosuid nodev noatime data=ordered
+    chown system system /me176c/upi_gg
+    chmod 0660 /me176c/upi_gg
+    chown system system /me176c/upi_bo
+    chmod 0664 /me176c/upi_bo
     start upi_ug31xx

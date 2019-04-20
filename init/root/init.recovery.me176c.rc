@@ -7,8 +7,8 @@ on late-init
     mkdir /config/usb_gadget/g1/functions/mass_storage.0
 
 on fs
-    mkdir /vnddat
-    mount ext4 /dev/block/by-name/config /vnddat rw nosuid nodev noatime data=ordered
+    mkdir /me176c
+    mount ext4 /dev/block/by-name/config /me176c rw nosuid nodev noatime data=ordered
 
 service upi_ug31xx /sbin/upi_ug31xx
     # TODO
