@@ -14,7 +14,7 @@ echo " -> Extracting boot ramdisk"
 
 echo " -> Unpacking boot ramdisk"
 mkdir ramdisk && cd ramdisk
-cat ../ramdisk.img | gunzip | cpio -Vid --quiet
+gunzip -c ../ramdisk.img | cpio -Vid --quiet
 cd ..
 
 echo " -> Copying files"
