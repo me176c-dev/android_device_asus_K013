@@ -53,7 +53,9 @@ on property:sys.io.scheduler=*
     write /sys/block/mmcblk2/queue/scheduler ${sys.io.scheduler}
 
 on property:sys.io.scheduler=cfq
+    restorecon --recursive /sys/block/mmcblk2/queue
     write /sys/block/mmcblk2/queue/iosched/slice_idle 0
 
 on property:sys.io.scheduler=bfq
+    restorecon --recursive /sys/block/mmcblk2/queue
     write /sys/block/mmcblk2/queue/iosched/slice_idle 0
