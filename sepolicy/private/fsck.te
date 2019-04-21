@@ -1,0 +1,3 @@
+# e2fsck uses this to check if on battery, but this will fail anyway
+# avc: denied { search } for comm="e2fsck" name="power_supply" dev="sysfs" scontext=u:r:fsck:s0 tcontext=u:object_r:sysfs_batteryinfo:s0 tclass=dir
+dontaudit fsck sysfs_batteryinfo:dir search;
