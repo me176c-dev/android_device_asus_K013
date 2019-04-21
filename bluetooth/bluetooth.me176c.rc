@@ -1,3 +1,6 @@
 # Set the correct Bluetooth MAC address
 service vendor.bdaddr /vendor/bin/hw/bdaddr ${ro.boot.btmacaddr}
     class early_hal
+    user system
+    group system
+    capabilities NET_ADMIN

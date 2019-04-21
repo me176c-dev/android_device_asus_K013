@@ -1,11 +1,14 @@
 service vendor.wifi-unblock /vendor/bin/rfkill unblock wifi
-    class early_hal
     oneshot
+    class early_hal
     seclabel u:r:vendor_rfkill:s0
 
 # Set the correct WiFi MAC address
 service vendor.wifi-hwaddr /vendor/bin/hw/net_hwaddr ${wifi.interface} ${ro.boot.wifimacaddr}
     class early_hal
+    user system
+    group system
+    capabilities NET_ADMIN
 
 on zygote-start
     # Create the directories used by the Wireless subsystem
