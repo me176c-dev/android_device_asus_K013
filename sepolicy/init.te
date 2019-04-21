@@ -1,6 +1,9 @@
 # Mount /mnt/vendor/factory
 allow init mnt_vendor_file:dir mounton;
 
+# Mount /me176c in recovery and charger mode
+allow init me176c_config_file:dir mounton;
+
 type sysfs_init, fs_type, sysfs_type;
 allow init sysfs_init:file w_file_perms;
 
