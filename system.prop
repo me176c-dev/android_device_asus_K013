@@ -27,3 +27,6 @@ wifi.interface=wlan0
 # Note: This partition doesn't actually exist.
 # However, setting this property fixes a crash when entering Developer Options.
 ro.frp.pst=/dev/block/by-name/frp
+
+# I/O Scheduler (LineageOS feature)
+sys.io.scheduler=bfq
