@@ -1,4 +1,5 @@
 TARGET_DEVICE_DIR := device/asus/$(TARGET_DEVICE)
+VENDOR_SECURITY_PATCH := 2019-04-05
 
 # Architecture
 TARGET_BOARD_PLATFORM := baytrail
