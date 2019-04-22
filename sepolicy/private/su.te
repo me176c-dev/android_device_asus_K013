@@ -1,0 +1,4 @@
+userdebug_or_eng(`
+    # avc: denied { map } for scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:su_exec:s0 tclass=file
+    allow untrusted_app_all su_exec:file map;
+');

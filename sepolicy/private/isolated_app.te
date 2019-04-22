@@ -1,0 +1,2 @@
+# TODO: Remove in Q: https://android.googlesource.com/platform/system/sepolicy/+/00252207f878f63aaa5219bcd4aa35a7aac9fb91
+allow isolated_app { app_data_file media_rw_data_file }:file map;
