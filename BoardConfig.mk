@@ -37,7 +37,8 @@ BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware
 BOARD_SEPOLICY_DIRS += \
     $(TARGET_DEVICE_DIR)/sepolicy \
     external/drmfb-composer/sepolicy \
-    system/bt/vendor_libs/linux/sepolicy
+    system/bt/vendor_libs/linux/sepolicy \
+    vendor/google/chromeos/sepolicy
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(TARGET_DEVICE_DIR)/sepolicy/private
 
 # Uncomment this to set SELinux to permissive by default
