@@ -18,6 +18,10 @@ genfscon sysfs /kernel/mm/ksm/run              u:object_r:sysfs_init:s0
 # Light
 genfscon sysfs /devices/pci0000:00/0000:00:02.0/drm/card0/card0-DSI-1/intel_backlight/brightness  u:object_r:sysfs_leds:s0
 
+# Network
+genfscon sysfs /devices/virtual/net                                                  u:object_r:sysfs_net:s0
+genfscon sysfs /devices/platform/INT33BB:00/mmc_host/mmc1/mmc1:0001/mmc1:0001:1/net  u:object_r:sysfs_net:s0
+
 # Power
 genfscon sysfs /class/power_supply                                                u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/80860F41:00/i2c-0/i2c-UPIG3105:00/power_supply   u:object_r:sysfs_batteryinfo:s0
@@ -33,6 +37,9 @@ genfscon sysfs /devices/pci0000:00/0000:00:1a.0/power/control                   
 genfscon sysfs /devices/pci0000:00/0000:00:1f.0/power/control                     u:object_r:sysfs_init:s0
 genfscon sysfs /devices/platform/80860F41:00/i2c-0/i2c-UPIG3105:00/power/control  u:object_r:sysfs_power_runtime:s0
 genfscon sysfs /devices/platform/80860F41:05/i2c-5/i2c-GDIX1001:00/power/control  u:object_r:sysfs_power_runtime:s0
+
+# RTC
+genfscon sysfs /devices/pnp0/00:00/rtc  u:object_r:sysfs_rtc:s0
 
 # Sensors
 genfscon sysfs /devices/platform/80860F41:04/i2c-4/i2c-KXJ2109:00/iio:device0     u:object_r:sysfs_sensors:s0
