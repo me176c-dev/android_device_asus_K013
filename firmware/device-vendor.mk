@@ -17,6 +17,8 @@ ifneq ($(wildcard $(LOCAL_PATH)/proprietary),)
 
     # Allows verifying signature of stock firmware in recovery
     PRODUCT_EXTRA_RECOVERY_KEYS += $(LOCAL_PATH)/proprietary/asus
+
+    BUILD_FINGERPRINT := asus/WW_K013/K013:5.0/LRX21V/WW_K013-12.10.1.36-20151230:user/release-keys
 else
     $(warning Building without proprietary ASUS firmware. WiFi/BT will not work. \
         See firmware/README.md for details or run "extract-files.sh" to download it.)
