@@ -141,6 +141,12 @@ ifeq ($(RECOVERY_VARIANT), twrp)
     # No need to compile kernel modules on TWRP
     TARGET_KERNEL_BUILD_MODULES := false
 
+    # TWRP switches SELinux to permissive mode anyway.
+    # However, if recovery is still started in enforcing mode,
+    # its LD_LIBRARY_PATH environment variable is stripped, causing
+    # binaries to be loaded from the system partition. Bad.
+    BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+
     # The ramdisk is too large to fit into the recovery partition
     # LZMA is slower, but compresses better to make it fit into the partition
     LZMA_RAMDISK_TARGETS := recovery
