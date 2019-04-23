@@ -115,9 +115,6 @@ BOARD_HOSTAPD_DRIVER := NL80211
 # Build pre-optimized to speed up initial boot
 WITH_DEXPREOPT := true
 
-# Set correct fingerprint in ZIP package
-TARGET_RELEASETOOLS_EXTENSIONS := $(TARGET_DEVICE_DIR)
-
 # Recovery
 TARGET_RECOVERY_FSTAB := $(TARGET_DEVICE_DIR)/init/root/fstab.me176c
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
