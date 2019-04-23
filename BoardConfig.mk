@@ -128,6 +128,14 @@ TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 # Include extra patches (if any)
 -include $(TARGET_DEVICE_DIR)/patches/board.mk
 
+# Lineage
+ifneq ($(LINEAGE_BUILD),)
+    BOARD_SEPOLICY_DIRS += $(TARGET_DEVICE_DIR)/sepolicy/lineage
+else
+    # Fix build error on LineageOS
+    -include vendor/lineage/config/BoardConfigSoong.mk
+endif
+
 # TWRP
 ifeq ($(RECOVERY_VARIANT), twrp)
     # No need to compile kernel modules on TWRP
@@ -170,7 +178,4 @@ ifeq ($(RECOVERY_VARIANT), twrp)
             You will not be able to flash the Android 5.0 stock firmware ZIPs from ASUS.\
             See recovery/asus_updater/README.md for details.)
     endif
-
-    # Fix build error on LineageOS
-    -include vendor/lineage/config/BoardConfigLineage.mk
 endif

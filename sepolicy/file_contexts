@@ -33,6 +33,3 @@
 /system/vendor/bin/hw/android\.hardware\.drm@1\.1-service\.clearkey  u:object_r:hal_drm_clearkey_exec:s0
 /system/vendor/bin/hw/android\.hardware\.light@2\.0-service\.me176c  u:object_r:hal_light_me176c_exec:s0
 /system/vendor/bin/hw/android\.hardware\.power@1\.0-service\.me176c  u:object_r:hal_power_me176c_exec:s0
-
-# I/O Scheduler
-/sys/devices/platform/80860F14:0[0-9]/mmc_host/mmc[0-9]/mmc[0-9]:[a-f0-9]+/block/mmcblk[0-9]/queue(/.*)?  u:object_r:sysfs_io_sched_tuneable:s0
