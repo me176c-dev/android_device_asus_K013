@@ -136,3 +136,4 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 
 # See firmware/README.md
 $(call inherit-product-if-exists, $(LOCAL_PATH)/firmware/device-vendor.mk)
+$(call inherit-product-if-exists, vendor/google/chromeos/target/native_bridge_arm_on_x86.mk)
