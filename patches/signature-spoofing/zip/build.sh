@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-exec zip -r me176c-signature-spoofing.zip  META-INF
+../../../recovery/simple-zip/build.sh me176c-signature-spoofing.zip addond.sh

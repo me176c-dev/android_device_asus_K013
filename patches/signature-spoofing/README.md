@@ -32,5 +32,5 @@ providers outside of `/system` permanently by setting the appropriate system
 properties. It uses the `addon.d` system to persist after installing LineageOS
 updates.
 
-It can be built using `zip/build.sh`. Alternatively, it is available as
-release on this repository.
+It can be built using `./build.sh` in the `zip` directory.
+Alternatively, it is available as release on this repository.
