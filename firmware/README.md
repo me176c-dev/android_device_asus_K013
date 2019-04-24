@@ -60,6 +60,16 @@ It is available in the releases or can be built by running its `build.sh` script
 
 See the [microcode README](microcode/README) for usage instructions.
 
+### Fingerprint
+Google Play certification verifies that the build fingerprint matches one on
+Google's servers. This is not the case for the build fingerprint of the custom
+ROM. As such, the device will appear as uncertified.
+
+`fingerprint` contains source code for a flashable ZIP package that changes
+the build fingerprint to the one from the ASUS stock ROM, making the device
+appear as certified (assuming it is not rooted).
+It is available in the releases or can be built by running its `build.sh` script.
+
 ### Also see
 - [Dependencies in "Porting - Using linux-me176c in other distributions"](https://github.com/me176c-dev/linux-me176c/blob/master/porting.md#dependencies)
 
