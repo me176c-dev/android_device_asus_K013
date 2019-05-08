@@ -21,7 +21,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel/asus/$(TARGET_DEVICE)
+TARGET_KERNEL_SOURCE := kernel/me176c
 TARGET_KERNEL_ARCH := x86_64
 
 # Use host distribution compiler if it is recent enough for Retpoline support
@@ -82,7 +82,8 @@ BOARD_GPU_DRIVERS := i965
 # Gralloc
 BOARD_USES_MINIGBM := true
 BOARD_USES_GRALLOC1 := true
-INTEL_MINIGBM := external/minigbm
+MINIGBM_PATH := hardware/me176c/minigbm
+INTEL_MINIGBM := $(MINIGBM_PATH)
 
 # Audio
 USE_XML_AUDIO_POLICY_CONF := 1

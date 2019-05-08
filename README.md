@@ -84,7 +84,7 @@ WireGuard support is added to the kernel using the kernel patch script, as expla
 https://forum.xda-developers.com/android/development/wireguard-rom-integration-t3711635).
 
 ```bash
-$ ./patch-kernel.sh kernel/asus/me176c
+$ ./patch-kernel.sh kernel/me176c
 ```
 
 ## Development

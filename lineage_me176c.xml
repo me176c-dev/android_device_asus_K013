@@ -4,37 +4,36 @@
     <remote name="kernel" fetch="https://git.kernel.org/pub/scm/linux/" />
 
     <!-- Device repositories -->
-    <project name="android_device_asus_K013" path="device/asus/K013" remote="me176c" groups="me176c" />
-    <project name="linux-me176c" path="device/asus/K013/linux" remote="me176c" revision="master" groups="me176c" />
-    <project name="me176c-acpi" path="device/asus/K013/firmware/acpi" remote="me176c" revision="master" groups="me176c" />
-    <project name="linux-me176c" path="kernel/asus/K013" remote="me176c" revision="android-4.19" groups="me176c" />
+    <project name="android_device_asus_K013" path="device/asus/K013" remote="me176c" groups="me176c">
+        <linkfile src="Android.mk" dest="hardware/me176c/Android.mk" />
+        <linkfile src="build/namespace.bp" dest="hardware/me176c/Android.bp" />
+    </project>
+    <project name="linux-me176c" path="kernel/me176c" remote="me176c" revision="android-4.19" groups="me176c" />
 
-    <!-- ACPI -->
-    <project name="android_external_acpica" path="external/acpica" remote="me176c" groups="me176c" />
+    <!-- Firmware -->
+    <project name="me176c-acpi" path="device/asus/K013/firmware/acpi" remote="me176c" revision="master" groups="me176c" />
+    <project name="kernel/git/firmware/linux-firmware.git" path="device/asus/K013/firmware/linux" remote="kernel" revision="7d2c913dcd1be083350d97a8cb1eba24cfacbc8a" />
+
+    <!-- Hardware libraries -->
+    <project name="linux-me176c" path="hardware/me176c/linux-me176c" remote="me176c" revision="master" groups="me176c" />
+    <project name="android_hardware_acpica" path="hardware/me176c/acpica" remote="me176c" groups="me176c" />
 
     <!-- Graphics -->
     <extend-project name="platform/external/libdrm" revision="0fb967dea8a8e5205d9bab3af696bef7ae009bdd" />
-
-    <project name="android_external_minigbm" path="external/minigbm" remote="me176c" groups="me176c" />
     <project name="drmfb-composer" path="external/drmfb-composer" remote="me176c" revision="master" />
 
-    <project name="android_external_mesa" path="external/mesa" remote="me176c" groups="me176c" />
+    <project name="android_hardware_minigbm" path="hardware/me176c/minigbm" remote="me176c" groups="me176c" />
+    <project name="android_hardware_mesa" path="hardware/me176c/mesa" remote="me176c" groups="me176c" />
 
     <!-- Sensors -->
-    <project name="android_external_iio-sensors-hal" path="external/iio-sensors-hal" remote="me176c" groups="me176c" />
-
-    <!-- Thermal -->
-    <project name="android_external_thermald" path="external/thermald" remote="me176c" groups="me176c" />
-
-    <!-- Linux firmware files -->
-    <project name="kernel/git/firmware/linux-firmware.git" path="vendor/linux/firmware" remote="kernel" revision="7d2c913dcd1be083350d97a8cb1eba24cfacbc8a" />
+    <project name="android_hardware_iio-sensors-hal" path="hardware/me176c/iio-sensors-hal" remote="me176c" groups="me176c" />
+    <project name="android_hardware_thermald" path="hardware/me176c/thermald" remote="me176c" groups="me176c" />
 
     <!-- Hardware video acceleration -->
-    <project name="android_external_libva" path="external/libva" remote="me176c" groups="me176c" />
-    <project name="android_external_intel-vaapi-driver" path="external/intel-vaapi-driver" remote="me176c" groups="me176c" />
-
-    <project name="android_vendor_intel_mediasdk" path="vendor/intel/mediasdk" remote="me176c" groups="me176c" />
-    <project name="android_vendor_intel_mediasdk-omx" path="vendor/intel/mediasdk-omx" remote="me176c" groups="me176c" />
+    <project name="android_hardware_libva" path="hardware/me176c/libva" remote="me176c" groups="me176c" />
+    <project name="android_hardware_intel-vaapi-driver" path="hardware/me176c/intel-vaapi-driver" remote="me176c" groups="me176c" />
+    <project name="android_hardware_mediasdk" path="hardware/me176c/mediasdk" remote="me176c" groups="me176c" />
+    <project name="android_hardware_mediasdk-omx" path="hardware/me176c/mediasdk-omx" remote="me176c" groups="me176c" />
 
     <!-- ARM native bridge / DRM from ChromeOS (not built by default) -->
     <project name="android_vendor_google_chromeos" path="vendor/google/chromeos" remote="me176c" revision="pie-x86" />
