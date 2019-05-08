@@ -1,0 +1,62 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: lambdadroid <lambdadroid@gmail.com>
+Date: Sat, 20 Oct 2018 19:07:09 +0200
+Subject: [PATCH] Avoid ANQP requests when passpoint feature is disabled
+
+Right now these seem to cause a kernel panic.
+
+Change-Id: Ic3a5a4034f9d45a43d5252b0a18dc7ed4d6aef6e
+---
+ service/java/com/android/server/wifi/WifiInjector.java | 5 ++++-
+ service/java/com/android/server/wifi/WifiMetrics.java  | 5 ++---
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/service/java/com/android/server/wifi/WifiInjector.java b/service/java/com/android/server/wifi/WifiInjector.java
+index 89a7f45b4..3147af32d 100644
+--- a/service/java/com/android/server/wifi/WifiInjector.java
++++ b/service/java/com/android/server/wifi/WifiInjector.java
+@@ -20,6 +20,7 @@ import android.annotation.NonNull;
+ import android.app.ActivityManager;
+ import android.app.AppOpsManager;
+ import android.content.Context;
++import android.content.pm.PackageManager;
+ import android.hardware.SystemSensorManager;
+ import android.net.NetworkKey;
+ import android.net.NetworkScoreManager;
+@@ -248,7 +249,9 @@ public class WifiInjector {
+                 mWifiMetrics);
+         mPasspointNetworkEvaluator = new PasspointNetworkEvaluator(
+                 mPasspointManager, mWifiConfigManager, mConnectivityLocalLog);
+-        mWifiMetrics.setPasspointManager(mPasspointManager);
++        if (mContext.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WIFI_PASSPOINT)) {
++            mWifiMetrics.setPasspointManager(mPasspointManager);
++        }
+         mScanRequestProxy = new ScanRequestProxy(mContext,
+                 (AppOpsManager) mContext.getSystemService(Context.APP_OPS_SERVICE),
+                 (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE),
+diff --git a/service/java/com/android/server/wifi/WifiMetrics.java b/service/java/com/android/server/wifi/WifiMetrics.java
+index 440754137..e65067008 100644
+--- a/service/java/com/android/server/wifi/WifiMetrics.java
++++ b/service/java/com/android/server/wifi/WifiMetrics.java
+@@ -1630,8 +1630,7 @@ public class WifiMetrics {
+     public void incrementAvailableNetworksHistograms(List<ScanDetail> scanDetails,
+             boolean isFullBand) {
+         synchronized (mLock) {
+-            if (mWifiConfigManager == null || mWifiNetworkSelector == null
+-                    || mPasspointManager == null) {
++            if (mWifiConfigManager == null || mWifiNetworkSelector == null) {
+                 return;
+             }
+             if (!isFullBand) {
+@@ -1666,7 +1665,7 @@ public class WifiMetrics {
+                 ScanResultMatchInfo matchInfo = ScanResultMatchInfo.fromScanResult(scanResult);
+                 Pair<PasspointProvider, PasspointMatch> providerMatch = null;
+                 PasspointProvider passpointProvider = null;
+-                if (networkDetail.isInterworking()) {
++                if (mPasspointManager != null && networkDetail.isInterworking()) {
+                     providerMatch =
+                             mPasspointManager.matchProvider(scanResult);
+                     passpointProvider = providerMatch != null ? providerMatch.first : null;
+-- 
+2.21.0
+

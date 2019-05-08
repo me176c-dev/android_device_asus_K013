@@ -1,0 +1,40 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: lambdadroid <lambdadroid@gmail.com>
+Date: Sun, 21 Apr 2019 16:13:33 +0200
+Subject: [PATCH] build: Respect fs_config when generating recovery ramdisk
+
+Without the -d $(TARGET_OUT) option for mkbootfs, only the
+compiled-in fs_config (from AOSP) is used for the generated
+ramdisk image. Device-specific additions are ignored.
+
+This is why AOSP sets this option for both the boot- and recovery
+ramdisk [1]. However, the option was removed for the recovery ramdisk
+in https://review.lineageos.org/c/LineageOS/android_build/+/222722
+
+This causes device-specific fs_config additions to be ignored when
+generating the recovery ramdisk, potentially setting the wrong
+permissions.
+
+[1]: https://android.googlesource.com/platform/build/+/refs/tags/android-9.0.0_r37/core/Makefile#1388
+
+Change-Id: I0f77a49d8b2f08791e60b34ddbb6f3b32bc2f0bc
+---
+ core/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/core/Makefile b/core/Makefile
+index 6b431e232..1311167d2 100644
+--- a/core/Makefile
++++ b/core/Makefile
+@@ -1548,7 +1548,7 @@ $(recovery_uncompressed_ramdisk): $(MKBOOTFS) $(ADBD) \
+ 		$(DEPMOD)
+ 		$(call build-recoveryramdisk)
+ 		@echo ----- Making uncompressed recovery ramdisk ------
+-		$(hide) $(MKBOOTFS) $(TARGET_RECOVERY_ROOT_OUT) > $@
++		$(hide) $(MKBOOTFS) -d $(TARGET_OUT) $(TARGET_RECOVERY_ROOT_OUT) > $@
+ 
+ $(recovery_ramdisk): $(MINIGZIP) \
+ 		$(recovery_uncompressed_ramdisk)
+-- 
+2.21.0
+

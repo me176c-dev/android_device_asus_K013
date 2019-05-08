@@ -15,8 +15,3 @@ cd "$ANDROID_BUILD_TOP/system/core"
 git remote add me176c https://github.com/me176c-dev/android_system_core 2>/dev/null || :
 git fetch me176c twrp-9.0
 git cherry-pick me176c/twrp-9.0
-
-cd "$ANDROID_BUILD_TOP/build/make"
-git remote add me176c https://github.com/me176c-dev/android_build 2>/dev/null || :
-git fetch me176c twrp-9.0
-git cherry-pick me176c/twrp-9.0

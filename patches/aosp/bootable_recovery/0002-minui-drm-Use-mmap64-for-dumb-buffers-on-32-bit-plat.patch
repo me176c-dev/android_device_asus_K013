@@ -1,0 +1,32 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: lambdadroid <lambdadroid@gmail.com>
+Date: Sat, 5 Aug 2017 17:18:39 +0200
+Subject: [PATCH] minui: drm: Use mmap64 for dumb buffers on 32 bit platforms
+
+The DRM API may return offsets bigger than 32 bit, causing the
+call to mmap to fail on 32 bit platforms. Use mmap64 to handle
+them properly.
+
+Change-Id: I426795d6dddff19f6452011c15398d354bf91295
+---
+ minui/graphics_drm.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/minui/graphics_drm.cpp b/minui/graphics_drm.cpp
+index e7d4b38e..79644ade 100644
+--- a/minui/graphics_drm.cpp
++++ b/minui/graphics_drm.cpp
+@@ -29,6 +29,10 @@
+ 
+ #include "minui/minui.h"
+ 
++#ifndef __LP64__
++#define mmap mmap64
++#endif
++
+ #define ARRAY_SIZE(A) (sizeof(A)/sizeof(*(A)))
+ 
+ MinuiBackendDrm::MinuiBackendDrm()
+-- 
+2.21.0
+

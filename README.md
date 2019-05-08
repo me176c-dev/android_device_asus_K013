@@ -9,8 +9,8 @@ https://forum.xda-developers.com/memo-pad-7/orig-development/rom-unofficial-line
 See [Development](#development) for a technical overview of the ROM.
 
 ## Building
-The ROM is built in a regular LineageOS 16.0 build environment, with a few additional/replaced repositories using a
-local manifest.
+The ROM is built in a regular LineageOS 16.0 build environment,
+with a few additional repositories using a local manifest.
 
 **Note:** This guide assumes you have built LineageOS for another device before and therefore are aware of
 preparations required to build LineageOS (e.g. supported Linux distributions, additional build dependencies, ...).
@@ -43,9 +43,14 @@ preparations required to build LineageOS (e.g. supported Linux distributions, ad
 5. **Build the ROM:** Depending on your CPU, this will take even longer.
 
     ```bash
+    $ device/asus/K013/patches/apply.sh aosp lineage
     $ . build/envsetup.sh
     $ brunch lineage_me176c-userdebug
     ```
+
+    The first command applies some patches to repositories from AOSP/LineageOS.
+    It should be re-run after `repo sync`.
+    Note that it fails if the patches are already applied.
 
 #### TWRP
 [TWRP (TeamWin Recovery Project)](https://twrp.me) is also built in the LineageOS 16.0 tree.
