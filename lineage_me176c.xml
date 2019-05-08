@@ -18,7 +18,6 @@
     <project name="android_external_minigbm" path="external/minigbm" remote="me176c" groups="me176c" />
     <project name="drmfb-composer" path="external/drmfb-composer" remote="me176c" revision="master" />
 
-    <remove-project name="platform/external/mesa3d" />
     <project name="android_external_mesa" path="external/mesa" remote="me176c" groups="me176c" />
 
     <!-- Sensors -->
