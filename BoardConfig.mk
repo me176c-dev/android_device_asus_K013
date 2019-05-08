@@ -30,10 +30,14 @@ ifneq ($(shell printf "%s\n" "7.3" "`gcc -dumpversion`" | sort -cV 2>&1),)
 endif
 
 BOARD_KERNEL_IMAGE_NAME := bzImage
-BOARD_KERNEL_CMDLINE += quiet androidboot.hardware=me176c tsc=reliable
-BOARD_KERNEL_CMDLINE += rfkill.default_state=0
-BOARD_KERNEL_CMDLINE += ug31xx_battery.early=1
+BOARD_KERNEL_CMDLINE += quiet androidboot.hardware=me176c printk.devkmsg=on
+BOARD_KERNEL_CMDLINE += tsc=reliable
 BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware
+BOARD_KERNEL_CMDLINE += cgroup.memory=nokmem
+# Block WiFi/BT by default until it is enabled by userspace
+BOARD_KERNEL_CMDLINE += rfkill.default_state=0
+# Register battery power supply early to avoid immediate reboot in charger mode
+BOARD_KERNEL_CMDLINE += ug31xx_battery.early=1
 
 BOARD_SEPOLICY_DIRS += \
     $(TARGET_DEVICE_DIR)/sepolicy \
