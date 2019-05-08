@@ -13,8 +13,7 @@
     <project name="android_external_acpica" path="external/acpica" remote="me176c" groups="me176c" />
 
     <!-- Graphics -->
-    <remove-project name="platform/external/libdrm" /> <!-- AOSP master has a newer version of libdrm -->
-    <project name="platform/external/libdrm" path="external/libdrm" remote="aosp" groups="pdk" revision="0fb967dea8a8e5205d9bab3af696bef7ae009bdd" />
+    <extend-project name="platform/external/libdrm" revision="0fb967dea8a8e5205d9bab3af696bef7ae009bdd" />
 
     <project name="android_external_minigbm" path="external/minigbm" remote="me176c" groups="me176c" />
     <project name="drmfb-composer" path="external/drmfb-composer" remote="me176c" revision="master" />
