@@ -43,7 +43,7 @@ preparations required to build LineageOS (e.g. supported Linux distributions, ad
 5. **Build the ROM:** Depending on your CPU, this will take even longer.
 
     ```bash
-    $ device/asus/K013/patches/apply.sh aosp lineage
+    $ device/asus/K013/patches/apply.sh aosp
     $ . build/envsetup.sh
     $ brunch lineage_me176c-userdebug
     ```
