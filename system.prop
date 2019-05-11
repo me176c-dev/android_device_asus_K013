@@ -23,6 +23,10 @@ ro.iio.magn.quirks=no-trig
 # WiFi
 wifi.interface=wlan0
 
+# Enforce privileged permission whitelisting
+# https://source.android.com/devices/tech/config/perms-whitelist#enforcing-whitelists
+ro.control_privapp_permissions=enforce
+
 # Factory Reset Protection
 # Note: This partition doesn't actually exist.
 # However, setting this property fixes a crash when entering Developer Options.
