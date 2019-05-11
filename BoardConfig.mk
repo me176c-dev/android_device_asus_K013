@@ -120,6 +120,10 @@ BOARD_HOSTAPD_DRIVER := NL80211
 
 # Build pre-optimized to speed up initial boot
 WITH_DEXPREOPT := true
+ifneq ($(TARGET_BUILD_VARIANT), eng)
+    # Full dex pre-optimization
+    WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := false
+endif
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(TARGET_DEVICE_DIR)/init/root/fstab.me176c
