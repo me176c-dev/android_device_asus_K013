@@ -43,7 +43,7 @@ BOARD_SEPOLICY_DIRS += \
     $(TARGET_DEVICE_DIR)/sepolicy \
     external/drmfb-composer/sepolicy \
     system/bt/vendor_libs/linux/sepolicy \
-    vendor/google/chromeos/sepolicy
+    vendor/google/chromeos-x86/sepolicy
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(TARGET_DEVICE_DIR)/sepolicy/private
 
 # Uncomment this to set SELinux to permissive by default
@@ -126,7 +126,7 @@ TARGET_RECOVERY_FSTAB := $(TARGET_DEVICE_DIR)/init/root/fstab.me176c
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 
 # Include support for ARM on x86 native bridge
--include vendor/google/chromeos/board/native_bridge_arm_on_x86.mk
+-include vendor/google/chromeos-x86/board/native_bridge_arm_on_x86.mk
 
 # Include extra patches (if any)
 -include $(TARGET_DEVICE_DIR)/patches/board.mk
