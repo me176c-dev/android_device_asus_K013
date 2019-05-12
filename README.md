@@ -62,7 +62,6 @@ See [recovery/asus_updater/README.md](recovery/asus_updater/README.md) for detai
 The command fetches TWRP and the extra patches and checks it out in `bootable/recovery`.
 
     ```bash
-    $ . build/envsetup.sh
     $ device/asus/K013/twrp-checkout.sh
     ```
 
@@ -89,8 +88,11 @@ WireGuard support is added to the kernel using the kernel patch script, as expla
 https://forum.xda-developers.com/android/development/wireguard-rom-integration-t3711635).
 
 ```bash
-$ ./patch-kernel.sh kernel/me176c
+$ device/asus/K013/patches/wireguard/patch-kernel.sh kernel/me176c
 ```
+
+(The official [`android_kernel_wireguard`](https://git.zx2c4.com/android_kernel_wireguard/)
+repository is cloned to `device/asus/K013/patches/wireguard`.)
 
 ## Development
 

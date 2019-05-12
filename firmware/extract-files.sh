@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Switch to "firmware" directory
-cd $(dirname "$(readlink -f "$0")")
+cd "$(dirname "$(readlink -f "$0")")"
 
 export SCRIPT_DIR="$PWD"
 export TARGET_DIR="$PWD/proprietary"
