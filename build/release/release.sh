@@ -28,12 +28,11 @@ tag_repos git tag -sm "$TAG_MESSAGE" "$TAG"
 patch_lineage() {
     . "$DEVICE_DIR"/patches/signature-spoofing/apply.sh
 
-    cd kernel/me176c
-    git clean -dxf
+    # Delete old generated files (e.g. from WireGuard)
+    git -C kernel/me176c clean -dxf
     # Hide git revision from kernel version (will be random due to WireGuard)
-    touch .scmversion
+    touch kernel/me176c/.scmversion
 
-    cd "$DIR"
     "$DEVICE_DIR"/patches/wireguard/patch-kernel.sh kernel/me176c
 }
 patch_twrp() {
