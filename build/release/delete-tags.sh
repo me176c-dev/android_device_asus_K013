@@ -7,5 +7,4 @@ delete_tag() {
     git push --delete "$PRODUCT" "$TAG" 2> /dev/null
     git tag -d "$TAG"
 }
-ssh-add
 tag_repos delete_tag

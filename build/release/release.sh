@@ -37,6 +37,7 @@ patch_lineage() {
 }
 patch_twrp() {
     "$DEVICE_DIR"/twrp-checkout.sh
+    git -C bootable/recovery tag -sm "$TAG_MESSAGE" "$TAG"
 }
 patch_$TYPE
 
@@ -49,11 +50,11 @@ release_lineage() {
 }
 release_twrp() {
     mv recovery.img "$ARTIFACT"
+    git -C bootable/recovery push "$PRODUCT-$TYPE" "$TAG"
 }
 release_$TYPE
 
 # Push tags
-ssh-add
 tag_repos git push "$PRODUCT" "$TAG"
 
 cd "$DEVICE_DIR"
