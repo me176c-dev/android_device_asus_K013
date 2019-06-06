@@ -10,7 +10,7 @@
 
 using android::init::property_set;
 
-#define FACTORY_BLOCK_DEVICE  "/dev/block/by-name/factory"
+#define FACTORY_BLOCK_DEVICE  "/dev/block/internal/by-name/factory"
 #define FACTORY_MOUNT_PATH    "/mnt/vendor/factory"
 
 #define SERIALNO_PROP  "ro.serialno"

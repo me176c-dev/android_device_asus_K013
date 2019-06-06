@@ -8,4 +8,4 @@ on late-init
 
 on fs
     mkdir /me176c
-    mount ext4 /dev/block/by-name/config /me176c rw nosuid nodev noatime data=ordered
+    mount ext4 /dev/block/internal/by-name/config /me176c rw nosuid nodev noatime data=ordered

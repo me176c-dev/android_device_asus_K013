@@ -4,11 +4,11 @@
 
 # System partitions
 /system       ext4  /dev/block/by-name/system
-/factory      ext4  /dev/block/by-name/factory                 flags=display="Factory";backup=1
-/me176c       ext4  /dev/block/by-name/config                  flags=display="Config";backup=1
+/factory      ext4  /dev/block/internal/by-name/factory  flags=display="Factory";backup=1
+/me176c       ext4  /dev/block/internal/by-name/config   flags=display="Config";backup=1
 
 # User partitions
-/data         ext4  /dev/block/by-name/data                    flags=encryptable=footer;length=-16384
+/data         ext4  /dev/block/by-name/data              flags=encryptable=footer;length=-16384
 /cache        ext4  /dev/block/by-name/cache
 
 # Other partitions
@@ -17,11 +17,11 @@
 # "ASUS Product Demo", contains mostly useless audio/video files for demo purposes...
 # However, it has a lot of space (~300 MB), so it's perfect as a second EFI partition.
 # (This is only relevant when setting up Linux dual-boot...)
-/apd          ext4  /dev/block/by-name/APD                     flags=display="ASUS Product Demo (APD)";wipeingui;backup=1
+/apd          ext4  /dev/block/internal/by-name/APD      flags=display="ASUS Product Demo (APD)";wipeingui;backup=1
 
 # EFI partition (contains bootloader)
-/esp          vfat  /dev/block/by-name/ESP                     flags=display="EFI System Partition (ESP)";backup=1
+/esp          vfat  /dev/block/internal/by-name/ESP      flags=display="EFI System Partition (ESP)";backup=1
 
 # Removable storage
-/external_sd  auto  /dev/block/platform/80860F14:01/mmcblk0p1
-/usb-otg      auto  /dev/block/sda1                            flags=storage;wipeingui;removable
+/external_sd  auto  /dev/block/external/mmcblk0p1
+/usb-otg      auto  /dev/block/sda1                      flags=storage;wipeingui;removable

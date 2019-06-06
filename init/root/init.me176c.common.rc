@@ -6,12 +6,14 @@ on early-init
 
 on init
     start watchdogd
+    symlink /dev/block/platform/80860F14:00 /dev/block/internal
+    symlink /dev/block/platform/80860F14:01 /dev/block/external
 
-    # Android creates by-name disk links with the disk controller
-    # in the generated path, so that the names pulled out of the GPT
-    # can be associated with the correct disk. Create a shortcut to
-    # /dev/block/by-name so that we can use the same fstabs everywhere.
-    symlink /dev/block/platform/80860F14:00/by-name /dev/block/by-name
+on init && property:ro.boot.external=*
+    symlink /dev/block/external/by-name /dev/block/by-name
+
+on init
+    symlink /dev/block/internal/by-name /dev/block/by-name
 
     # TODO: Avoid going into suspend until it works properly
     write /sys/power/wake_lock ME176C.DisableSuspend
@@ -26,6 +28,15 @@ on init
     mkdir /config/usb_gadget/g1/functions/ffs.adb
     mkdir /config/usb_gadget/g1/functions/ffs.mtp
     mkdir /config/usb_gadget/g1/functions/ffs.ptp
+
+on fs && property:ro.boot.external=*
+    mkdir /mnt/vendor/boot
+    mount vfat /dev/block/internal/by-name/APD /mnt/vendor/boot context=u:object_r:vfat_efi:s0
+
+    # Link boot/recovery image to the expected location
+    # They won't actually be block devices, but this isn't strictly needed for those two
+    symlink /mnt/vendor/boot/${ro.boot.external}/boot.img /dev/block/by-name/boot
+    symlink /mnt/vendor/boot/${ro.boot.external}/recovery.img /dev/block/by-name/recovery
 
 on post-fs
     trigger upi_ug31xx

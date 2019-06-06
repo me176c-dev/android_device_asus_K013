@@ -2,11 +2,11 @@
 /dev/block/platform/80860F14:00/mmcblk[0-9]             u:object_r:root_block_device:s0
 /dev/block/platform/80860F14:00/by-name/boot            u:object_r:boot_block_device:s0
 /dev/block/platform/80860F14:00/by-name/recovery        u:object_r:recovery_block_device:s0
-/dev/block/platform/80860F14:00/by-name/system          u:object_r:system_block_device:s0
+/dev/block/platform/80860F14:0[01]/by-name/system       u:object_r:system_block_device:s0
 /dev/block/platform/80860F14:00/by-name/config          u:object_r:me176c_config_block_device:s0
-/dev/block/platform/80860F14:00/by-name/cache           u:object_r:cache_block_device:s0
-/dev/block/platform/80860F14:00/by-name/data            u:object_r:userdata_block_device:s0
-/dev/block/platform/80860F14:00/by-name/misc            u:object_r:misc_block_device:s0
+/dev/block/platform/80860F14:0[01]/by-name/cache        u:object_r:cache_block_device:s0
+/dev/block/platform/80860F14:0[01]/by-name/data         u:object_r:userdata_block_device:s0
+/dev/block/platform/80860F14:0[01]/by-name/misc         u:object_r:misc_block_device:s0
 /dev/block/zram0                                        u:object_r:swap_block_device:s0
 
 # Partitions
