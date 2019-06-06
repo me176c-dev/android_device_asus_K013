@@ -16,6 +16,7 @@ LOCAL_REQUIRED_MODULES := \
     media_codecs_ffmpeg.xml \
     media_codecs_google_audio.xml \
     media_codecs_google_video.xml \
+    media_codecs_google_tv.xml \
     mfx_omxil_core.conf
 include $(BUILD_PREBUILT)
 
@@ -37,6 +38,13 @@ include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := media_codecs_google_video.xml
+LOCAL_VENDOR_MODULE := true
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := media_codecs_google_tv.xml
 LOCAL_VENDOR_MODULE := true
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES := $(LOCAL_MODULE)
