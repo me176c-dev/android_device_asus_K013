@@ -27,6 +27,14 @@
                        when switching to other resolutions -->
             <!--<Feature name="adaptive-playback" />-->
         </MediaCodec>
+        <MediaCodec name="OMX.Intel.hw_vd.mp2" type="video/mpeg2" >
+            <Limit name="size" min="64x64" max="3840x2160" />
+            <Limit name="alignment" value="2x2" />
+            <Limit name="block-size" value="16x16" />
+            <Limit name="blocks-per-second" range="1-972000" />
+            <Limit name="bitrate" range="1-40000000" />
+            <!--<Feature name="adaptive-playback" />-->
+        </MediaCodec>
     </Decoders>
     <Encoders>
         <MediaCodec name="OMX.Intel.hw_ve.h264" type="video/avc" >
