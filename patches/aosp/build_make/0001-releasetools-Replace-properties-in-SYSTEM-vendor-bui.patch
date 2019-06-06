@@ -1,0 +1,36 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: lambdadroid <lambdadroid@gmail.com>
+Date: Tue, 21 May 2019 17:28:02 +0200
+Subject: [PATCH] releasetools: Replace properties in SYSTEM/vendor/build.prop
+
+The build fingerprint in the system and vendor build.prop
+is rewritten using 'release-keys' during the signing process.
+
+However, SYSTEM/vendor/build.prop is not rewritten for devices
+without a VENDOR partition, causing "vendor mismatch" issues
+at runtime.
+
+Most devices are not affected by this problem because they
+override the fingerprint globally using "BUILD_FINGERPRINT".
+This change is only necessary when using the generated fingerprint.
+
+Change-Id: Ib938d31080e3e31efda9d4e2861a4826dd10510c
+---
+ tools/releasetools/sign_target_files_apks.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tools/releasetools/sign_target_files_apks.py b/tools/releasetools/sign_target_files_apks.py
+index fa62c8f63..9c878a324 100755
+--- a/tools/releasetools/sign_target_files_apks.py
++++ b/tools/releasetools/sign_target_files_apks.py
+@@ -278,6 +278,7 @@ def ProcessTargetFiles(input_tf_zip, output_tf_zip, misc_info,
+     # System properties.
+     elif info.filename in ("SYSTEM/build.prop",
+                            "VENDOR/build.prop",
++                           "SYSTEM/vendor/build.prop",
+                            "SYSTEM/etc/prop.default",
+                            "BOOT/RAMDISK/prop.default",
+                            "BOOT/RAMDISK/default.prop",  # legacy
+-- 
+2.21.0
+
