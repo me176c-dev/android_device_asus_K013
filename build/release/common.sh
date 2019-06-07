@@ -16,7 +16,7 @@ case "$TYPE" in
         ;;
     twrp)
         TITLE="TWRP"
-        VERSION="3.3.0"
+        VERSION="3.3.1"
         EXTRA_GROUPS="-g twrp"
         BUILD_VARIANT="eng"
         TARGETS=(recoveryimage)
