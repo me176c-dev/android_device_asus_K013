@@ -6,6 +6,10 @@ on init
 on late-init
     mkdir /config/usb_gadget/g1/functions/mass_storage.0
 
+on early-fs && property:ro.boot.external=*
+    mkdir /apd
+    symlink /apd /mnt/vendor/boot
+
 on fs
     mkdir /me176c
     mount ext4 /dev/block/internal/by-name/config /me176c rw nosuid nodev noatime data=ordered
