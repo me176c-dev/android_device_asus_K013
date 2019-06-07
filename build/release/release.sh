@@ -44,6 +44,9 @@ patch_$TYPE
 # Build
 "$RELEASE_DIR"/build.sh "$TYPE" "${TYPE}_$PRODUCT-$BUILD_VARIANT" "${TARGETS[@]}"
 
+read -rp "Release $ARTIFACT (Y/n)? " choice
+[[ -z "$choice" || "${choice,,}" == "y" ]]
+
 release_lineage() {
     mv signed-target_files.zip "target-files.$ARTIFACT"
     mv signed-ota_update.zip "$ARTIFACT"
