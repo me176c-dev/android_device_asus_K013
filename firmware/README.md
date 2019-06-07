@@ -10,7 +10,6 @@ stock firmware (`UL-K013-WW-12.10.1.36-user.zip`) and extract the needed firmwar
 from it. [linux-firmware] is automatically synchronized using `repo`.
 
 The firmware is more or less "optional", but Audio/WiFi/BT will not work without it.
-Remove/rename `device-vendor.mk` to disable it entirely.
 
 ### [linux-firmware]
 [linux-firmware] is a public repository from the [Linux] project, where vendors
@@ -36,6 +35,14 @@ This is device-specific firmware that is not available in [linux-firmware]:
 This firmware is redistributed with the ROM based on the assumption that it is
 licensed for usage on this device. The exact license is unknown.
 
+### CPU Microcode Updates
+CPU microcode updates can be (temporary) loaded on boot and may (or may not)
+improve stability or fix certain CPU bugs. For example, newer microcode for
+this tablet is known to have some fixes for Spectre.
+
+This ROM has the latest microcode bundled from the
+[Intel Processor Microcode Package for Linux](https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files).
+
 ### Battery daemon (upi_ug31xx)
 Technically, `/boot/sbin/upi_ug31xx` is not firmware but a user-space component.
 It is a small static binary that is used for some kind of battery calibration
@@ -45,20 +52,6 @@ with this ROM.
 
 The ultimate goal is to get rid of it entirely or replace it with a reverse-engineered
 open-source component.
-
-### CPU Microcode Updates
-CPU microcode updates can be (temporary) loaded on boot and may (or may not)
-improve stability or fix certain CPU bugs. For example, newer microcode for
-this tablet is known to have some fixes for Spectre.
-
-The ROM does no longer include the updated CPU microcode by default, however,
-it can be easily installed separately when using [me176c-boot].
-
-The `microcode` directory contains the source code for a flashable ZIP package,
-that installs microcode updates for the main Android installation.
-It is available in the releases or can be built by running its `build.sh` script.
-
-See the [microcode README](microcode/README) for usage instructions.
 
 ### Fingerprint
 Google Play certification verifies that the build fingerprint matches one on

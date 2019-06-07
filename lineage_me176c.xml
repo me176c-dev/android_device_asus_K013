@@ -2,6 +2,7 @@
 <manifest>
     <remote name="me176c" fetch="https://github.com/me176c-dev/" />
     <remote name="kernel" fetch="https://git.kernel.org/pub/scm/linux/" />
+    <remote name="intel" fetch="https://github.com/intel/" />
     <remote name="wireguard" fetch="https://git.zx2c4.com" />
 
     <!-- Device repositories -->
@@ -14,6 +15,7 @@
     <!-- Firmware -->
     <project name="me176c-acpi" path="device/asus/K013/firmware/acpi" remote="me176c" revision="master" groups="me176c,twrp" />
     <project name="kernel/git/firmware/linux-firmware.git" path="device/asus/K013/firmware/linux" remote="kernel" revision="7d2c913dcd1be083350d97a8cb1eba24cfacbc8a" />
+    <project name="Intel-Linux-Processor-Microcode-Data-Files" path="device/asus/K013/firmware/microcode" remote="intel" revision="refs/tags/microcode-20190514a" />
 
     <!-- Hardware libraries -->
     <project name="linux-me176c" path="hardware/me176c/linux-me176c" remote="me176c" revision="master" />
