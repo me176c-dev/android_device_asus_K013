@@ -4,7 +4,7 @@ which is designed to increase performance and reliability over stock Android for
 
 This is an unofficial port for the [ASUS MeMO Pad 7 (ME176C(X))], based on a recent mainline kernel
 and various open-source components. More information available on the [XDA Thread](
-https://forum.xda-developers.com/memo-pad-7/orig-development/rom-unofficial-lineageos-14-1-asus-memo-t3633341).
+https://forum.xda-developers.com/memo-pad-7/orig-development/rom-unofficial-lineageos-16-0-asus-memo-t3929600).
 
 See [Development](#development) for a technical overview of the ROM.
 
