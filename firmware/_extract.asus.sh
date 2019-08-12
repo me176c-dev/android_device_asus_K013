@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-BLUETOOTH_FIRMWARE="system/etc/firmware/BCM2076B1_002.002.004.0132.0141_reduced_2dB.hcd"
-WIFI_NVRAM="system/etc/nvram.txt"
 PUBLIC_KEY="META-INF/com/android/otacert"
-ASUS_FILES="$PUBLIC_KEY boot.img $WIFI_NVRAM $BLUETOOTH_FIRMWARE"
+FIRMWARE="
+    system/vendor/firmware/bcm43362/fw_bcmdhd.bin
+    system/etc/nvram.txt
+    system/etc/firmware/BCM2076B1_002.002.004.0132.0141_reduced_2dB.hcd
+"
+ASUS_FILES="$PUBLIC_KEY boot.img $FIRMWARE"
 
 echo " -> Extracting files"
 unzip -q "$1" $ASUS_FILES
@@ -20,10 +23,7 @@ cd ..
 echo " -> Copying files"
 cp ramdisk/sbin/upi_ug31xx "$TARGET_DIR"
 cp "$PUBLIC_KEY" "$TARGET_DIR/asus.x509.pem"
-
-# Firmware
-cp "$WIFI_NVRAM" "$TARGET_DIR"
-cp "$BLUETOOTH_FIRMWARE" "$TARGET_DIR/BCM2076B1.hcd"
+cp $FIRMWARE "$TARGET_DIR"
 
 echo " -> Patching files"
 # /config partition is used by configfs so we move it to /me176c
