@@ -9,11 +9,11 @@ namespace power {
 namespace V1_1 {
 namespace implementation {
 
+using ::android::hardware::Return;
+using ::android::hardware::Void;
 using ::android::hardware::power::V1_0::Feature;
 using ::android::hardware::power::V1_0::PowerHint;
 using ::android::hardware::power::V1_1::IPower;
-using ::android::hardware::Return;
-using ::android::hardware::Void;
 
 struct Power : public IPower {
     // Methods from ::android::hardware::power::V1_0::IPower follow.

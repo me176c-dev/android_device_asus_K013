@@ -10,12 +10,12 @@ namespace light {
 namespace V2_0 {
 namespace implementation {
 
+using ::android::hardware::Return;
+using ::android::hardware::Void;
 using ::android::hardware::light::V2_0::ILight;
 using ::android::hardware::light::V2_0::LightState;
 using ::android::hardware::light::V2_0::Status;
 using ::android::hardware::light::V2_0::Type;
-using ::android::hardware::Return;
-using ::android::hardware::Void;
 
 struct Light : public ILight {
     static sp<Light> create();
