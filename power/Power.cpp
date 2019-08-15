@@ -1,15 +1,17 @@
-#define LOG_TAG "android.hardware.power@1.0-service.me176c"
+#define LOG_TAG "android.hardware.power@1.1-service.me176c"
 
+#include <android-base/logging.h>
 #include <android-base/file.h>
 #include "Power.h"
 
 namespace android {
 namespace hardware {
 namespace power {
-namespace V1_0 {
+namespace V1_1 {
 namespace implementation {
 
-using android::base::WriteStringToFile;
+using ::android::base::WriteStringToFile;
+using ::android::hardware::power::V1_0::Status;
 
 #define TOUCHSCREEN_POWER_CONTROL_PATH  "/sys/bus/i2c/devices/i2c-GDIX1001:00/power/control"
 #define BATTERY_POWER_CONTROL_PATH      "/sys/bus/i2c/devices/i2c-UPIG3105:00/power/control"
@@ -42,8 +44,18 @@ Return<void> Power::getPlatformLowPowerStats(getPlatformLowPowerStats_cb _hidl_c
     return Void();
 }
 
+// Methods from ::android::hardware::power::V1_1::IPower follow.
+Return<void> Power::getSubsystemLowPowerStats(getSubsystemLowPowerStats_cb _hidl_cb) {
+    _hidl_cb({}, Status::SUCCESS);
+    return Void();
+}
+
+Return<void> Power::powerHintAsync(PowerHint hint, int32_t data) {
+    return powerHint(hint, data);
+}
+
 }  // namespace implementation
-}  // namespace V1_0
+}  // namespace V1_1
 }  // namespace power
 }  // namespace hardware
 }  // namespace android

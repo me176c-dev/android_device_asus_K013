@@ -1,8 +1,8 @@
 cc_binary {
-    name: "android.hardware.power@1.0-service.me176c",
+    name: "android.hardware.power@1.1-service.me176c",
     relative_install_path: "hw",
     vendor: true,
-    init_rc: ["android.hardware.power@1.0-service.me176c.rc"],
+    init_rc: ["android.hardware.power@1.1-service.me176c.rc"],
 
     srcs: [
         "service.cpp",
@@ -15,5 +15,6 @@ cc_binary {
         "libhidltransport",
         "libutils",
         "android.hardware.power@1.0",
+        "android.hardware.power@1.1",
     ],
 }

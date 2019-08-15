@@ -32,4 +32,4 @@
 # HALs
 /system/vendor/bin/hw/android\.hardware\.drm@1\.1-service\.clearkey  u:object_r:hal_drm_clearkey_exec:s0
 /system/vendor/bin/hw/android\.hardware\.light@2\.0-service\.me176c  u:object_r:hal_light_me176c_exec:s0
-/system/vendor/bin/hw/android\.hardware\.power@1\.0-service\.me176c  u:object_r:hal_power_me176c_exec:s0
+/system/vendor/bin/hw/android\.hardware\.power@1\.1-service\.me176c  u:object_r:hal_power_me176c_exec:s0
