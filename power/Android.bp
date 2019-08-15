@@ -16,5 +16,6 @@ cc_binary {
         "libutils",
         "android.hardware.power@1.0",
         "android.hardware.power@1.1",
+        "vendor.lineage.power@1.0",
     ],
 }

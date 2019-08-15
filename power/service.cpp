@@ -9,7 +9,6 @@ using android::sp;
 using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
 
-using android::hardware::power::V1_1::IPower;
 using android::hardware::power::V1_1::implementation::Power;
 
 using android::OK;
@@ -17,9 +16,12 @@ using android::OK;
 int main() {
     configureRpcThreadpool(1, true /*callerWillJoin*/);
 
-    sp<IPower> power = new Power;
-    if (power->registerAsService() != OK) {
+    sp<Power> power = new Power;
+    if (power->IPower::registerAsService() != OK) {
         LOG(FATAL) << "Failed to register Power HAL";
+    }
+    if (power->ILineagePower::registerAsService() != OK) {
+        LOG(FATAL) << "Failed to register LineagePower HAL";
     }
 
     joinRpcThreadpool();
