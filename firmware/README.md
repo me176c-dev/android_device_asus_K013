@@ -20,15 +20,15 @@ Firmware from [linux-firmware] is used for:
 
   - Audio: `intel/fw_sst_0f28.bin` -> `/vendor/firmware/intel/fw_sst_0f28.bin`
     ([License](https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/LICENCE.fw_sst_0f28))
-  - WiFi: `brcm/brcmfmac43362-sdio.bin` -> `/vendor/firmware/brcm/brcmfmac43362-sdio.bin`
-    ([License](https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/LICENCE.broadcom_bcm43xx))
 
 ### Stock firmware
 Some firmware is taken from the stock firmware
 ([`UL-K013-WW-12.10.1.36-user.zip`](https://dlcdnets.asus.com/pub/ASUS/EeePAD/ME176C/UL-K013-WW-12.10.1.36-user.zip)).
 This is device-specific firmware that is not available in [linux-firmware]:
 
- - WiFi: `/system/etc/nvram.txt` -> `/vendor/firmware/brcm/brcmfmac43362-sdio.txt`
+ - WiFi:
+   - `system/vendor/firmware/bcm43362/fw_bcmdhd.bin`  -> `/vendor/firmware/brcm/brcmfmac43362-sdio.bin`
+   - `/system/etc/nvram.txt` -> `/vendor/firmware/brcm/brcmfmac43362-sdio.txt`
  - Bluetooth: `/system/etc/firmware/BCM2076B1_002.002.004.0132.0141_reduced_2dB.hcd`
    -> `/vendor/firmware/brcm/BCM2076B1.hcd`
 
