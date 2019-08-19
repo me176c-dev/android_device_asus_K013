@@ -87,7 +87,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.0-service.me176c
+    android.hardware.power@1.1-service.me176c
 
 # Sensors
 PRODUCT_PACKAGES += \
