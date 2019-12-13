@@ -33,7 +33,7 @@
     <project name="android_hardware_thermald" path="hardware/me176c/thermald" remote="me176c" groups="me176c" />
 
     <!-- Hardware video acceleration -->
-    <project name="android_hardware_libva" path="hardware/me176c/libva" remote="me176c" groups="me176c" />
+    <project name="libva" path="hardware/me176c/libva" remote="intel" revision="refs/tags/2.4.1" />
     <project name="android_hardware_intel-vaapi-driver" path="hardware/me176c/intel-vaapi-driver" remote="me176c" groups="me176c" />
     <project name="android_hardware_mediasdk" path="hardware/me176c/mediasdk" remote="me176c" groups="me176c" />
     <project name="android_hardware_mediasdk-omx" path="hardware/me176c/mediasdk-omx" remote="me176c" groups="me176c" />
