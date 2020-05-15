@@ -28,20 +28,6 @@
 /sys/devices/platform*  iio:device0/scan_elements/in_timestamp_en  0644  system  system
 /sys/devices/platform*  iio:device0/trigger/current_trigger        0644  system  system
 
-# Thermal daemon
-/sys/devices/virtual/thermal/thermal_zone*    trip_point_0_temp  0644  system  system
-/sys/devices/virtual/thermal/thermal_zone*    trip_point_1_temp  0644  system  system
-/sys/devices/virtual/thermal/thermal_zone*    trip_point_2_temp  0644  system  system
-/sys/devices/virtual/thermal/thermal_zone*    trip_point_3_temp  0644  system  system
-/sys/devices/virtual/thermal/thermal_zone*    trip_point_4_temp  0644  system  system
-/sys/devices/virtual/thermal/cooling_device*  cur_state          0644  system  system
-
-/sys/devices/virtual/powercap/intel-rapl/intel-rapl*  enabled                      0644  system  system
-/sys/devices/virtual/powercap/intel-rapl/intel-rapl*  constraint_0_power_limit_uw  0644  system  system
-/sys/devices/virtual/powercap/intel-rapl/intel-rapl*  constraint_0_time_window_us  0644  system  system
-/sys/devices/virtual/powercap/intel-rapl/intel-rapl*  constraint_1_power_limit_uw  0644  system  system
-/sys/devices/virtual/powercap/intel-rapl/intel-rapl*  constraint_1_time_window_us  0644  system  system
-
 # UPI gauge (battery)
 /dev/ug31xx  0660  system  system
 

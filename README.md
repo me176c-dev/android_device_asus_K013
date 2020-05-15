@@ -135,7 +135,6 @@ This port is different: Except for a bit of firmware, there are no components us
      - Hardware-accelerated video codecs:
        [libva](https://github.com/intel/libva), [intel-vaapi-driver](https://github.com/intel/intel-vaapi-driver),
        [MediaSDK](https://github.com/Intel-Media-SDK/MediaSDK), [MediaSDK_OMX_IL](https://github.com/Intel-Media-SDK/MediaSDK_OMX_IL)
-     - Thermal: [thermald](https://github.com/intel/thermal_daemon)
 
  - **Firmware:** See [Firmware README](firmware/README.md).
 

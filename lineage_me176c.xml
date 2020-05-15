@@ -30,7 +30,6 @@
 
     <!-- Sensors -->
     <project name="android_hardware_iio-sensors-hal" path="hardware/me176c/iio-sensors-hal" remote="me176c" groups="me176c" />
-    <project name="android_hardware_thermald" path="hardware/me176c/thermald" remote="me176c" groups="me176c" />
 
     <!-- Hardware video acceleration -->
     <project name="libva" path="hardware/me176c/libva" remote="intel" revision="refs/tags/2.4.1" />

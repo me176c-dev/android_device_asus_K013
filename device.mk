@@ -96,11 +96,6 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-service \
     SmartCover
 
-# Thermal daemon
-PRODUCT_PACKAGES += \
-    thermald \
-    thermal-conf.xml
-
 # WiFi
 PRODUCT_PACKAGES += \
     wifi.me176c.rc \

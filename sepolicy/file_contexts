@@ -25,7 +25,6 @@
 /me176c/upi.*                                           u:object_r:upi_ug31xx_file:s0
 
 # Daemons
-/system/vendor/bin/thermald                             u:object_r:thermald_exec:s0
 /system/vendor/bin/hw/bdaddr                            u:object_r:vendor_bdaddr_exec:s0
 /system/vendor/bin/hw/net_hwaddr                        u:object_r:vendor_net_hwaddr_exec:s0
 
