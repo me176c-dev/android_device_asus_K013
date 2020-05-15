@@ -16,7 +16,7 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_SHIPPING_API_LEVEL := 19
 
 # Soong Namespace to build all Blueprint modules in this repository
-PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
+PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH) hardware/me176c
 
 # Overlays
 PRODUCT_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -30,11 +30,8 @@ PRODUCT_PACKAGES += \
     kernel-modules.me176c.rc
 
 # Health
-# Note: android.hardware.health@2.0-service.override would be enough but it's
-# completely broken: its init.rc file still references the binary without .override
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-service \
-    android.hardware.health@2.0-service.override
+    android.hardware.health@2.0-service
 
 # Keymaster
 # TODO: 4.0 causes issues with the lock screen

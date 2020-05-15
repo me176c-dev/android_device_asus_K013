@@ -9,8 +9,14 @@
     <project name="android_device_asus_K013" path="device/asus/K013" remote="me176c" groups="me176c,twrp">
         <linkfile src="Android.mk" dest="hardware/me176c/Android.mk" />
         <linkfile src="build/namespace.bp" dest="hardware/me176c/Android.bp" />
+
+        <!-- Make sure newer clang does not conflict with the original one -->
+        <copyfile src="recovery/asus_updater/.find-ignore" dest="prebuilts/clang-r/.find-ignore" />
     </project>
-    <project name="linux-me176c" path="kernel/me176c" remote="me176c" revision="android-4.19" groups="me176c,twrp" />
+    <project name="linux-me176c" path="kernel/me176c" remote="me176c" revision="android-5.4" groups="me176c,twrp" />
+
+    <!-- Newer clang for building kernel -->
+    <project path="prebuilts/clang-r/host/linux-x86" name="platform/prebuilts/clang/host/linux-x86" groups="pdk" clone-depth="1" remote="aosp" revision="refs/tags/android-r-preview-4" />
 
     <!-- Firmware -->
     <project name="me176c-acpi" path="device/asus/K013/firmware/acpi" remote="me176c" revision="master" groups="me176c,twrp" />
@@ -22,7 +28,6 @@
     <project name="android_hardware_acpica" path="hardware/me176c/acpica" remote="me176c" groups="me176c,twrp" />
 
     <!-- Graphics -->
-    <extend-project name="platform/external/libdrm" revision="0fb967dea8a8e5205d9bab3af696bef7ae009bdd" />
     <project name="drmfb-composer" path="external/drmfb-composer" remote="me176c" revision="master" />
 
     <project name="android_hardware_minigbm" path="hardware/me176c/minigbm" remote="me176c" groups="me176c" />

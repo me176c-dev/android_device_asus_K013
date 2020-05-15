@@ -1,4 +1,3 @@
-TARGET_DEVICE_DIR := device/asus/$(TARGET_DEVICE)
 VENDOR_SECURITY_PATCH := 2019-12-05
 
 # Architecture
@@ -23,12 +22,11 @@ TARGET_USERIMAGES_USE_F2FS := true
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/me176c
-TARGET_KERNEL_ARCH := x86_64
 
-# Use host distribution compiler if it is recent enough for Retpoline support
-ifneq ($(shell printf "%s\n" "7.3" "`gcc -dumpversion`" | sort -cV 2>&1),)
-    TARGET_KERNEL_CROSS_COMPILE_PREFIX := x86_64-linux-android-
-endif
+# need newer clang from R for asm-goto support
+TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_KERNEL_CLANG_PREBUILTS := clang-r
+TARGET_KERNEL_CLANG_VERSION := r377782c
 
 BOARD_KERNEL_IMAGE_NAME := bzImage
 BOARD_KERNEL_CMDLINE += quiet androidboot.hardware=me176c printk.devkmsg=on
@@ -40,15 +38,15 @@ BOARD_KERNEL_CMDLINE += rfkill.default_state=0
 # Register battery power supply early to avoid immediate reboot in charger mode
 BOARD_KERNEL_CMDLINE += ug31xx_battery.early=1
 
-BOARD_SEPOLICY_DIRS += \
-    $(TARGET_DEVICE_DIR)/sepolicy \
-    external/drmfb-composer/sepolicy \
-    system/bt/vendor_libs/linux/sepolicy \
-    vendor/google/chromeos-x86/sepolicy
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(TARGET_DEVICE_DIR)/sepolicy/private
+#BOARD_SEPOLICY_DIRS += \
+#    $(TARGET_DEVICE_DIR)/sepolicy \
+#    external/drmfb-composer/sepolicy \
+#    system/bt/vendor_libs/linux/sepolicy \
+#    vendor/google/chromeos-x86/sepolicy
+#BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(TARGET_DEVICE_DIR)/sepolicy/private
 
 # Uncomment this to set SELinux to permissive by default
-#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 TARGET_USES_64_BIT_BINDER := true
 
@@ -57,8 +55,6 @@ MALLOC_SVELTE := true
 
 # Treble
 DEVICE_MANIFEST_FILE := $(TARGET_DEVICE_DIR)/manifest.xml
-DEVICE_FRAMEWORK_MANIFEST_FILE += \
-    system/libhidl/vintfdata/manifest_healthd_exclude.xml
 
 # TODO: This isn't passing currently due to the missing Gatekeeper HAL
 #PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
@@ -66,7 +62,7 @@ DEVICE_FRAMEWORK_MANIFEST_FILE += \
 # Init
 TARGET_FS_CONFIG_GEN := $(TARGET_DEVICE_DIR)/config.fs
 TARGET_SYSTEM_PROP := $(TARGET_DEVICE_DIR)/system.prop
-TARGET_INIT_VENDOR_LIB := libinit_me176c
+TARGET_INIT_VENDOR_LIB := //$(TARGET_DEVICE_DIR):libinit_me176c
 
 # Graphics
 BOARD_KERNEL_CMDLINE += vga=current i915.modeset=1 i915.fastboot=1 i915.enable_fbc=1 drm.vblankoffdelay=1

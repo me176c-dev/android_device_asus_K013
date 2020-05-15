@@ -1,6 +1,7 @@
 cc_library_static {
     name: "libinit_me176c",
     vendor: true,
+    recovery_available: true,
 
     cpp_std: "c++17",
     srcs: ["init_me176c.cpp"],
